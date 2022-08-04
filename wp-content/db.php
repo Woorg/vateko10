@@ -1,0 +1,1 @@
+/var/www/vateko/wp-content/plugins/query-monitor/wp-content/db.php
