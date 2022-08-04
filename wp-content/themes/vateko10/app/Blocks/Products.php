@@ -6,7 +6,7 @@ use Log1x\AcfComposer\Block;
 use Roots\Acorn\Application;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Contacts extends Block
+class Products extends Block
 {
     public function __construct(Application $app)
     {
@@ -15,21 +15,21 @@ class Contacts extends Block
          *
          * @var string
          */
-        $this->name = __('Контакты', 'sage');
+        $this->name = __('Наша продукция', 'sage');
 
         /**
          * The block slug.
          *
          * @var string
          */
-        $this->slug = 'contacts';
+        $this->slug = 'products';
 
         /**
          * The block description.
          *
          * @var string
          */
-        $this->description = __('A simple Contacts block.', 'sage');
+        $this->description = __('A simple Products block.', 'sage');
 
         /**
          * The block category.
@@ -100,7 +100,7 @@ class Contacts extends Block
          * @var array
          */
         $this->supports = [
-            'align' => false,
+            'align' => true,
             'align_text' => false,
             'align_content' => false,
             'full_height' => false,
@@ -151,10 +151,7 @@ class Contacts extends Block
     public function with()
     {
         return [
-            'title' => $this->title(),
-            'contacts' => $this->contacts(),
-            'contact' => $this->contact(),
-            'note' => $this->note(),
+            // 'items' => $this->items(),
         ];
     }
 
@@ -165,23 +162,18 @@ class Contacts extends Block
      */
     public function fields()
     {
-        $contacts = new FieldsBuilder('contacts');
+        $products = new FieldsBuilder('products');
 
-        $contacts
-            ->addText('title', [
+        $products
+            ->addTextarea('products_title', [
                 'label' => 'Заголовок',
+                'rows' => '2',
+                'new_lines' => 'br', // Possible values are '<wpau></wpau>top', 'br', or ''.
             ])
-            ->addRepeater('contacts')
-                ->addText('contact', [
-                    'label' => 'Контакт',
-                ])
-                ->addText('note', [
-                    'label' => 'Контакт дополнительно',
-                ])
-            ->endRepeater();
 
 
-        return $contacts->build();
+
+        return $products->build();
     }
 
     /**
@@ -189,24 +181,9 @@ class Contacts extends Block
      *
      * @return array
      */
-    public function contacts()
+    public function items()
     {
-        return get_field('contacts');
-    }
-
-    public function contact()
-    {
-        return get_field('contact');
-    }
-
-    public function note()
-    {
-        return get_field('note');
-    }
-
-    public function title()
-    {
-        return get_field('title');
+        return get_field('items') ?: $this->example['items'];
     }
 
     /**

@@ -13,6 +13,12 @@ module.exports = {
                 exclude: '/node_modules/i'
             }
         },
+        {
+            "name": "flex-gap-polyfill",
+            "options": {
+                "webComponents": true,
+            }
+        }
     ],
     "svg": {
         "active": true,
