@@ -44,7 +44,7 @@ export default async (app) => {
     /**
      * Development origin
      */
-    .serve("http://0.0.0.0:3008")
+    .serve("http://localhost:3008")
 
     /**
      * URI of the `public` directory

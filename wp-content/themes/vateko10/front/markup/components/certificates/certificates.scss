@@ -1,1 +1,131 @@
+.certificates {
+  overflow: hidden;
+  &__container {
+    position: relative;
+    padding-top: $sp-d;
+  }
 
+  &__title {
+    margin-bottom: $mb-1;
+    text-align: center;
+  }
+
+  &__buttons {
+    z-index: 3;
+    position: absolute;
+    top: 360px;
+    left: 30px;
+    right: 30px;
+  }
+
+  &__button {
+    @include resetbutton();
+    width: 165px;
+    height: 165px;
+    color: $color-white;
+    pointer-events: all;
+    &:after {
+      display: none;
+    }
+
+    &.swiper-button-prev {
+      left: 0;
+    }
+    &.swiper-button-next {
+      right: 0;
+    }
+  }
+
+  &__button-arrow {
+    fill: currentColor;
+  }
+
+  &__slider {
+    padding-bottom: $sp-d;
+  }
+
+  &__slide {
+    width: 20%;
+    &.swiper-slide-active {
+
+      .certificates__item {
+
+      }
+
+      .certificates__certificate-entry {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        @include tr(.3s ease);
+      }
+
+      .certificates__certificate {
+
+        transform: scale(1) translate3d(0, 0, 0);
+        @include tr(.3s ease);
+
+        img {
+          border: solid 7px $color-green;
+
+        }
+
+      }
+
+    }
+
+    &.swiper-slide-visible {
+
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    pointer-events: all;
+  }
+
+  &__certificate {
+    // width: 544px;
+    // height: 750px;
+    font-size: 0;
+    background-color: transparent;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(.8) translate3d(0, 0, 0);
+    @include tr(.3s ease);
+    img {
+      max-width: 544px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
+
+    }
+  }
+
+  &__certificate-entry {
+    margin-right: -20px;
+    margin-left: -20px;
+    padding-top: 40px;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    @include tr(.3s ease);
+  }
+
+  &__certificate-title {
+    margin-bottom: 16px;
+
+  }
+
+  &__certificate-text {
+    color: $color-text;
+    font-size: 24px;
+  }
+
+
+
+
+}

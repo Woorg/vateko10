@@ -16,10 +16,16 @@ use function Roots\bundle;
 add_action('wp_enqueue_scripts', function () {
     bundle('app')->enqueue();
 
+
     if ( !($_ENV['ENVIRONMENT'] === 'production') ) {
+        wp_enqueue_style('glightbox', get_template_directory_uri() . '/front/dev/static/css/separate-css/glightbox.min.css', false, null);
+        wp_enqueue_style('swiper', get_template_directory_uri() . '/front/dev/static/css/separate-css/swiper-bundle.min.css', false, null);
         // MAIN CSS DEV
         wp_enqueue_style('main-dev', get_template_directory_uri() . '/front/dev/static/css/main.css', false, null);
     } else {
+        wp_enqueue_style('glightbox', get_template_directory_uri() . '/front/prod/static/css/separate-css/glightbox.min.css', false, null);
+        wp_enqueue_style('swiper', get_template_directory_uri() . '/front/prod/static/css/separate-css/swiper-bundle.min.css', false, null);
+
         wp_enqueue_style('main-prod', get_template_directory_uri() . '/front/prod/static/css/main.min.css', false, null);
     }
 

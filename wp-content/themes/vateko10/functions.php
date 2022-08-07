@@ -95,3 +95,11 @@ function svg_path()
     $images_path = get_template_directory_uri() . '/front/prod/';
     return $images_path;
 }
+
+
+// add_action('init', 'stop_heartbeat', 1);
+
+// function stop_heartbeat()
+// {
+//     wp_deregister_script('heartbeat');
+// }

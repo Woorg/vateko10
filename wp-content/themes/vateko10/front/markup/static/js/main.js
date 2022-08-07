@@ -2,6 +2,9 @@ import svg4everybody from 'svg4everybody';
 import LazyLoad from 'vanilla-lazyload';
 import Nav from '../../components/nav/nav';
 import { heroVideo } from '../../components/hero/hero';
+
+import { certificatesSlider, certificatesGallery } from '../../components/certificates/certificates';
+
 // import { map } from '../../components/contacts/contacts';
 import { modal } from '../../components/modal/modal';
 import { inputMask } from '../../components/form/form';
@@ -45,6 +48,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // Hero video
 
     heroVideo();
+
+    // Certificates slider
+
+    certificatesSlider();
+
+    // Certificates gallery
+
+    certificatesGallery();
 
 
     /*

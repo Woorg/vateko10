@@ -151,7 +151,8 @@ class Products extends Block
     public function with()
     {
         return [
-            // 'items' => $this->items(),
+            'products_title' => $this->products_title(),
+            'products_message' => $this->products_message(),
         ];
     }
 
@@ -165,13 +166,13 @@ class Products extends Block
         $products = new FieldsBuilder('products');
 
         $products
-            ->addTextarea('products_title', [
+            ->addText('products_title', [
                 'label' => 'Заголовок',
-                'rows' => '2',
-                'new_lines' => 'br', // Possible values are '<wpau></wpau>top', 'br', or ''.
             ])
+            ->addMessage('products_message', 'Вывод продукции', [
+                'label' => 'Вывод продукции',
 
-
+            ]);
 
         return $products->build();
     }
@@ -181,9 +182,14 @@ class Products extends Block
      *
      * @return array
      */
-    public function items()
+    public function products_title()
     {
-        return get_field('items') ?: $this->example['items'];
+        return get_field('products_title');
+    }
+
+    public function products_message()
+    {
+        return get_field('products_message');
     }
 
     /**

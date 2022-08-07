@@ -1,0 +1,104 @@
+# Translation of Plugins - WP Database Reset - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - WP Database Reset - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-01-03 20:06:02+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - WP Database Reset - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/chrisberthe"
+msgstr "https://github.com/chrisberthe"
+
+#. Author of the plugin/theme
+msgid "Chris Berthe"
+msgstr "Chris Berthe"
+
+#. Description of the plugin/theme
+msgid "A plugin that allows you to skip the 5 minute installation and reset WordPress's database back to its original state."
+msgstr "Плагин, который позволяет пропустить 5-минутную установку и сбросить базу данных WordPress обратно в исходное состояние."
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/chrisberthe/wordpress-database-reset"
+msgstr "https://github.com/chrisberthe/wordpress-database-reset"
+
+#. Plugin Name of the plugin/theme
+msgid "WordPress Database Reset"
+msgstr "WordPress Database Reset"
+
+#: views/partials/submit-button.php:2
+msgid "Reset Tables"
+msgstr "Сброс таблиц"
+
+#: views/partials/select-tables.php:15
+msgid "Reactivate current theme and plugins after reset?"
+msgstr "Активировать текущую тему и плагины после сброса?"
+
+#: views/partials/select-tables.php:4
+msgid "Select All"
+msgstr "Выбрать все"
+
+#: views/partials/select-tables.php:1
+msgid "Select the database tables you would like to reset"
+msgstr "Выберите таблицы баз данных, которые вы хотели бы сбросить"
+
+#: views/partials/security-code.php:2
+msgid "Enter the security code into the text box"
+msgstr "Введите код безопасности в текстовое поле"
+
+#: views/partials/disclaimer.php:2
+msgid "You selected the users table. Only the <strong><u>%s</u></strong> user will be restored"
+msgstr "Вы выбрали таблицу пользователей. Только <strong><u>%s</u></strong> пользователь будет восстановлен"
+
+#: lib/helpers.php:119
+msgid "User already exists. Password inherited."
+msgstr "Пользователь уже существует. Пароль унаследован."
+
+#: lib/helpers.php:116
+msgid "Your chosen password."
+msgstr "Выбранный пароль."
+
+#: lib/helpers.php:111
+msgid "<strong><em>Note that password</em></strong> carefully! It is a <em>random</em> password that was generated just for you."
+msgstr "<strong><em>Обратите внимание на этот пароль!</em></strong> Это <em>случайный</em> пароль, который был сгенерирован специально для вас."
+
+#: lib/helpers.php:33
+msgid "The WordPress Database Reset plugin requires at least WordPress 3.0!"
+msgstr "Плагин WordPress Database Reset требует по крайней мере WordPress 3.0!"
+
+#: lib/helpers.php:29
+msgid "The WordPress Database Reset plugin requires at least PHP 5.3!"
+msgstr "Плагин WordPress Database Reset требует по крайней мере PHP 5.3!"
+
+#: class-db-resetter.php:35
+msgid "You did not select any database tables"
+msgstr "Вы не выбрать таблицы  базы данных"
+
+#: class-db-reset-command.php:95
+msgid "The current theme and plugins were reactivated"
+msgstr "Текущая тема и плагины были активированы повторно"
+
+#: class-db-reset-admin.php:177
+msgid "Select Tables"
+msgstr "Выберите таблицы"
+
+#: class-db-reset-admin.php:176
+msgid "Are you sure you want to continue?"
+msgstr "Вы уверены, что хотите продолжить?"
+
+#: class-db-reset-admin.php:107 class-db-reset-admin.php:108 views/index.php:2
+msgid "Database Reset"
+msgstr "Сброс базы данных"
+
+#: class-db-reset-admin.php:98
+msgid "You entered the wrong security code"
+msgstr "Вы ввели неправильный код безопасности"
+
+#: class-db-reset-admin.php:79 class-db-reset-command.php:92
+msgid "The selected tables were reset"
+msgstr "Выбранные таблицы были сброшены"

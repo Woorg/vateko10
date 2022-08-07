@@ -1,1 +1,10 @@
+.calc {
+  &__container {
+    padding-top: $sp-d;
+    padding-bottom: $sp-d;
+  }
 
+  &__title {
+    margin-bottom: $mb-1;
+  }
+}

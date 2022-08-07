@@ -88,7 +88,7 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define('WP_DEBUG', true );
-define('WP_DEBUG_LOG', true );
+define('WP_DEBUG_LOG', false );
 define('WP_AUTO_UPDATE_CORE', true );
 define('WP_CACHE_KEY_SALT', $_ENV['WP_CACHE_KEY_SALT'] );
 
