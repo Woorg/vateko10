@@ -19,7 +19,7 @@ export default async (app) => {
     /**
      * Directory contents to be included in the compilation
      */
-    .assets(["images"])
+    // .assets(["images"])
 
     /**
      * Matched files trigger a page reload when modified
@@ -49,5 +49,5 @@ export default async (app) => {
     /**
      * URI of the `public` directory
      */
-    .setPublicPath("/app/themes/sage/public/");
+    // .setPublicPath("/app/themes/sage/public/");
 };

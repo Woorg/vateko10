@@ -8,6 +8,7 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@popperjs/core": "^2.11.0",
+    "choices.js": "^10.1.0",
     "flex-gap-polyfill": "git+https://github.com/limitlessloop/flex-gap-polyfill.git#postcss7",
     "glightbox": "^3.2.0",
     "inputmask": "^5.0.7",

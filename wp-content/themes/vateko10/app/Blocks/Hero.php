@@ -71,7 +71,7 @@ class Hero extends Block
          *
          * @var string
          */
-        $this->mode = 'auto';
+        $this->mode = 'edit';
 
         /**
          * The default block alignment.
@@ -105,7 +105,7 @@ class Hero extends Block
             'align_content' => false,
             'full_height' => false,
             'anchor' => false,
-            'mode' => true,
+            'mode' => false,
             'multiple' => true,
             'jsx' => true,
         ];
@@ -115,30 +115,13 @@ class Hero extends Block
          *
          * @var array
          */
-        // $this->styles = [
-        //     [
-        //         'name' => 'light',
-        //         'label' => 'Light',
-        //         'isDefault' => true,
-        //     ],
-        //     [
-        //         'name' => 'dark',
-        //         'label' => 'Dark',
-        //     ]
-        // ];
 
         /**
          * The block preview example data.
          *
          * @var array
          */
-        // $this->example = [
-        //    'items' => [
-        //        ['item' => 'Item one'],
-        //        ['item' => 'Item two'],
-        //        ['item' => 'Item three'],
-        //    ],
-        // ];
+
 
         parent::__construct($app);
     }
@@ -153,7 +136,7 @@ class Hero extends Block
         return [
             'hero_title' => $this->hero_title(),
             'hero_image' => $this->hero_image(),
-            'hero_file' => $this->hero_file(),
+            'hero_video_id' => $this->hero_video_id(),
             'hero_text' => $this->hero_text(),
             'hero_url' => $this->hero_url(),
         ];
@@ -195,26 +178,13 @@ class Hero extends Block
                 'max_size' => '',
                 'mime_types' => '',
             ])
-            ->addFile('hero_file', [
-                'label' => 'Видео',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => [],
-                'wrapper' => [
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ],
-                'return_format' => 'array',
-                'library' => 'all',
-                'min_size' => '',
-                'max_size' => '',
-                'mime_types' => '',
+            ->addText('hero_video_id', [
+                'label' => 'Видео ID с youtube',
             ])
             ->addTextarea('hero_text', [
                 'label' => 'Текст',
                 'rows' => '3',
-                'new_lines' => 'br', // Possible values are 'wpautop', 'br', or ''.
+                'new_lines' => 'wpautop', // Possible values are 'wpautop', 'br', or ''.
             ])
             ->addPageLink('hero_url', [
                 'label' => 'Ссылка на статью',
@@ -240,9 +210,9 @@ class Hero extends Block
         return get_field('hero_image');
     }
 
-    public function hero_file()
+    public function hero_video_id()
     {
-        return get_field('hero_file');
+        return get_field('hero_video_id');
     }
 
     public function hero_text()
@@ -262,7 +232,6 @@ class Hero extends Block
      */
     public function enqueue()
     {
-        //
         wp_enqueue_style('main-dev', get_template_directory_uri() . '/front/dev/static/css/main.css', false, null);
 
 

@@ -5,6 +5,7 @@ class Nav {
         this.$navTrigger = document.querySelector('.nav__trigger');
         this.$nav = document.querySelector('.nav_primary .nav__list');
         // this.$navContacts = document.querySelector('.nav_primary .nav__contact');
+        // this.$navLink = document.querySelectorAll('.nav_primary .nav__link');
         this.$page = document.querySelector('.page');
         this.events();
         this.navOpen = false;
@@ -25,15 +26,15 @@ class Nav {
 
         });
 
-        // this.$navContacts.addEventListener( 'click', (e) => {
+        this.$nav.addEventListener( 'click', (e) => {
+            if ( this.navOpen ) {
+                console.log('click');
+                this.closeNav();
+            } else {
+                this.openNav();
+            }
 
-        //     if ( this.navOpen ) {
-        //         this.closeNav();
-        //     } else {
-        //         this.openNav();
-        //     }
-
-        // });
+        });
 
         window.addEventListener( 'resize', (e) => {
             this.resizeNav();
@@ -43,7 +44,7 @@ class Nav {
     openNav() {
         this.navOpen = true;
 
-        if ( window.innerWidth > '960' ) {
+        if ( window.innerWidth > '1200' ) {
             this.$nav.classList.remove('nav_open');
             this.$page.classList.remove('page_nav_open');
         } else {
@@ -63,7 +64,7 @@ class Nav {
         let viewportWidth = window.innerWidth;
         console.log(viewportWidth);
 
-        if ( viewportWidth > '639' ) {
+        if ( viewportWidth > '641' ) {
 
             this.$nav.classList.remove('nav_open');
             this.$page.classList.remove('page_nav_open');

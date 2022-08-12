@@ -30,7 +30,7 @@
   <?php wp_body_open(); ?>
   <?php do_action('get_header'); ?>
 
-  <div id="app" class="page__wrapper">
+  <div id="top" class="page__wrapper">
 
     <?php echo view(app('sage.view'), app('sage.data'))->render(); ?>
 

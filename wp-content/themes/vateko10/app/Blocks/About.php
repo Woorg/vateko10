@@ -71,7 +71,7 @@ class About extends Block
          *
          * @var string
          */
-        $this->mode = 'auto';
+        $this->mode = 'edit';
 
         /**
          * The default block alignment.
@@ -105,7 +105,7 @@ class About extends Block
             'align_content' => false,
             'full_height' => false,
             'anchor' => false,
-            'mode' => true,
+            'mode' => false,
             'multiple' => true,
             'jsx' => true,
         ];

@@ -71,7 +71,7 @@ class Learnmore extends Block
          *
          * @var string
          */
-        $this->mode = 'auto';
+        $this->mode = 'edit';
 
         /**
          * The default block alignment.
@@ -105,7 +105,7 @@ class Learnmore extends Block
             'align_content' => false,
             'full_height' => false,
             'anchor' => false,
-            'mode' => true,
+            'mode' => false,
             'multiple' => true,
             'jsx' => true,
         ];
@@ -115,30 +115,14 @@ class Learnmore extends Block
          *
          * @var array
          */
-        // $this->styles = [
-        //     [
-        //         'name' => 'light',
-        //         'label' => 'Light',
-        //         'isDefault' => true,
-        //     ],
-        //     [
-        //         'name' => 'dark',
-        //         'label' => 'Dark',
-        //     ]
-        // ];
+
 
         /**
          * The block preview example data.
          *
          * @var array
          */
-        // $this->example = [
-        //    'items' => [
-        //        ['item' => 'Item one'],
-        //        ['item' => 'Item two'],
-        //        ['item' => 'Item three'],
-        //    ],
-        // ];
+
 
         parent::__construct($app);
     }

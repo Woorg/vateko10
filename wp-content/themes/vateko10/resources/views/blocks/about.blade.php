@@ -5,7 +5,7 @@
   $image_id = get_field('about_image');
 @endphp
 
-<section class="about">
+<section id="about" class="about">
   <div class="about__container container">
     <div class="about__entry">
       <h2 class="about__title title">

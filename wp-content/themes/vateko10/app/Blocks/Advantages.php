@@ -71,7 +71,7 @@ class Advantages extends Block
          *
          * @var string
          */
-        $this->mode = 'auto';
+        $this->mode = 'edit';
 
         /**
          * The default block alignment.
@@ -105,7 +105,7 @@ class Advantages extends Block
             'align_content' => false,
             'full_height' => false,
             'anchor' => false,
-            'mode' => true,
+            'mode' => false,
             'multiple' => true,
             'jsx' => true,
         ];
@@ -115,30 +115,13 @@ class Advantages extends Block
          *
          * @var array
          */
-        // $this->styles = [
-        //     [
-        //         'name' => 'light',
-        //         'label' => 'Light',
-        //         'isDefault' => true,
-        //     ],
-        //     [
-        //         'name' => 'dark',
-        //         'label' => 'Dark',
-        //     ]
-        // ];
 
         /**
          * The block preview example data.
          *
          * @var array
          */
-        // $this->example = [
-        //    'items' => [
-        //        ['item' => 'Item one'],
-        //        ['item' => 'Item two'],
-        //        ['item' => 'Item three'],
-        //    ],
-        // ];
+
 
         parent::__construct($app);
     }
@@ -153,6 +136,7 @@ class Advantages extends Block
         return [
             'advantages_title' => $this->advantages_title(),
             'advantages_icon' => $this->advantages_icon(),
+            'advantages_icon_1440' => $this->advantages_icon_1440(),
             'list' => $this->list(),
             'list_icon' => $this->list_icon(),
             'list_title' => $this->list_title(),
@@ -181,6 +165,14 @@ class Advantages extends Block
             ])
             ->addImage('advantages_icon', [
                 'label' => 'изображение',
+                'wrapper' => [
+                    'width' => '',
+                ],
+                'return_format' => 'id',
+                'preview_size' => 'thumbnail',
+            ])
+            ->addImage('advantages_icon_1440', [
+                'label' => 'Изображение 1440',
                 'wrapper' => [
                     'width' => '',
                 ],
@@ -223,7 +215,7 @@ class Advantages extends Block
                 'placeholder' => '',
                 'maxlength' => '',
                 'rows' => '2',
-                'new_lines' => 'br', // Possible values are 'wpautop', 'br', or ''.
+                'new_lines' => 'wpautop', // Possible values are 'wpautop', 'br', or ''.
             ])
 
             ->endRepeater();
@@ -244,6 +236,11 @@ class Advantages extends Block
     public function advantages_icon()
     {
         return get_field('advantages_icon');
+    }
+
+    public function advantages_icon_1440()
+    {
+        return get_field('advantages_icon_1440');
     }
 
     public function list()

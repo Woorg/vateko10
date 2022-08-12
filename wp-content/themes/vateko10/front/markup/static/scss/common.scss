@@ -1,5 +1,9 @@
 // Common styles of the project
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
@@ -8,22 +12,29 @@ body {
 .page {
   position: relative;
   // background-color: #fff; background: red;
-  color: #000;
+  color: $color-text;
   font-display: swap;
   // font-family: $manrope;
   font-family: $inter;
   font-weight: 400;
-  font-size: 18px;
+  @include font-size(24px);
+  // @include font-size(18px);
   line-height: 1.5;
 
   &__wrapper {
     position: relative;
-    padding-top: 118px;
+    padding-top: 88px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
     overflow: hidden;
+    
+    @include mq($large) {
+      padding-top: 118px;
+      
+    }
+    
+
   }
 
 }
@@ -45,22 +56,39 @@ body {
   }
 
   .nav__trigger {
-    z-index: 2;
+    z-index: 3;
     position: absolute;
-    top: 67px;
-    right: 30px;
+    top: 36px;
+    right: 15px;
+    
+    @include mq($small) {
+      top: 25px;
+      right: 30px;
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
 
   }
 
   .nav__list {
-    padding-top: 90px;
-    padding-left: 30px;
+    padding-top: 0px;
+    padding-left: 15px;
     display: flex;
     justify-content: center;
   }
 
   .nav__link {
-    padding-left: 24px;
+    padding-left: 0;
     padding-top: 19px;
     padding-bottom: 19px;
   }
@@ -76,23 +104,54 @@ body {
   max-width: 100%;
 
   @include mq($small) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
 
+  @include mq($medium) {
+    
   }
 
   @include mq($large) {
-    padding-right: 30px;
-    padding-left: 30px;
+    // padding-right: 80px;
+    // padding-left: 80px;
+    // max-width: 1440px;
+    max-width: 1340px;
+    
+  }
+
+  @include mq($xlarge) {
+    // @include padding-right(120px);
+    // @include padding-left(120px);
     max-width: 1740px;
+    max-width: 1920px;
+    
   }
 }
 
 .main {
   position: relative;
-  padding-top: $mb-1;
-  padding-bottom: $mb-1;
+  padding-top: 48px;
+  padding-bottom: $mb-4;
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: auto;
+  @include mq($small) {
+    padding-bottom: 40px;
+   
+  }
+  @include mq($medium) {
+   
+  }
+  @include mq($large) {
+    padding-bottom: $mb-1;
+  
+  }
+  @include mq($xlarge) {
+   
+  }
+  
+
 }
 
 

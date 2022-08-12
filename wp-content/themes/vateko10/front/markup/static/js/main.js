@@ -1,13 +1,13 @@
 import svg4everybody from 'svg4everybody';
 import LazyLoad from 'vanilla-lazyload';
 import Nav from '../../components/nav/nav';
-import { heroVideo } from '../../components/hero/hero';
+// import { heroVideo } from '../../components/hero/hero';
 
 import { certificatesSlider, certificatesGallery } from '../../components/certificates/certificates';
 
 // import { map } from '../../components/contacts/contacts';
 import { modal } from '../../components/modal/modal';
-import { inputMask } from '../../components/form/form';
+import { inputMask, customSelect } from '../../components/form/form';
 
 document.addEventListener('DOMContentLoaded', function (event) {
 
@@ -45,9 +45,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let nav = new Nav();
 
 
-    // Hero video
+    // Scroll into view
 
-    heroVideo();
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(trigger => {
+            trigger.onclick = function (e) {
+                e.preventDefault();
+                let hash = this.getAttribute('href');
+                let target = document.querySelector(hash);
+                let headerOffset = 72;
+                let elementPosition = target.offsetTop;
+                let offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            };
+        });
+
+
+    // Hero video
 
     // Certificates slider
 
@@ -83,5 +102,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     */
 
     inputMask();
+
+    // Custom select
+
+    customSelect();
 
 });

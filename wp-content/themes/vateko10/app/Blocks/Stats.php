@@ -71,7 +71,7 @@ class Stats extends Block
          *
          * @var string
          */
-        $this->mode = 'auto';
+        $this->mode = 'edit';
 
         /**
          * The default block alignment.
@@ -105,7 +105,7 @@ class Stats extends Block
             'align_content' => false,
             'full_height' => false,
             'anchor' => false,
-            'mode' => true,
+            'mode' => false,
             'multiple' => true,
             'jsx' => true,
         ];
@@ -115,30 +115,13 @@ class Stats extends Block
          *
          * @var array
          */
-        // $this->styles = [
-        //     [
-        //         'name' => 'light',
-        //         'label' => 'Light',
-        //         'isDefault' => true,
-        //     ],
-        //     [
-        //         'name' => 'dark',
-        //         'label' => 'Dark',
-        //     ]
-        // ];
 
         /**
          * The block preview example data.
          *
          * @var array
          */
-        // $this->example = [
-        //    'items' => [
-        //        ['item' => 'Item one'],
-        //        ['item' => 'Item two'],
-        //        ['item' => 'Item three'],
-        //    ],
-        // ];
+
 
         parent::__construct($app);
     }
@@ -152,9 +135,9 @@ class Stats extends Block
     {
         return [
             'stats_title' => $this->stats_title(),
-            'stats_list' => $this->stats_list(),
-            'stats_item_title' => $this->stats_item_title(),
-            'stats_item_text' => $this->stats_item_text(),
+            // 'stats_list' => $this->stats_list(),
+            // 'stats_item_title' => $this->stats_item_title(),
+            // 'stats_item_text' => $this->stats_item_text(),
         ];
     }
 
@@ -170,43 +153,20 @@ class Stats extends Block
         $stats
             ->addText('stats_title', [
                 'label' => 'Заголовок',
-                'instructions' => '',
-                'required' => 0,
-                'wrapper' => [
-                    'width' => '',
-                ],
             ])
             ->addRepeater( 'stats_list', [
                 'label' => 'Список',
                 'layout' => 'table',
-                'min' => 0,
-                'max' => 0,
                 'button_label' => '',
             ])
-                ->addText('stats_item_title', [
-                    'label' => 'Заголовок',
-                    'instructions' => '',
-                    'required' => 0,
-                    'wrapper' => [
-                        'width' => '',
-                    ],
-                ])
-                ->addTextarea('stats_item_text', [
-                    'label' => 'Описание',
-                    'instructions' => '',
-                    'required' => 0,
-                    'wrapper' => [
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ],
-                    'default_value' => '',
-                    'placeholder' => '',
-                    'maxlength' => '',
-                    'rows' => '2',
-                    'new_lines' => 'br', // Possible values are 'wpautop', 'br', or ''.
-                ])
-
+            ->addText('stats_item_title', [
+                'label' => 'Заголовок',
+            ])
+            ->addTextarea('stats_item_text', [
+                'label' => 'Описание',
+                'rows' => '2',
+                'new_lines' => 'br', // Possible values are 'wpautop', 'br', or ''.
+            ])
             ->endRepeater();
 
         return $stats->build();

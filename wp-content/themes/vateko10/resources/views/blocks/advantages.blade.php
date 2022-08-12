@@ -1,4 +1,4 @@
-<section class="advantages">
+<section id="advantages" class="advantages">
   <div class="advantages__container container">
     @hasfield('advantages_title')
     <h2 class="advantages__title title">@field('advantages_title')</h2>
@@ -27,30 +27,18 @@
       @endfield
 
       @hasfield('advantages_icon')
-
       <div class="advantages__image">
         @image('advantages_icon', 'full')
+      </div>
+      @endfield
+
+
+      @hasfield('advantages_icon_1440')
+      <div class="advantages__image advantages__image_1440">
+        @image('advantages_icon_1440', 'full')
       </div>
       @endfield
 
     </div>
   </div>
 </section>
-
-
-
-{{-- <div class="{{ $block->classes }}">
-  @if ($items)
-    <ul>
-      @foreach ($items as $item)
-        <li>{{ $item['item'] }}</li>
-      @endforeach
-    </ul>
-  @else
-    <p>{{ $block->preview ? 'Add an item...' : 'No items found!' }}</p>
-  @endif
-
-  <div>
-    <InnerBlocks />
-  </div>
-</div> --}}

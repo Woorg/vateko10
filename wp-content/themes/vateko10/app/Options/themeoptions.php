@@ -46,41 +46,10 @@ class themeoptions extends Field
             ->addText('phone', [
                 'label' => 'Телефон',
             ])
-            // ->addText('lat', [
-            //     'label' => 'Широта для карты',
-            //     'wrapper' => [
-            //         'width' => '50',
-            //     ],
-            // ])
-            // ->addText('long', [
-            //     'label' => 'Долгота для карты',
-            //     'wrapper' => [
-            //         'width' => '50',
-            //     ],
-            // ])
-            ->addText('copyright', [
+            ->addTextarea('copyright', [
                 'label' => 'Копирайт',
-            ])
-            // ->addTextarea('text', [
-            //     'label' => 'Текст',
-            //     'rows' => '2',
-            //     'new_lines' => '', // Possible values are 'wpautop', 'br', or ''.
-            // ])
-            // ->addText('text_2', [
-            //     'label' => 'Текст',
-            // ])
-
-            ->addTab('social', [
-                'label' => 'Социальные сети',
-            ])
-            ->addText('vk_url', [
-                'label' => 'Vk url',
-            ])
-            ->addText('telegram_url', [
-                'label' => 'Telegram url',
-            ])
-            ->addText('whatsup_url', [
-                'label' => "Whats'up url"
+                'rows' => '2',
+                'new_lines' => 'br', // Possible values are 'wpautop', 'br', or ''.
             ]);
 
         return $themeoptions->build();

@@ -1,29 +1,48 @@
 .title {
   color: $color-black;
   font-weight: 700;
-  font-size: 48px;
+  font-size: 30px;
   line-height: 1.1;
-  text-transform: uppercase;
 
   @include mq($small) {
-
+    font-size: 48px;
+    text-transform: uppercase;
   }
 
   @include mq($medium) {
-    @include font-size(48px);
+    
   }
 
   span {
     color: $color-green;
   }
 
+  em {
+    display: none;
+    @include mq($small) {
+      display: inline-flex;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
   &_sub {
-    @include font-size(32px);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 18px;
     line-height: 1.2;
     text-transform: none;
     @include mq($small) {
-      @include font-size(32px);
+      font-weight: 500;
+      font-size: 32px;
+
     }
 
     @include mq($medium) {
@@ -35,16 +54,18 @@
 
 .button {
   @include resetbutton();
+  padding-top: 15px;
   padding-right: 25px;
+  padding-bottom: 15px;
   padding-left: 25px;
-  height: 80px;
-  display: inline-flex;
+  height: 60px;
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: $color-green;
   color: $color-white;
   font-weight: 600;
-  @include font-size(20px);
+  font-size: 20px;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
@@ -53,16 +74,46 @@
   @include tr(.3s ease);
 
   @include mq($small) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: inline-flex;
+    height: 80px;
 
   }
 
   @include mq($medium) {
     padding-right: 25px;
     padding-left: 25px;
+  }
+
+  @include mq($large) {
+    padding-right: 30px;
+    padding-left: 30px;
+    height: 58px;
+    @include font-size(16px);
+  }
+
+  @include mq($xlarge) {
     height: 80px;
     @include font-size(20px);
-
   }
+      
+
+  &.button_big {
+    @include mq($large) {
+      margin-top: $mb-1;
+      padding-right: 44px;
+      padding-left: 44px;
+      height: 80px;    
+      font-size: 20px;
+    }
+    @include mq($xlarge) {
+      padding-right: 46px;
+      padding-left: 46px;
+     
+    }
+  }
+    
 
   &:hover {
     background-color: darken($color-green, 3);
@@ -71,6 +122,8 @@
   }
 
 }
+
+
 
 
 .offscreen {
@@ -99,21 +152,6 @@
 	text-decoration: none;
 }
 
-// .phone {
-//   display: flex;
-//   justify-content: flex-start;
-//   align-items: center;
-//   gap: 0 14px;
-//   color: #000;
-//   font-size: 22px;
-//   font-weight: 600;
-//   line-height: 1;
-//   letter-spacing: 0.66px;
-//   pointer-events: all;
-//   &__icon {
-
-//   }
-// }
 
 .text {
   // color: #000;
@@ -157,8 +195,6 @@
 
   }
 
-
-
   figure {
     @include margin-bottom(10px);
 
@@ -193,13 +229,15 @@
     color: $color-text;
     @include margin-top(28px);
     @include margin-bottom(15px);
-
     font-weight: normal;
-    @include font-size(18px);
+    font-size: 16px;
+    @include mq($small) {
+      @include font-size(18px);
+    }
 
     @include mq($medium) {
       @include margin-top(18px);
-      @include margin-bottom(18px);
+      @include margin-bottom(25px);
       @include font-size(18px);
     }
 

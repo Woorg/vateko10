@@ -16,22 +16,23 @@ use function Roots\bundle;
 add_action('wp_enqueue_scripts', function () {
     bundle('app')->enqueue();
 
-
     if ( !($_ENV['ENVIRONMENT'] === 'production') ) {
+        wp_enqueue_style('choices', get_template_directory_uri() . '/front/dev/static/css/separate-css/choices.min.css', false, null);
         wp_enqueue_style('glightbox', get_template_directory_uri() . '/front/dev/static/css/separate-css/glightbox.min.css', false, null);
         wp_enqueue_style('swiper', get_template_directory_uri() . '/front/dev/static/css/separate-css/swiper-bundle.min.css', false, null);
-        // MAIN CSS DEV
         wp_enqueue_style('main-dev', get_template_directory_uri() . '/front/dev/static/css/main.css', false, null);
     } else {
+        wp_enqueue_style('choices', get_template_directory_uri() . '/front/prod/static/css/separate-css/choices.min.css', false, null);
         wp_enqueue_style('glightbox', get_template_directory_uri() . '/front/prod/static/css/separate-css/glightbox.min.css', false, null);
         wp_enqueue_style('swiper', get_template_directory_uri() . '/front/prod/static/css/separate-css/swiper-bundle.min.css', false, null);
-
         wp_enqueue_style('main-prod', get_template_directory_uri() . '/front/prod/static/css/main.min.css', false, null);
     }
 
+    wp_enqueue_script('youtube', 'https://www.youtube.com/iframe_api', null, '1.0', true);
+
     // wp_enqueue_script('yandex', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=3830ed9e-6751-48e9-8077-6fc9d82deead', null, '1.0', true);
 
-    // wp_script_add_data('yandex', 'defer', true);
+    wp_script_add_data('youtube', 'defer', true);
 
     // $lat     = get_field('lat', 'option' );
     // $long    = get_field('long', 'option');
@@ -42,7 +43,6 @@ add_action('wp_enqueue_scripts', function () {
     //     'long'    => $long,
     //     'address' => $address,
     // ]);
-
 
     if ( !($_ENV['ENVIRONMENT'] === 'production') ) {
         // MAIN JS DEV
@@ -116,8 +116,6 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation'   => __('Primary Navigation', 'sage'),
-        'secondary_navigation' => __('Secondary Navigation', 'sage'),'third_navigation'     => __('Third Navigation', 'sage'),
-
     ]);
 
     /**

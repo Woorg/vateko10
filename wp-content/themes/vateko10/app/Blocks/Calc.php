@@ -71,7 +71,7 @@ class Calc extends Block
          *
          * @var string
          */
-        $this->mode = 'auto';
+        $this->mode = 'edit';
 
         /**
          * The default block alignment.
@@ -105,7 +105,7 @@ class Calc extends Block
             'align_content' => false,
             'full_height' => false,
             'anchor' => false,
-            'mode' => true,
+            'mode' => false,
             'multiple' => true,
             'jsx' => true,
         ];
@@ -115,30 +115,13 @@ class Calc extends Block
          *
          * @var array
          */
-        // $this->styles = [
-        //     [
-        //         'name' => 'light',
-        //         'label' => 'Light',
-        //         'isDefault' => true,
-        //     ],
-        //     [
-        //         'name' => 'dark',
-        //         'label' => 'Dark',
-        //     ]
-        // ];
 
         /**
          * The block preview example data.
          *
          * @var array
          */
-        // $this->example = [
-        //    'items' => [
-        //        ['item' => 'Item one'],
-        //        ['item' => 'Item two'],
-        //        ['item' => 'Item three'],
-        //    ],
-        // ];
+
 
         parent::__construct($app);
     }
@@ -152,6 +135,7 @@ class Calc extends Block
     {
         return [
             'calc_title' => $this->calc_title(),
+            'calc_shortcode' => $this->calc_shortcode(),
         ];
     }
 
@@ -173,9 +157,15 @@ class Calc extends Block
                     'width' => '',
                 ],
             ])
-            ->addRepeater('items')
-                ->addText('item')
-            ->endRepeater();
+            ->addText('calc_shortcode', [
+                'label' => 'Шорткод формы',
+                'instructions' => '',
+                'required' => 0,
+                'wrapper' => [
+                    'width' => '',
+                ],
+            ]);
+           
 
         return $calc->build();
     }
@@ -188,6 +178,11 @@ class Calc extends Block
     public function calc_title()
     {
         return get_field('calc_title');
+    }
+
+    public function calc_shortcode()
+    {
+        return get_field('calc_shortcode');
     }
 
     /**

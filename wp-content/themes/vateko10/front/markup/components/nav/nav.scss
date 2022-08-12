@@ -6,92 +6,123 @@
   flex-wrap: nowrap;
 
   @include mq($medium) {
+
   }
 
   &_primary {
     display: flex;
+    flex-direction: row-reverse;
   }
 
-  // &_secondary {
-  //   z-index: 1;
-  //   position: relative;
-  //   .nav__list {
-  //     columns: 2 auto;
-  //     gap: 0 20px;
-  //     display: block;
-  //     @include mq($small) {
-  //       columns: 2 104px;
-  //       gap: 0 104px;
-  //     }
-  //   }
+  &_secondary {
+    .nav__list {
+      display: block;
+      @include mq($small) {
+        columns: 2 auto;
+      }
+    }
+    .nav__item {
+      margin-bottom: 16px;
+      width: 100%;
+      display: block;
+      cursor: pointer;
+      @include tr(.3s ease);
 
-  //   .nav__item {
-  //     position: relative;
-  //     border: none;
-  //     margin-bottom: 29px;
-  //     width: 100%;
-  //     display: block;
-  //     @include tr(.3s ease);
-  //     cursor: pointer;
+      @include mq($small) {
+        margin-bottom: 20px;
 
-  //     @include mq($small) {}
+      }
 
-  //     @include mq($medium) {
-  //       // margin-right: 30px;
-  //     }
+      @include mq($medium) {
 
-  //     &:last-child {
-  //       margin-right: 0;
-  //       margin-bottom: 0;
-  //     }
+      }
 
-  //     &.current-menu-item {
-  //       border: none;
-  //       border-radius: 0;
+      @include mq($large) {
+        margin-bottom: 12px;
+      
+      }
+      @include mq($xlarge) {
+        margin-bottom: 24px;
+       
+      }
+  
 
-  //       .nav__link {
-  //         font-weight: 600;
-  //       }
-  //     }
-  //   }
+      &:last-child {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
 
-  //   .nav__link {
-  //     padding-top: 0;
-  //     padding-right: 0;
-  //     padding-bottom: 0;
-  //     padding-left: 0;
-  //     display: block;
-  //     color: #000;
-  //     font-size: 13px;
-  //     line-height: 1.38;
-  //     @include tr(.3s ease);
+      &:nth-child(n + 4) {
+        @include mq($small) {
+          @include margin-left(30px);
+        }
+        @include mq($medium) {
+         
+        }
+        @include mq($large) {
+          margin-left: 50px;
+        
+        }
+        @include mq($xlarge) {
+          @include margin-left(30px);
 
-  //     @include mq($small) {
-  //       font-size: 14px;
-  //     }
+        }
 
-  //     @include mq($medium) {}
+      }
 
-  //     &:hover {
-  //       color: lighten(#000, 10);
-  //     }
+      &.current-menu-item {
 
-  //   }
+        .nav__link {
 
-  // }
+        }
+      }
+    }
 
+    .nav__link {
+      padding-right: 0;
+      padding-left: 0;
+      @include font-size(16px);        
+      @include tr(.3s ease);
+
+      @include mq($small) {
+        @include font-size(18px);        
+      }
+
+      @include mq($medium) {
+
+      }
+
+      @include mq($large) {
+        @include font-size(18px);        
+      }
+      
+      &:hover {
+
+      }
+    }
+  }
 
   &__trigger {
     @include resetbutton();
+    margin-left: 30px;
     display: flex;
-    width: 46px;
-    height: 46px;
-
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg class='nav__menu-icon' width='46' height='46' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M38.43 21.083H7.57a1.82 1.82 0 0 0-1.82 1.82v.193a1.82 1.82 0 0 0 1.82 1.82h30.86a1.82 1.82 0 0 0 1.82-1.82v-.192a1.82 1.82 0 0 0-1.82-1.821Zm0 9.584H7.57a1.82 1.82 0 0 0-1.82 1.82v.192A1.82 1.82 0 0 0 7.57 34.5h30.86a1.82 1.82 0 0 0 1.82-1.82v-.192a1.82 1.82 0 0 0-1.82-1.821Zm0-19.167H7.57a1.82 1.82 0 0 0-1.82 1.82v.192a1.82 1.82 0 0 0 1.82 1.821h30.86a1.82 1.82 0 0 0 1.82-1.82v-.192a1.82 1.82 0 0 0-1.82-1.821Z' fill='%2344B273'/%3E%3C/svg%3E");
+    background-size: cover;
+    pointer-events: all;
     @include mq($small) {
-      display: none;
+      // display: none;
+      width: 46px;
+      height: 46px;
     }
 
     @include mq($medium) {
+    }
+
+    @include mq($large) {
       display: none;
     }
 
@@ -101,16 +132,40 @@
     }
   }
 
-  &__trigger_open {
-
-    .nav__close-icon {
-      display: block;
-    }
-    .nav__menu-icon {
-      display: none;
-    }
-
+  &__trigger-text {
+    @include visuallyhidden();
   }
+
+  &__menu-icon {
+    width: 24px;
+    height: 24px;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+      width: auto;
+      height: auto;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  // &__trigger_open {
+
+  //   .nav__close-icon {
+  //     display: block;
+  //   }
+  //   .nav__menu-icon {
+  //     display: none;
+  //   }
+
+  // }
 
   &__close-icon {
     display: none;
@@ -124,7 +179,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-    @include mq($small) {
+    @include mq($large) {
       display: flex;
     }
   }
@@ -160,21 +215,33 @@
 
 
   &__link {
-    // padding-top: 24px;
-    padding-right: 25px;
-    // padding-bottom: 24px;
-    padding-left: 25px;
+    // padding-right: 25px;
+    // padding-left: 25px;
     display: inline-flex;
     flex-grow: 1;
     color: rgba(0, 0, 0, 0.7);
-    @include font-size(18px);
+    @include font-size(16px);
     white-space: nowrap;
     pointer-events: all;
     @include tr(.3s ease);
 
     @include mq($medium) {
+
+    }
+
+    @include mq($large) {
+      padding-left: 20px;
+      padding-right: 20px;
+      @include font-size(16px);
+    }
+
+    @include mq($xlarge) {
+      padding-right: 25px;
+      padding-left: 25px;
       @include font-size(18px);
     }
+    
+      
 
     &:hover {
       color: $color-black;
@@ -201,19 +268,16 @@
 }
 
 .nav_open {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
-  // top: 20px;
   top: 0;
   left: 0;
   right: 0;
   padding-top: 20px;
-  // padding-right: 15px;
-  // padding-left: 15px;
   height: 100vh;
   align-items: flex-start;
   flex-direction: column;
-  background: #f3f4f5;
+  background: $color-white;
 
   .nav__trigger {
     margin-left: auto;
