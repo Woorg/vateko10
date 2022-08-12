@@ -205,10 +205,9 @@
     @include mq($large) {
       margin-bottom: 6px;
       max-width: 100%;
-      text-transform: none;
     }
     @include mq($xlarge) {
-     
+      text-transform: none;
     }
 
     span {

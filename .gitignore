@@ -24,3 +24,5 @@ wp-content/cache
 /wp-content/themes/vateko10/front/package-lock.json
 
 /vendor/
+/wp-content/ai1wm-backups
+
