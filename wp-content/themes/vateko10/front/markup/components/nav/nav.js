@@ -4,7 +4,7 @@ class Nav {
         // this.$navWrap = document.querySelector('.header__nav-w');
         this.$navTrigger = document.querySelector('.nav__trigger');
         this.$nav = document.querySelector('.nav_primary .nav__list');
-        // this.$navContacts = document.querySelector('.nav_primary .nav__contact');
+        this.$navButton = document.querySelector('.nav_primary .nav__button');
         // this.$navLink = document.querySelectorAll('.nav_primary .nav__link');
         this.$page = document.querySelector('.page');
         this.events();
@@ -23,7 +23,6 @@ class Nav {
                 this.$navTrigger.classList.add('nav__trigger_open');
                 this.openNav();
             }
-
         });
 
         this.$nav.addEventListener( 'click', (e) => {
@@ -33,7 +32,15 @@ class Nav {
             } else {
                 this.openNav();
             }
+        });
 
+        this.$navButton.addEventListener( 'click', (e) => {
+            if ( this.navOpen ) {
+                console.log('click');
+                this.closeNav();
+            } else {
+                this.openNav();
+            }
         });
 
         window.addEventListener( 'resize', (e) => {

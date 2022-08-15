@@ -1,6 +1,11 @@
 // Mixins.
 
 @mixin mq($media) {
+  @if $media == 376px {
+    @media (min-width: $xsmall) {
+      @content;
+    }
+  }
   @if $media == 641px {
     @media (min-width: $small) {
       @content;

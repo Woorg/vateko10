@@ -30,8 +30,8 @@
     @include mq($small) {
       right: 30px;
       left: 30px;
-      // height: 886px;
       height: 772px;
+      // height: 886px;
       display: block;
     }
 
@@ -46,6 +46,15 @@
       // right: 120px;
       // left: 120px;
     }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: rgba(18, 18, 18, 0.7);
+    }
   }
 
   // &__video-preview {
@@ -59,10 +68,15 @@
   // }
 
   &__video-object {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    aspect-ratio: 16/9;
-    pointer-events: all;
+    // aspect-ratio: 16/9;
+    // pointer-events: all;
+    object-fit: cover;
+    object-position: 50% 0;
     @include mq($small) {
      
     }
@@ -70,12 +84,13 @@
     
     }
     @include mq($large) {
-      height: auto;
+
     }
     @include mq($xlarge) {
      
     }
   }
+
 
   &__entry {
     z-index: 2;

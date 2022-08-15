@@ -6,3 +6,8 @@ body .editor-styles-wrapper {
 body .editor-styles-wrapper .hero__entry {
   margin-left: 0;
 }
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+  pointer-events: all;
+}

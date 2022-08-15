@@ -226,23 +226,32 @@ class Papers extends Block
                 ],
             ])
             ->endRepeater()
-            ->addPageLink('papers_link', [
-                'label' => 'Ссылка на страницу',
-                'type' => 'page_link',
+
+            ->addText('papers_link', [
+                'label' => 'Url ссылки',
                 'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
+                    'width' => '80',
                 ],
-                'post_type' => [],
-                'taxonomy' => [],
-                'allow_null' => 0,
-                'allow_archives' => 0,
-                'multiple' => 0,
             ]);
+            // ->addPageLink('papers_link', [
+            //     'label' => 'Ссылка на страницу',
+            //     'type' => 'page_link',
+            //     'instructions' => '',
+            //     'required' => 0,
+            //     'conditional_logic' => [],
+            //     'wrapper' => [
+            //         'width' => '',
+            //         'class' => '',
+            //         'id' => '',
+            //     ],
+            //     'post_type' => [],
+            //     'taxonomy' => [],
+            //     'allow_null' => 0,
+            //     'allow_archives' => 0,
+            //     'multiple' => 0,
+            // ]);
 
         return $papers->build();
     }

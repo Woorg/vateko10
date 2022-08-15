@@ -62,3 +62,9 @@ add_filter( 'script_loader_tag', function($tag, $handle){
 
 
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+/*
+* Hide acf from the wp=admin area.
+*/
+
+add_filter('acf/settings/show_admin', '__return_false');

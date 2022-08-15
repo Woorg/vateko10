@@ -12,7 +12,7 @@
     "flex-gap-polyfill": "git+https://github.com/limitlessloop/flex-gap-polyfill.git#postcss7",
     "glightbox": "^3.2.0",
     "inputmask": "^5.0.7",
-    "just-validate": "^3.3.3",
+    "just-validate": "^3.8.1",
     "postcss": "^8.4.4",
     "postcss-pxtorem": "^5.1.1",
     "rfs": "^9.0.6",

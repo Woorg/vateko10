@@ -41,11 +41,6 @@ export function certificatesSlider() {
                 loop: false,
             },
             768: {
-                slidesPerView: '1',
-                // spaceBetween: 10,
-                loop: false,
-            },
-            960: {
                 loop: true,
                 slidesPerView: 'auto',
                 centeredSlides: true,

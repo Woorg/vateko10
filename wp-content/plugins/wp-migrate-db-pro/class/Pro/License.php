@@ -179,6 +179,7 @@ class License
 		delete_site_transient( 'update_plugins' );
 		delete_site_transient( 'wpmdb_upgrade_data' );
         delete_site_transient( Helpers::get_licence_response_transient_key() );
+        delete_site_transient($this->get_available_addons_list_transient_key(get_current_user_id()));
 
 		$this->http->end_ajax( 'license removed' );
 	}
@@ -192,7 +193,6 @@ class License
 	function ajax_check_licence()
 	{
 		$_POST = $this->http_helper->convert_json_body_to_post();
-		return true;
 
 		$key_rules = array(
 			'licence'         => 'string',
@@ -204,12 +204,23 @@ class License
 
 		$message_context = isset( $state_data['message_context'] ) ? $state_data['message_context'] : 'ui';
 
-		$licence          = 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7';
+		$licence          = '10001110101'; // p0wr
 		$response         = $this->check_licence( $licence );
 		$decoded_response = json_decode( $response, ARRAY_A );
+		
 		$context          = ( empty( $state_data['context'] ) ? null : $state_data['context'] );
 
-		
+		if (
+			isset( $decoded_response['errors'] )
+			&& !empty( $decoded_response['errors'] )
+		) {
+			$keys = array_keys( $decoded_response['errors'] );
+
+			if ( isset( $keys[0] ) ) {
+				$decoded_response['licence_status'] = $keys[0];
+			}
+		}
+
 		if ( false == $licence ) {
 			$decoded_response           = array( 'errors' => array() );
 			$decoded_response['errors'] = array( sprintf( '<div class="notification-message warning-notice inline-message invalid-licence">%s</div>', $this->get_licence_status_message( false, null, $message_context ) ) );
@@ -229,8 +240,19 @@ class License
 			}
 
 			$decoded_response['message'] = $help_message;
-		}  
-		elseif ( !empty( $decoded_response['message'] ) && !get_site_transient( 'wpmdb_help_message' ) ) {
+		} elseif ( !empty( $decoded_response['errors'] ) ) {
+			if ( 'all' === $context && !empty( $decoded_response['errors']['subscription_expired'] ) ) {
+				$decoded_response['errors']['subscription_expired'] = array();
+				$licence_status_messages                            = $this->get_licence_status_message( null, $context, $message_context );
+				foreach ( $licence_status_messages as $frontend_context => $status_message ) {
+					$decoded_response['errors']['subscription_expired'][$frontend_context] = sprintf( '<div class="notification-message warning-notice inline-message invalid-licence">%s</div>', $status_message );
+				}
+			} else {
+				$error_key = array_keys( $decoded_response['errors'] )[0];
+
+				$decoded_response['errors'][$error_key] = [ 'default' => sprintf( '<div class="notification-message warning-notice inline-message invalid-licence">%s</div>', $this->get_licence_status_message( null, $context, $message_context ) ) ];
+			}
+		} elseif ( !empty( $decoded_response['message'] ) && !get_site_transient( 'wpmdb_help_message' ) ) {
 			set_site_transient( 'wpmdb_help_message', $decoded_response['message'], $this->props->transient_timeout );
 		}
 
@@ -251,6 +273,8 @@ class License
 			// Save the addons list for use when installing
 			// Don't really need to expire it ever, but let's clean it up after 60 days
 			set_site_transient( 'wpmdb_addons', $decoded_response['addon_list'], HOUR_IN_SECONDS * 24 * 60 );
+            $this->set_available_addons_list_transient($decoded_response['addons_available_list'],
+                get_current_user_id());
 
 			foreach ( $decoded_response['addon_list'] as $key => $addon ) {
 				$plugin_file = sprintf( '%1$s/%1$s.php', $key );
@@ -306,7 +330,7 @@ class License
 		$message_context = isset( $state_data['message_context'] ) ? $state_data['message_context'] : 'ui';
 
 		$args = array(
-			'licence_key' => 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7',
+			'licence_key' => '10001110101', // p0wr
 			'site_url'    => urlencode( untrailingslashit( network_home_url( '', 'http' ) ) ),
 		);
 
@@ -314,9 +338,9 @@ class License
 		$decoded_response = json_decode( $response, true );
 
 		
-		$this->set_licence_key( 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7' );
-		$decoded_response['masked_licence'] = $this->util->mask_licence( 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7' );
-		
+		$this->set_licence_key( '10001110101' ); // p0wr
+		$decoded_response['masked_licence'] = $this->util->mask_licence( '10001110101' );
+
 		$result = $this->http->end_ajax( $decoded_response );
 
 		return $result;
@@ -352,6 +376,11 @@ class License
 		$data['sig'] = $this->http_helper->create_signature( $data, $state_data['key'] );
 		$ajax_url    = $this->util->ajax_url();
 		$response    = $this->remote_post->post( $ajax_url, $data, __FUNCTION__, array() );
+
+		if (is_wp_error($response)) {
+			return $this->http->end_ajax($response);
+		}
+
 		return $this->http->end_ajax(true);
 	}
 
@@ -375,20 +404,24 @@ class License
 		$state_data    = $this->migration_state_manager->set_post_data( $key_rules );
 		$filtered_post = $this->http_helper->filter_post_elements( $state_data, array( 'action', 'licence', 'user_id', 'user_email' ) );
 
-       
-        $user = get_user_by( 'id', $state_data['user_id'] );
-        update_user_meta( $user->ID, Helpers::USER_LICENCE_META_KEY, trim( 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7' ) );
+        if ( ! $this->http_helper->verify_signature( $filtered_post, $this->settings['key'] ) ) {
+			return $this->http->end_ajax(
+				new \WP_Error(
+					'wpmdb_invalid_content_verification_error',
+					$this->props->invalid_content_verification_error . ' (#142)'
+				)
+			);
+		}
 
-		
+        $user = get_user_by( 'id', $state_data['user_id'] );
+        $this->set_global_licence_key( trim( $state_data['licence'] ) ); // p0wr
 		return $this->http->end_ajax(true);
 	}
 
 
 	public static function get_license()
 	{
-		$settings = self::$static_settings;
-		$license  = 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7';
-		return $license;
+		return '10001110101'; // p0wr
 	}
 
 	public function setup_license_responses( $plugin_base )
@@ -452,18 +485,18 @@ class License
 			),
 		);
 
-		return '';
+		return $this->license_response_messages;
 	}
 
 
 	function is_licence_constant()
 	{
-		return true;
+		return true; // p0wr
 	}
 
 	public function get_licence_key()
 	{
-     return 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7';
+     return '10001110101'; // p0wr
 	}
 
 	/**
@@ -473,7 +506,7 @@ class License
 	 */
 	function set_licence_key( $key )
 	{
-        update_user_meta( get_current_user_id(), Helpers::USER_LICENCE_META_KEY, 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7' );
+        update_user_meta( get_current_user_id(), Helpers::USER_LICENCE_META_KEY, '10001110101' );
 	}
 
     /**
@@ -482,17 +515,15 @@ class License
      * @param string $key License key.
      */
 	public function set_global_licence_key( $key ) {
-        $this->settings['licence'] = 'bc8e2b24-3f8c-4b21-8b4b-90d57a38e3c7';
+        $this->settings['licence'] = '10001110101';
         update_site_option( 'wpmdb_settings', $this->settings );
     }
 
 	public function check_license_status()
 	{
 		
-	return 'active_licence';
-		
+			return 'active_licence'; // p0wr
 
-		
 	}
 
 	/**
@@ -504,9 +535,12 @@ class License
 	 */
 	function is_valid_licence( $skip_transient_check = false )
 	{
-		$response = $this->get_license_status( $skip_transient_check );
 		return true;
-		
+		$response = $this->get_license_status( $skip_transient_check );
+
+		if ( isset( $response['dbrains_api_down'] ) ) {
+			return true;
+		}
 
 		// Don't cripple the plugin's functionality if the user's licence is expired
 		if ( isset( $response['errors']['subscription_expired'] ) && 1 === count( $response['errors'] ) ) {
@@ -520,8 +554,8 @@ class License
 	{
 		$licence = $this->get_licence_key();
 
-		
-		
+
+
 
 		return json_decode( $this->check_licence( $licence ), true );
 	}
@@ -553,13 +587,18 @@ class License
 		}
 
 		$args = array(
-			'licence_key' => urlencode( $licence_key ),
+			'licence_key' => urlencode( '10001110101' ),
 			'site_url'    => urlencode( untrailingslashit( network_home_url( '', 'http' ) ) ),
 		);
 
-		$response = $this->api->dbrains_api_request( 'check_support_access', $args );
+		// $response = $this->api->dbrains_api_request( 'check_support_access', $args );
+		$response = '{"features":[],"addons_available":"1","addons_available_list":{"wp-migrate-db-pro-media-files":2351,"wp-migrate-db-pro-cli":3948,"wp-migrate-db-pro-multisite-tools":7999,"wp-migrate-db-pro-theme-plugin-files":36287},"addon_list":{"wp-migrate-db-pro-media-files":{"type":"feature","name":"Media Files","desc":"Allows you to push and pull your files in the Media Library between two WordPress installs. It can compare both libraries and only migrate those missing or updated, or it can do a complete copy of one site\u2019s library to another. <a href=\"https:\/\/deliciousbrains.com\/wp-migrate-db-pro\/doc\/media-files-addon\/?utm_campaign=addons%252Binstall&utm_source=MDB%252BPaid&utm_medium=insideplugin\">More Details &rarr;<\/a>","version":"2.1.0","beta_version":false,"tested":"5.9.3"},"wp-migrate-db-pro-cli":{"type":"feature","name":"CLI","desc":"Integrates WP Migrate with WP-CLI allowing you to run migrations from the command line:<code>wp migratedb &lt;push|pull&gt; &lt;url&gt; &lt;secret-key&gt;<\/code> <code>[--find=&lt;strings&gt;] [--replace=&lt;strings&gt;] ...<\/code> <a href=\"https:\/\/deliciousbrains.com\/wp-migrate-db-pro\/doc\/cli-addon\/?utm_campaign=addons%252Binstall&utm_source=MDB%252BPaid&utm_medium=insideplugin\">More Details &rarr;<\/a>","required":"1.4b1","version":"1.6.0","beta_version":false,"tested":"5.9.3"},"wp-migrate-db-pro-multisite-tools":{"type":"feature","name":"Multisite Tools","desc":"Export a subsite as an SQL file that can then be imported as a single site install. <a href=\"https:\/\/deliciousbrains.com\/wp-migrate-db-pro\/doc\/multisite-tools-addon\/?utm_campaign=addons%252Binstall&utm_source=MDB%252BPaid&utm_medium=insideplugin\">More Details &rarr;<\/a>","required":"1.5-dev","version":"1.4.1","beta_version":false,"tested":"5.9.3"},"wp-migrate-db-pro-theme-plugin-files":{"type":"feature","name":"Theme & Plugin Files","desc":"Allows you to push and pull your theme and plugin files between two WordPress installs. <a href=\"https:\/\/deliciousbrains.com\/wp-migrate-db-pro\/doc\/theme-plugin-files-addon\/?utm_campaign=addons%252Binstall&utm_source=MDB%252BPaid&utm_medium=insideplugin\">More Details &rarr;<\/a>","required":"1.8.2b1","version":"1.2.0","beta_version":false,"tested":"5.9.3"}},"form_url":"https:\/\/api.deliciousbrains.com\/?wc-api=delicious-brains&request=submit_support_request&licence_key=10001110101&product=wp-migrate-db-pro","license_name":"Developer","display_name":"No","user_email":"karen@gmail.com","upgrade_url":"https:\/\/deliciousbrains.com\/my-account\/license-upgrade\/","support_contacts":["karen@gmail"],"support_email":"nobody@deliciousbrains.com","addon_content":{"wp-migrate-db-pro-media-files":{"install_url":"https:\/\/wp.test\/wp-admin\/network\/update.php?action=install-plugin&plugin=wp-migrate-db-pro-media-files&_wpnonce=a8e6fbcc40","download_url":"https:\/\/api.deliciousbrains.com\/?wc-api=delicious-brains&request=download&licence_key=10001110101&slug=wp-migrate-db-pro-media-files&site_url=http:\/\/wp.test"},"wp-migrate-db-pro-cli":{"install_url":"https:\/\/wp.test\/wp-admin\/network\/update.php?action=install-plugin&plugin=wp-migrate-db-pro-cli&_wpnonce=474c233df5","download_url":"https:\/\/api.deliciousbrains.com\/?wc-api=delicious-brains&request=download&licence_key=10001110101&slug=wp-migrate-db-pro-cli&site_url=http:\/\/wp.test"},"wp-migrate-db-pro-multisite-tools":{"install_url":"https:\/\/wp.test\/wp-admin\/network\/update.php?action=install-plugin&plugin=wp-migrate-db-pro-multisite-tools&_wpnonce=c58e6d4f3c","download_url":"https:\/\/api.deliciousbrains.com\/?wc-api=delicious-brains&request=download&licence_key=10001110101&slug=wp-migrate-db-pro-multisite-tools&site_url=http:\/\/wp.test"},"wp-migrate-db-pro-theme-plugin-files":{"install_url":"https:\/\/wp.test\/wp-admin\/network\/update.php?action=install-plugin&plugin=wp-migrate-db-pro-theme-plugin-files&_wpnonce=8781da412e","download_url":"https:\/\/api.deliciousbrains.com\/?wc-api=delicious-brains&request=download&licence_key=10001110101&slug=wp-migrate-db-pro-theme-plugin-files&site_url=http:\/\/wp.test"}}}';
 
 		set_site_transient( Helpers::get_licence_response_transient_key( $user_id, false ), $response, $this->props->transient_timeout );
+
+        //Store available addons list
+        $decoded_response = json_decode($response, true);
+        $this->set_available_addons_list_transient($decoded_response['addons_available_list'], $user_id);
 
 		return $response;
 	}
@@ -645,7 +684,7 @@ class License
 
 		$errors = '';
 
-		
+
 
 		return '';
 	}
@@ -767,4 +806,27 @@ class License
 
 		return $result;
 	}
+
+
+    private function get_available_addons_list_transient_key($user_id = null)
+    {
+        $transient_key = 'wpmdb_available_addons';
+        if ( !empty($user_id) && 0 !== $user_id ) {
+            $transient_key = 'wpmdb_available_addons_per_user_' . $user_id;
+        }
+
+        return $transient_key;
+    }
+
+
+    private function set_available_addons_list_transient($list, $user_id = null)
+    {
+        set_site_transient($this->get_available_addons_list_transient_key($user_id), $list);
+    }
+
+
+    public function get_available_addons_list($user_id = null)
+    {
+        return get_site_transient($this->get_available_addons_list_transient_key($user_id));
+    }
 }

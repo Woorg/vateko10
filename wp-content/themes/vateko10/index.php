@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
   <!-- fonts -->
   <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/front/prod/static/fonts/hinted-subset-Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/front/prod/static/fonts/hinted-subset-Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>

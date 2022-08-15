@@ -3,8 +3,8 @@
 // vars
 $active   = $license ? true : false;
 $nonce    = $active ? 'deactivate_pro_license' : 'activate_pro_license';
-$button   = $active ? __( 'Deactivate License', 'acf' ) : __( 'Activate License', 'acf' );
-$readonly = $active ? 1 : 0;
+$button   = $active ? __( 'Deactivate License', 'acf' ) : __( 'Deactivate License', 'acf' );
+$readonly = $active ? 1 : 1;
 
 ?>
 <div class="wrap acf-settings-wrap">
@@ -48,7 +48,7 @@ $readonly = $active ? 1 : 0;
 										array(
 											'type'     => 'text',
 											'name'     => 'acf_pro_license',
-											'value'    => str_repeat( '*', strlen( $license ) ),
+											'value'    => str_repeat( '*', strlen( 'xxxxxxxxxxxxxxxx') ),
 											'readonly' => $readonly,
 										)
 									);

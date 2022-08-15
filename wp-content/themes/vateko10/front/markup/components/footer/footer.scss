@@ -48,6 +48,7 @@
        
       }
       @include mq($medium) {
+        margin-top: 0;
         padding-left: 10px;
       
       }
@@ -147,7 +148,6 @@
     @include mq($xlarge) {
       padding-right: 0;
       max-width: 480px;
-     
     }
   }
 
@@ -159,13 +159,11 @@
     
     }
     @include mq($large) {
-     
     
     }
     @include mq($xlarge) {
      
     }
-  
   }
 
   &__contacts {
@@ -179,13 +177,10 @@
     }
     @include mq($medium) {
       margin-top: 44px;
-
-      flex-wrap: nowrap;     
-     
+      flex-wrap: nowrap;
     }
     @include mq($large) {
       margin-top: 97px;
-     
     }
     @include mq($xlarge) {
      
@@ -212,23 +207,22 @@
   }
 
   &__top {
-    position: absolute;
-    top: 43px;
+    position: fixed;
+    bottom: 43px;
     right: 15px;
     @include mq($small) {
       right: 30px;
-      top: 126px;
+      // bottom: 211px;
     }
     @include mq($medium) {
-    
+      // bottom: 190px;
     }
     @include mq($large) {
-      top: 64px;
-      right: 80px;
-    
+      // right: 80px;
     }
     @include mq($xlarge) {
-      right: 30px;
+      // right: 30px;
+      // bottom: 214px;
     }
   }
 }

@@ -271,6 +271,7 @@
     margin-top: $mb-4;
     padding-right: 50px;
     padding-left: 50px;
+    pointer-events: all;
     @include mq($small) {
       margin-top: 55px;
      

@@ -33,10 +33,7 @@ body {
       padding-top: 118px;
       
     }
-    
-
   }
-
 }
 
 .page_nav_open {
@@ -51,8 +48,30 @@ body {
     top: 0;
     right: -30px;
     left: 0;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-left: 15px;
     width: 100vw;
     height: 100vh;
+    flex-direction: column;
+    justify-content: flex-end;
+    // align-items: flex-start;
+    @include mq($small) {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+    @include mq($medium) {
+
+
+    }
+    @include mq($large) {
+
+
+    }
+    @include mq($xlarge) {
+
+    }
+
   }
 
   .nav__trigger {
@@ -60,15 +79,14 @@ body {
     position: absolute;
     top: 36px;
     right: 15px;
-    
-    @include mq($small) {
+    @include mq($xsmall) {
       top: 25px;
+    }
+    @include mq($small) {
       right: 30px;
-     
     }
     @include mq($medium) {
      
-    
     }
     @include mq($large) {
     
@@ -76,15 +94,45 @@ body {
     @include mq($xlarge) {
      
     }
-  
+  }
 
+  .nav__button {
+    z-index: 3;
+    position: relative;
+    // bottom: 30px;
+    // left: 15px;
+    display: flex;
+    @include mq($small) {
+      left: 30px;
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
+    }
   }
 
   .nav__list {
-    padding-top: 0px;
+    padding-top: 118px;
     padding-left: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    @include mq($small) {
+      padding-left: 30px;
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
+    }
   }
 
   .nav__link {

@@ -27,12 +27,11 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style('swiper', get_template_directory_uri() . '/front/prod/static/css/separate-css/swiper-bundle.min.css', false, null);
         wp_enqueue_style('main-prod', get_template_directory_uri() . '/front/prod/static/css/main.min.css', false, null);
     }
-
-    wp_enqueue_script('youtube', 'https://www.youtube.com/iframe_api', null, '1.0', true);
+    // wp_enqueue_script('youtube', 'https://www.youtube.com/iframe_api', null, '1.0', true);
 
     // wp_enqueue_script('yandex', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=3830ed9e-6751-48e9-8077-6fc9d82deead', null, '1.0', true);
 
-    wp_script_add_data('youtube', 'defer', true);
+    // wp_script_add_data('youtube', 'defer', true);
 
     // $lat     = get_field('lat', 'option' );
     // $long    = get_field('long', 'option');
@@ -40,20 +39,32 @@ add_action('wp_enqueue_scripts', function () {
 
     // wp_localize_script('yandex', 'yandex_map_settings', [
     //     'lat'     => $lat,
-    //     'long'    => $long,
+    //     'long'    => $long,j
     //     'address' => $address,
     // ]);
+
+    // $presentation_id = get_field('presentation', 'option');
+    // $presentation_url = wp_get_attachment_url( $presentation_id );
 
     if ( !($_ENV['ENVIRONMENT'] === 'production') ) {
         // MAIN JS DEV
         wp_enqueue_script('main-dev', get_template_directory_uri() . '/front/dev/static/js/main.js', null, '1.0', true);
         wp_script_add_data('main-dev', 'defer', true);
+
+        // wp_localize_script('main-dev', 'download_presentation', [
+        //     'siteUrl' =>  site_url(),
+        //     'file' => $presentation_url,
+        // ]);
     } else {
         // MAIN JS PROD
         wp_enqueue_script('main-prod', get_template_directory_uri() . '/front/prod/static/js/main.min.js', null, '1.0', true);
         wp_script_add_data('main-prod', 'defer', true);
-    }
 
+        // wp_localize_script('main-prod', 'download_presentation', [
+        //     'siteUrl' =>  site_url(),
+        //     'file' => $presentation_url,
+        // ]);
+    }
 
     wp_script_add_data('eio-lazy-load', 'defer', true);
     wp_script_add_data('regenerator-runtime', 'defer', true);
@@ -61,7 +72,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_script_add_data('contact-form-7', 'defer', true);
     wp_script_add_data('app/0', 'defer', true);
     wp_script_add_data('app/1', 'defer', true);
-
 
     wp_add_inline_script(
         'main',

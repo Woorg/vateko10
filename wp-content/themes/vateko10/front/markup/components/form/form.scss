@@ -100,7 +100,6 @@
   }
 
   &__fields-group {
-    max-width: 850px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -114,14 +113,13 @@
      
     }
     @include mq($large) {
+      max-width: 850px;
       flex-wrap: nowrap;
       gap: 0 24px;
-    
     }
     @include mq($xlarge) {
      
     }
-  
   }
   &__field {
     position: relative;
@@ -153,17 +151,16 @@
       margin-right: 0;
     }
 
-    .just-validate-error-label {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      // font-size: 12px;
+    // .just-validate-error-label {
+    //   position: absolute;
+    //   top: 100%;
+    //   left: 0;
 
-      @include mq($medium) {
-        font-size: 13px;
+    //   @include mq($medium) {
+    //     font-size: 13px;
 
-      }
-    }
+    //   }
+    // }
 
    .choices {
       width: 100%;
@@ -181,7 +178,7 @@
       font-size: 14px;
       text-align: left;
       color: $color-black;
-      caret-color: $color-black;
+      // caret-color: $color-black;
       border-radius: 15px;
       @include mq($small) {
         padding-top: 21px;
@@ -238,7 +235,20 @@
 
         .choices__list {
           .choices__item {
-            font-size: 18px;
+            font-size: 14px;
+            @include mq($small) {
+              font-size: 18px;
+            }
+            @include mq($medium) {
+
+
+            }
+            @include mq($large) {
+
+            }
+            @include mq($xlarge) {
+
+            }
           }
 
           .choices__item--selectable {
@@ -246,7 +256,19 @@
             padding-right: 30px;
             &.is-highlighted {
               color: $color-black;
-              font-size: 18px;
+              font-size: 14px;
+              @include mq($small) {
+                font-size: 18px;
+              }
+              @include mq($medium) {
+
+              }
+              @include mq($large) {
+
+              }
+              @include mq($xlarge) {
+
+              }
             }
           }
 
@@ -265,6 +287,16 @@
           }
         }
       }
+    }
+
+    .choices__list--single {
+      .choices__item {
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
     }
   }
 
@@ -299,7 +331,8 @@
   
   }
 
-  &__input {
+  &__input,
+  &__number {
     @include resetbutton();
     border: 2px solid #9E9E9E;
     padding-top: 18px;
@@ -342,16 +375,6 @@
     &:focus-within {
 
     }
-
-    &.just-validate-error-field {
-      border: 2px solid #EB5757;
-
-      @include placeholder() {
-
-      }
-
-    }
-
   }
 
   &__message {
@@ -377,19 +400,18 @@
       font-size: 18px;
     }
     @include mq($medium) {
-     
     
     }
     @include mq($large) {
      
-    
     }
     @include mq($xlarge) {
      
     }
-  
-    
+  }
 
+  .wpcf7-not-valid-tip {
+    display: none;
   }
 
   &__select {
@@ -419,10 +441,48 @@
     }
   }
 
+  &__input,
+  &__number,
+  &__message {
+
+    &:not(:placeholder-shown):valid {
+      border: 2px solid #9E9E9E;
+    }
+
+    &:not(:placeholder-shown):invalid {
+      border: 2px solid $color-red;
+    }
+
+    &:focus-within {
+      &:valid {
+        border: 2px solid #9E9E9E;
+      }
+
+      &:invalid {
+        border: 2px solid $color-red;
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.001 15L21.5548 21.5538M8.44727 21.5538L15.001 15L8.44727 21.5538ZM21.5548 8.44629L14.9998 15L21.5548 8.44629ZM14.9998 15L8.44727 8.44629L14.9998 15Z' stroke='%23EB5757' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        background-position: calc(100% - 30px) 50%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  // input:not(:placeholder-shown):not(:focus):valid {
+  //   border: 2px solid var(--green);
+  // }
+  // input:not(:placeholder-shown):not(:focus):invalid {
+  //   border: 2px solid var(--red);
+  // }
+
+
+  &__message {
+    // &.just-validate-error-field {
+    //   background-position: calc(100% - 30px) 30px;
+    // }
+
+  }
   &__submit-w {
-    
     position: relative;
-    max-width: 660px;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -441,7 +501,6 @@
     }
     @include mq($medium) {
       margin-top: 0;
-      @include margin-left(40px);
     }
     @include mq($large) {
       margin-left: 30px;
@@ -449,7 +508,7 @@
       padding-right: 16px;
       padding-bottom: 16px;
       padding-left: 16px;
-    
+      max-width: 660px;
     }
     @include mq($xlarge) {
       @include margin-left(40px);
@@ -458,7 +517,6 @@
       @include padding-bottom(24px);
       @include padding-left(24px);
     }
-    
   }
 
   &__submit {
@@ -466,10 +524,8 @@
     padding-left: 34px;
 
     @include mq($small) {
-     
     }
     @include mq($medium) {
-     
     }
     @include mq($large) {
       padding-top: 25px;
@@ -478,12 +534,8 @@
       font-size: 20px;
     }
     @include mq($xlarge) {
-
     }
-  
-
     &:hover {
-
     }
   }
 
@@ -497,24 +549,17 @@
       margin-top: 0;
       @include margin-left(20px);
       text-align: left;
-     
     }
     @include mq($medium) {
-     
-    
     }
     @include mq($large) {
-     
-    
     }
     @include mq($xlarge) {
      
     }
-  
   }
 
   &__privacy-link {
-    
     color: $color-text;
   }
 
@@ -528,12 +573,34 @@
       font-size: 14px;
 
     }
-
   }
 
+  .wpcf7-response-output {
+    background: $color-green;
+    color: $color-white;
+    font-size: 18px;
+    border-radius: 15px;
+    @include mq($small) {
+      font-size: 20px;
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
+    }
+
+  }
+  .wpcf7 form.failed .wpcf7-response-output,
+  .wpcf7 form.aborted .wpcf7-response-output {
+    background: $color-red;
+  }
   .wpcf7-spinner {
     position: absolute;
-    bottom: 0;
+    bottom: -30px;
     left: 50%;
     transform: translateX(-50%);
 

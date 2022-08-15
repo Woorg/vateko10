@@ -27,15 +27,11 @@
         'container' => false,
         'echo' => false
         ]) !!}
-      {{-- <ul class="nav__list">
-        <li class="nav__item">
-          <a href="" class="nav__link"></a>
-        </li>
-      </ul> --}}
+        <a href="#contacts" class="nav__button button">Оставить заявку</a>
     </nav>
     @endif
 
-    <a class="header__button button" data-modal="modal-callback">Оставить заявку</a>
+    <a href="#contacts" class="header__button button">Оставить заявку</a>
 
   </div>
 </header>

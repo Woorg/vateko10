@@ -197,23 +197,32 @@ class Partners extends Block
             ])
             ->endRepeater()
 
-            ->addPageLink('partners_link', [
-                'label' => 'Ссылка на страницу',
-                'type' => 'page_link',
+            ->addText('partners_link', [
+                'label' => 'Url ссылки',
                 'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => [],
                 'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
+                    'width' => '50',
                 ],
-                'post_type' => [],
-                'taxonomy' => [],
-                'allow_null' => 0,
-                'allow_archives' => 0,
-                'multiple' => 0,
             ]);
+
+            // ->addPageLink('partners_link', [
+            //     'label' => 'Ссылка на страницу',
+            //     'type' => 'page_link',
+            //     'instructions' => '',
+            //     'required' => 0,
+            //     'conditional_logic' => [],
+            //     'wrapper' => [
+            //         'width' => '',
+            //         'class' => '',
+            //         'id' => '',
+            //     ],
+            //     'post_type' => [],
+            //     'taxonomy' => [],
+            //     'allow_null' => 0,
+            //     'allow_archives' => 0,
+            //     'multiple' => 0,
+            // ]);
 
         return $partners->build();
     }

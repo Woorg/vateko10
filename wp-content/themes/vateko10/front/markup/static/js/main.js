@@ -1,13 +1,15 @@
 import svg4everybody from 'svg4everybody';
 import LazyLoad from 'vanilla-lazyload';
 import Nav from '../../components/nav/nav';
+// import JustValidate from 'just-validate';
 // import { heroVideo } from '../../components/hero/hero';
 
 import { certificatesSlider, certificatesGallery } from '../../components/certificates/certificates';
 
 // import { map } from '../../components/contacts/contacts';
 import { modal } from '../../components/modal/modal';
-import { inputMask, customSelect } from '../../components/form/form';
+import { downloadPresentation, formValidate, customSelect } from '../../components/form/form';
+import { calculator } from '../../components/calc/calc';
 
 document.addEventListener('DOMContentLoaded', function (event) {
 
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 e.preventDefault();
                 let hash = this.getAttribute('href');
                 let target = document.querySelector(hash);
-                let headerOffset = 72;
+                let headerOffset = -5;
                 let elementPosition = target.offsetTop;
                 let offsetPosition = elementPosition - headerOffset;
 
@@ -68,6 +70,23 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     // Hero video
 
+    // Phone mask
+    // inputMask();
+
+    // Custom select
+
+    customSelect();
+
+    formValidate();
+
+    // Download presentation
+
+    // downloadPresentation();
+
+    // Calculator
+
+    calculator();
+
     // Certificates slider
 
     certificatesSlider();
@@ -78,30 +97,18 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 
     /*
-        Map
-    */
-
-    // let mapSelector = document.querySelector('.map');
-
-    // if (mapSelector) {
-    // map();
-    // }
-
-    /*
         Modal
     */
 
-    let modalSelector = document.querySelector('.modal');
+    // let modalSelector = document.querySelector('.modal');
 
-    if (modalSelector) {
-        modal();
-    }
+    // if (modalSelector) {
+    //     modal();
+    // }
 
     /*
         Phone mask
     */
-
-    inputMask();
 
     // Custom select
 

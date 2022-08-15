@@ -136,7 +136,8 @@ class Hero extends Block
         return [
             'hero_title' => $this->hero_title(),
             'hero_image' => $this->hero_image(),
-            'hero_video_id' => $this->hero_video_id(),
+            'hero_video' => $this->hero_video(),
+            // 'hero_video_id' => $this->hero_video_id(),
             'hero_text' => $this->hero_text(),
             'hero_url' => $this->hero_url(),
         ];
@@ -178,9 +179,16 @@ class Hero extends Block
                 'max_size' => '',
                 'mime_types' => '',
             ])
-            ->addText('hero_video_id', [
-                'label' => 'Видео ID с youtube',
+            ->addFile('hero_video', [
+                'label' => 'Видео',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+                'return_format' => 'string',
             ])
+            // ->addText('hero_video_id', [
+            //     'label' => 'Видео с youtube',
+            // ])
             ->addTextarea('hero_text', [
                 'label' => 'Текст',
                 'rows' => '3',
@@ -210,10 +218,14 @@ class Hero extends Block
         return get_field('hero_image');
     }
 
-    public function hero_video_id()
+    public function hero_video()
     {
-        return get_field('hero_video_id');
+        return get_field('hero_video');
     }
+    // public function hero_video_id()
+    // {
+    //     return get_field('hero_video_id');
+    // }
 
     public function hero_text()
     {

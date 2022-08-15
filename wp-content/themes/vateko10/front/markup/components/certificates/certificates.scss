@@ -50,13 +50,10 @@
       display: block;
     }
     @include mq($medium) {
-      left: 80px;
-      right: 80px;
+
     }
     @include mq($large) {
       top: 520px;
-      left: 120px;
-      right: 120px;
     }
     @include mq($xlarge) {
       // right: 30px;
@@ -78,8 +75,8 @@
      
     }
     @include mq($large) {
-      width: 165px;
-      height: 165px;
+      width: 105px;
+      height: 105px;
     }
     @include mq($xlarge) {
      
@@ -100,7 +97,7 @@
       
       }
       @include mq($large) {
-        left: -32px;
+        // left: -32px;
       }
       @include mq($xlarge) {
        
@@ -116,7 +113,7 @@
        
       }
       @include mq($large) {
-        right: -32px;
+        // right: -32px;
        
       }
       @include mq($xlarge) {

@@ -152,6 +152,7 @@
       border-color: $color-white;
       background: $color-green;
       color: rgba(255, 255, 255, 0.8);
+      caret-color: $color-white;
       @include placeholder() {
         color: rgba(255, 255, 255, 0.8);
       }
@@ -160,7 +161,7 @@
         background: $color-white;
         color: $color-black;
         @include placeholder() {
-          color: $color-black;
+          color: $color-text;
         }
       }
       @include mq($medium) {
@@ -174,25 +175,57 @@
       }
       &:placeholder-shown {
         border: 2px solid $color-white;
-        // color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.8);
         @include mq($small) {
           border: 2px solid #9E9E9E;
-          color: $color-black;
+          // color: $color-black;
+          caret-color: $color-black;
+          @include placeholder() {
+            color: $color-text;
+          }
+       }
+       @include mq($medium) {
+
+       }
+       @include mq($large) {
+
+       }
+       @include mq($xlarge) {
+
+       }
+      }
+
+      &:not(:placeholder-shown):valid {
+        border: 2px solid $color-white;
+        @include mq($small) {
+          border: 2px solid #9E9E9E;
         }
         @include mq($medium) {
-         
+
         }
         @include mq($large) {
-         
+
         }
         @include mq($xlarge) {
-         
+
         }
       }
     }
 
     .form__submit-w {
       width: auto;
+      @include mq($small) {
+
+      }
+      @include mq($medium) {
+        width: 100%;
+      }
+      @include mq($large) {
+        width: auto;
+      }
+      @include mq($xlarge) {
+
+      }
     }
     .form__submit {
       margin-top: 8px;
@@ -205,7 +238,6 @@
         flex-grow: 0;
         background: $color-green;
         color: $color-white;
-        
       }   
       @include mq($medium) {
        
@@ -240,18 +272,33 @@
         color: $color-text;
       }
       @include mq($medium) {
-      
       }
       @include mq($large) {
-      
       }
       @include mq($xlarge) {
-       
       }
-
       &:hover {
         box-shadow: none;
       }
+    }
+  }
+
+  .wpcf7 form.sent .wpcf7-response-output {
+    border-color: $color-white;
+    background-color: $color-green;
+    color: $color-white;
+    @include mq($small) {
+      border-color: $color-green;
+      // color: $color-black;
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
     }
   }
 }

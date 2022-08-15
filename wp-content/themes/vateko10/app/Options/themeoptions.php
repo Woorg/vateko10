@@ -50,6 +50,11 @@ class themeoptions extends Field
                 'label' => 'Копирайт',
                 'rows' => '2',
                 'new_lines' => 'br', // Possible values are 'wpautop', 'br', or ''.
+            ])
+            ->addFile('presentation', [
+                'label' => 'Презентация',
+                'return_format' => 'id',
+                'library' => 'all',
             ]);
 
         return $themeoptions->build();

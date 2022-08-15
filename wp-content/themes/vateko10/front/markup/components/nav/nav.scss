@@ -61,13 +61,12 @@
         }
         @include mq($large) {
           margin-left: 50px;
-        
+          margin-left: 0;
         }
         @include mq($xlarge) {
-          @include margin-left(30px);
+          margin-left: 0;
 
         }
-
       }
 
       &.current-menu-item {
@@ -113,13 +112,14 @@
     background-image: url("data:image/svg+xml,%3Csvg class='nav__menu-icon' width='46' height='46' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M38.43 21.083H7.57a1.82 1.82 0 0 0-1.82 1.82v.193a1.82 1.82 0 0 0 1.82 1.82h30.86a1.82 1.82 0 0 0 1.82-1.82v-.192a1.82 1.82 0 0 0-1.82-1.821Zm0 9.584H7.57a1.82 1.82 0 0 0-1.82 1.82v.192A1.82 1.82 0 0 0 7.57 34.5h30.86a1.82 1.82 0 0 0 1.82-1.82v-.192a1.82 1.82 0 0 0-1.82-1.821Zm0-19.167H7.57a1.82 1.82 0 0 0-1.82 1.82v.192a1.82 1.82 0 0 0 1.82 1.821h30.86a1.82 1.82 0 0 0 1.82-1.82v-.192a1.82 1.82 0 0 0-1.82-1.821Z' fill='%2344B273'/%3E%3C/svg%3E");
     background-size: cover;
     pointer-events: all;
-    @include mq($small) {
+    @include mq($xsmall) {
       // display: none;
       width: 46px;
       height: 46px;
     }
 
     @include mq($medium) {
+
     }
 
     @include mq($large) {
@@ -139,21 +139,20 @@
   &__menu-icon {
     width: 24px;
     height: 24px;
-    @include mq($small) {
-     
-    }
-    @include mq($medium) {
-     
-    
-    }
-    @include mq($large) {
+    @include mq($xsmall) {
       width: auto;
       height: auto;
+    }
+    @include mq($medium) {
+      width: auto;
+      height: auto;
+    }
+    @include mq($large) {
+
     }
     @include mq($xlarge) {
      
     }
-  
   }
 
   // &__trigger_open {
@@ -170,7 +169,22 @@
   &__close-icon {
     display: none;
   }
+  &__button {
+    display: none;
+    pointer-events: all;
+    @include mq($small) {
 
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
+    }
+  }
   &__list {
     max-width: 100%;
     width: 100%;
@@ -215,8 +229,6 @@
 
 
   &__link {
-    // padding-right: 25px;
-    // padding-left: 25px;
     display: inline-flex;
     flex-grow: 1;
     color: rgba(0, 0, 0, 0.7);
@@ -241,29 +253,11 @@
       @include font-size(18px);
     }
     
-      
-
     &:hover {
       color: $color-black;
     }
 
   }
-
-  &__button {
-    display: none;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
-
-    @include mq($small) {
-
-    }
-
-    @include mq($medium) {
-
-    }
-  }
-
 
 }
 

@@ -1,4 +1,6 @@
 <?php
+define( 'WP_CACHE', false ); // Added by WP Rocket
+
 /**
  * The base configuration for WordPress
  *
@@ -91,6 +93,7 @@ define('WP_DEBUG', true );
 define('WP_DEBUG_LOG', false );
 define('WP_AUTO_UPDATE_CORE', true );
 define('WP_CACHE_KEY_SALT', $_ENV['WP_CACHE_KEY_SALT'] );
+// define('WPCF7_LOAD_JS', false ); // Added to disable JS loading
 
 /* Add any custom values between this line and the "stop editing" line. */
 
