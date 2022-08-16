@@ -52,17 +52,17 @@ class Nav {
         this.navOpen = true;
 
         if ( window.innerWidth > '1200' ) {
-            this.$nav.classList.remove('nav_open');
+            // this.$nav.classList.remove('nav_open');
             this.$page.classList.remove('page_nav_open');
         } else {
             this.$page.classList.add('page_nav_open');
-            this.$nav.classList.add('nav_open');
+            // this.$nav.classList.add('nav_open');
         }
 
     }
 
     closeNav() {
-        this.$nav.classList.remove('nav_open');
+        // this.$nav.classList.remove('nav_open');
         this.$page.classList.remove('page_nav_open');
         this.navOpen = false;
     }
@@ -73,7 +73,7 @@ class Nav {
 
         if ( viewportWidth > '641' ) {
 
-            this.$nav.classList.remove('nav_open');
+            // this.$nav.classList.remove('nav_open');
             this.$page.classList.remove('page_nav_open');
         }
     }

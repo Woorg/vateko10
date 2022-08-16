@@ -46,16 +46,21 @@ body {
     z-index: 1;
     position: absolute;
     top: 0;
-    right: -30px;
+    right: 0;
     left: 0;
     padding-right: 15px;
     padding-bottom: 30px;
     padding-left: 15px;
     width: 100vw;
+    // min-height: 568px;
     height: 100vh;
     flex-direction: column;
-    justify-content: flex-end;
-    // align-items: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: $color-white;
+    @include mq($xsmall) {
+      // flex-direction: row;
+    }
     @include mq($small) {
       padding-right: 30px;
       padding-left: 30px;
@@ -95,15 +100,16 @@ body {
      
     }
   }
-
   .nav__button {
     z-index: 3;
     position: relative;
+    margin-top: 15px;
     // bottom: 30px;
     // left: 15px;
     display: flex;
     @include mq($small) {
-      left: 30px;
+      margin-top: 0;
+      // left: 30px;
     }
     @include mq($medium) {
 
@@ -117,15 +123,18 @@ body {
   }
 
   .nav__list {
-    padding-top: 118px;
-    padding-left: 15px;
+    padding-top: 78px;
+    // padding-left: 15px;
     display: flex;
     justify-content: flex-start;
-    @include mq($small) {
-      padding-left: 30px;
+    align-items: flex-start;
+    flex-direction: column;
+    @include mq($xsmall) {
+      height: 290px;
+      // padding-left: 30px;
     }
     @include mq($medium) {
-
+      // padding-top: 118px;
     }
     @include mq($large) {
 
@@ -135,10 +144,14 @@ body {
     }
   }
 
+  .nav__item {
+    width: auto;
+  }
+
   .nav__link {
     padding-left: 0;
-    padding-top: 19px;
-    padding-bottom: 19px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 }
 
