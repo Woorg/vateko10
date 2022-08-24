@@ -244,7 +244,6 @@ class Hero extends Block
      */
     public function enqueue()
     {
-        wp_enqueue_style('main-dev', get_template_directory_uri() . '/front/dev/static/css/main.css', false, null);
 
 
     }

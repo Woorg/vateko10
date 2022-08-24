@@ -28,8 +28,10 @@ class Nav {
         this.$nav.addEventListener( 'click', (e) => {
             if ( this.navOpen ) {
                 console.log('click');
+                this.$navTrigger.classList.remove('nav__trigger_open');
                 this.closeNav();
             } else {
+                this.$navTrigger.classList.add('nav__trigger_open');
                 this.openNav();
             }
         });
@@ -37,8 +39,10 @@ class Nav {
         this.$navButton.addEventListener( 'click', (e) => {
             if ( this.navOpen ) {
                 console.log('click');
+                this.$navTrigger.classList.remove('nav__trigger_open');
                 this.closeNav();
             } else {
+                this.$navTrigger.classList.add('nav__trigger_open');
                 this.openNav();
             }
         });
@@ -53,8 +57,10 @@ class Nav {
 
         if ( window.innerWidth > '1200' ) {
             // this.$nav.classList.remove('nav_open');
+            this.$navTrigger.classList.remove('nav__trigger_open');
             this.$page.classList.remove('page_nav_open');
         } else {
+            this.$navTrigger.classList.add('nav__trigger_open');
             this.$page.classList.add('page_nav_open');
             // this.$nav.classList.add('nav_open');
         }
@@ -63,6 +69,7 @@ class Nav {
 
     closeNav() {
         // this.$nav.classList.remove('nav_open');
+        this.$navTrigger.classList.remove('nav__trigger_open');
         this.$page.classList.remove('page_nav_open');
         this.navOpen = false;
     }
@@ -72,7 +79,7 @@ class Nav {
         console.log(viewportWidth);
 
         if ( viewportWidth > '641' ) {
-
+            this.$navTrigger.classList.remove('nav__trigger_open');
             // this.$nav.classList.remove('nav_open');
             this.$page.classList.remove('page_nav_open');
         }
