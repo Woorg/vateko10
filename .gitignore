@@ -1,6 +1,7 @@
 .env
 
-vateko-archive.zip
+*.zip
+*.sql
 wp-content/debug.log
 wp-content/cache
 
