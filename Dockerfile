@@ -15,23 +15,20 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /var/www/html
 
 # Clone the repository (Make sure the repo has plugins and themes in the right directories)
-RUN git clone https://github.com/Woorg/vateko10.git . 
+RUN git clone https://github.com/Woorg/vateko10.git .
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer install --no-dev --optimize-autoloader
 
-# Copy plugins and themes directories from the cloned repository to the right locations
-# Copy plugins and themes if they don't exist
+# Copy plugins and themes only if they do not exist
 RUN mkdir -p /var/www/html/wp-content/plugins /var/www/html/wp-content/themes && \
   for dir in wp-content/plugins/*; do \
-  [ ! -d "/var/www/html/$dir" ] && cp -R "$dir" /var/www/html/wp-content/plugins/; \
+  [ ! -d "/var/www/html/wp-content/plugins/$(basename "$dir")" ] && cp -R "$dir" /var/www/html/wp-content/plugins/; \
   done && \
   for dir in wp-content/themes/*; do \
-  [ ! -d "/var/www/html/$dir" ] && cp -R "$dir" /var/www/html/wp-content/themes/; \
+  [ ! -d "/var/www/html/wp-content/themes/$(basename "$dir")" ] && cp -R "$dir" /var/www/html/wp-content/themes/; \
   done
-
-
 
 # Step 2: Final production image
 FROM nginx:latest
