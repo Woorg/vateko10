@@ -1,5 +1,5 @@
 # Step 1: Build stage
-FROM php:8.3-fpm AS build
+FROM php:8.3-apache AS build
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
   libjpeg-dev \
   libfreetype6-dev \
   zip \
+  unzip \
   git \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install gd
@@ -14,15 +15,15 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /var/www/html
 
-# Clone the repository (Make sure the repo has plugins and themes in the right directories)
+# Clone the WordPress repository (or your specific repo)
 RUN git clone https://github.com/Woorg/vateko10.git .
 
-# Install Composer
+# Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer install --no-dev --optimize-autoloader
 
-# Copy plugins and themes only if they do not exist
-RUN mkdir -p /var/www/html/wp-content/plugins /var/www/html/wp-content/themes && \
+# Step 2: Copy themes and plugins
+RUN mkdir -p wp-content/plugins wp-content/themes && \
   for dir in wp-content/plugins/*; do \
   if [ ! -e "/var/www/html/wp-content/plugins/$(basename "$dir")" ]; then \
   cp -R "$dir" /var/www/html/wp-content/plugins/; \
@@ -34,17 +35,17 @@ RUN mkdir -p /var/www/html/wp-content/plugins /var/www/html/wp-content/themes &&
   fi; \
   done
 
-# Step 2: Final production image
-FROM nginx:latest
+# Step 3: Final production image
+FROM php:8.3-apache
 
 # Copy the built application from the build stage
 COPY --from=build /var/www/html /var/www/html
 
-# Copy Nginx configuration file
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Enable Apache mod_rewrite for WordPress
+RUN a2enmod rewrite
 
 # Expose port 80
 EXPOSE 80
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start Apache server
+CMD ["apache2-foreground"]
