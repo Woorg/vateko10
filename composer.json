@@ -1,17 +1,31 @@
 {
-    "name": "sergey/zdorovaya-natciya",
-    "autoload": {
-        "psr-4": {
-            "Sergey\\ZdorovayaNatciya\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Igor Gorlov",
-            "email": "gorlov35@gmail.com"
-        }
-    ],
-    "require": {
-        "vlucas/phpdotenv": "^5.4"
-    }
+	"name": "sergey/zdorovaya-natciya",
+	"autoload": {
+		"psr-4": {
+			"Sergey\\ZdorovayaNatciya\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Igor Gorlov",
+			"email": "gorlov35@gmail.com"
+		}
+	],
+	"require": {
+		"vlucas/phpdotenv": "^5.4",
+		"php": "8.3",
+		"ext-ctype": "*",
+		"ext-iconv": "*",
+		"ext-redis": "*",
+		"ext-simplexml": "*",
+		"ext-sodium": "*",
+		"ext-tokenizer": "*",
+		"ext-xml": "*",
+		"ext-xmlwriter": "*",
+		"ext-zip": "*",
+		"ext-mbstring": "*",
+		"ext-json": "*",
+		"ext-curl": "*",
+		"ext-mysqli": "*"
+	}
 }
