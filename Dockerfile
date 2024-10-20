@@ -22,8 +22,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
   && composer install --no-dev --optimize-autoloader
 
 # Copy plugins and themes directories from the cloned repository to the right locations
-RUN cp -R wp-content/plugins/* /var/www/html/wp-content/plugins/ && \
-  cp -R wp-content/themes/* /var/www/html/wp-content/themes/
+# Copy plugins and themes if they don't exist
+RUN mkdir -p /var/www/html/wp-content/plugins /var/www/html/wp-content/themes && \
+  for dir in wp-content/plugins/*; do \
+  [ ! -d "/var/www/html/$dir" ] && cp -R "$dir" /var/www/html/wp-content/plugins/; \
+  done && \
+  for dir in wp-content/themes/*; do \
+  [ ! -d "/var/www/html/$dir" ] && cp -R "$dir" /var/www/html/wp-content/themes/; \
+  done
+
+
 
 # Step 2: Final production image
 FROM nginx:latest
