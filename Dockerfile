@@ -24,10 +24,14 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy plugins and themes only if they do not exist
 RUN mkdir -p /var/www/html/wp-content/plugins /var/www/html/wp-content/themes && \
   for dir in wp-content/plugins/*; do \
-  [ ! -d "/var/www/html/wp-content/plugins/$(basename "$dir")" ] && cp -R "$dir" /var/www/html/wp-content/plugins/; \
+  if [ ! -e "/var/www/html/wp-content/plugins/$(basename "$dir")" ]; then \
+  cp -R "$dir" /var/www/html/wp-content/plugins/; \
+  fi; \
   done && \
   for dir in wp-content/themes/*; do \
-  [ ! -d "/var/www/html/wp-content/themes/$(basename "$dir")" ] && cp -R "$dir" /var/www/html/wp-content/themes/; \
+  if [ ! -e "/var/www/html/wp-content/themes/$(basename "$dir")" ]; then \
+  cp -R "$dir" /var/www/html/wp-content/themes/; \
+  fi; \
   done
 
 # Step 2: Final production image
