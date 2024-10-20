@@ -1,5 +1,5 @@
 # Step 1: Build stage
-FROM php:8.3-fpm AS build
+FROM php8.3-fpm AS build
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
