@@ -8,33 +8,29 @@ RUN apt-get update && apt-get install -y \
   libfreetype6-dev \
   zip \
   unzip \
+  git \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install gd
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files for PHP dependencies
+# Clone the repository
+RUN git clone https://github.com/Woorg/vateko10.git .
+
+# Install Composer and dependencies
 COPY composer.json composer.lock ./
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer install --no-dev --optimize-autoloader
 
-
-
-# Copy the rest of the application code
-COPY . .
-
-# Optional: Run any build scripts
-# RUN yarn build
-
 # Step 2: Final production image
 FROM php:8.3-apache
 
-# Copy the built application from the build stage
+# Copy files from the build stage
 COPY --from=build /var/www/html /var/www/html
 
-# Expose port 80
+# Expose port 80 for Apache
 EXPOSE 80
 
-# Start the Apache server
+# Start Apache
 CMD ["apache2-foreground"]
