@@ -1,5 +1,5 @@
 # Step 1: Build stage
-FROM php:8.1-apache AS build
+FROM php:8.3-apache AS build
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
