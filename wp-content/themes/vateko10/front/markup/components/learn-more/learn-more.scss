@@ -1,0 +1,304 @@
+.learnmore {
+    background: $color-green;
+    @include mq($small) {
+      background: $color-white;
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+     
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: $sp-m;
+
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: $sp-s;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__w {
+    // padding-top: $mb-4;
+    // padding-bottom: $mb-4;
+    text-align: center;
+
+    @include mq($small) {
+      border: 4px solid #44B273;
+      padding-top: 52px;
+      padding-right: 64px;
+      padding-bottom: 52px;
+      padding-left: 64px;
+      border-radius: 20px;
+    } 
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      border: 6px solid $color-green;
+      text-align: left;
+      border-radius: 30px;
+     
+    }
+    @include mq($xlarge) {
+      padding-top: 64px;
+      padding-right: 48px;
+      padding-bottom: 64px;
+      padding-left: 48px;
+    }
+  
+
+  }
+
+  &__entry {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 456px;
+    width: 100%;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+      max-width: 100%;
+    }
+    @include mq($large) {
+      margin-right: 0;
+      margin-left: 0;
+      max-width: 764px;
+     
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__title {
+    margin-bottom: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: $color-white;
+    @include mq($small) {
+      padding-right: 0;
+      padding-left: 0;
+      color: $color-black;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: 36px;
+      max-width: 100%;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__text {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: $color-white;
+    font-size: 16px;
+    @include mq($small) {
+      color: $color-text;
+      font-size: 18px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      padding-right: 0;
+      padding-left: 0;
+      font-size: 24px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__form {
+    margin-top: 24px;
+    @include mq($small) {
+      margin-top: 36px;
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+      margin-top: 30px;
+    }
+    @include mq($xlarge) {
+    }
+    .form__input {
+      border-color: $color-white;
+      background: $color-green;
+      color: rgba(255, 255, 255, 0.8);
+      caret-color: $color-white;
+      @include placeholder() {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      @include mq($small) {
+        border-color: #9E9E9E;
+        background: $color-white;
+        color: $color-black;
+        @include placeholder() {
+          color: $color-text;
+        }
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+      &:placeholder-shown {
+        border: 2px solid $color-white;
+        color: rgba(255, 255, 255, 0.8);
+        @include mq($small) {
+          border: 2px solid #9E9E9E;
+          // color: $color-black;
+          caret-color: $color-black;
+          @include placeholder() {
+            color: $color-text;
+          }
+       }
+       @include mq($medium) {
+
+       }
+       @include mq($large) {
+
+       }
+       @include mq($xlarge) {
+
+       }
+      }
+
+      &:not(:placeholder-shown):valid {
+        border: 2px solid $color-white;
+        @include mq($small) {
+          border: 2px solid #9E9E9E;
+        }
+        @include mq($medium) {
+
+        }
+        @include mq($large) {
+
+        }
+        @include mq($xlarge) {
+
+        }
+      }
+    }
+
+    .form__submit-w {
+      width: auto;
+      @include mq($small) {
+
+      }
+      @include mq($medium) {
+        width: 100%;
+      }
+      @include mq($large) {
+        width: auto;
+      }
+      @include mq($xlarge) {
+
+      }
+    }
+    .form__submit {
+      margin-top: 8px;
+      padding-right: 26px;
+      padding-left: 27px;
+      flex-grow: 1;
+      background: $color-white;
+      color: $color-black;
+      @include mq($small) {
+        flex-grow: 0;
+        background: $color-green;
+        color: $color-white;
+      }   
+      @include mq($medium) {
+       
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+
+    .form__privacy {
+      color: rgba(255, 255, 255, 0.8);
+      @include mq($small) {
+        color: $color-black;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+    .form__privacy-link {
+      color: rgba(255, 255, 255, 0.8);
+      box-shadow: inset 0 -1px rgba(255, 255, 255, 0.8);
+      @include mq($small) {
+        color: $color-text;
+      }
+      @include mq($medium) {
+      }
+      @include mq($large) {
+      }
+      @include mq($xlarge) {
+      }
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .wpcf7 form.sent .wpcf7-response-output {
+    border-color: $color-white;
+    background-color: $color-green;
+    color: $color-white;
+    @include mq($small) {
+      border-color: $color-green;
+      // color: $color-black;
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
+    }
+  }
+}

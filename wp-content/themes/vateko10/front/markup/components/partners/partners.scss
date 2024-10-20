@@ -1,0 +1,236 @@
+.partners {
+
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: $sp-m;
+    text-align: center;
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: $sp-s;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    text-transform: none;
+    @include mq($small) {
+      margin-bottom: 13px;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__text {
+    margin-bottom: 32px;
+    @include mq($small) {
+      margin-bottom: 34px;
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      margin-bottom: 51px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;    
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 24px 1.42%;
+     
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__item {
+    margin-bottom: 24px;
+    max-width: 540px;
+    width: 100%;
+    @include mq($small) {
+      margin-bottom: 40px;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: 0;
+      max-width: 31.9%;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__image {
+    border: 5px solid rgba(0, 0, 0, 0.05);
+    font-size: 0;
+    border-radius: 20px;
+
+    @include mq($small) {
+      border: 10px solid rgba(0, 0, 0, 0.05);
+      height: 412px;
+      border-radius: 30px;
+     
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+      border: solid 15px rgba(0, 0, 0, 0.05);
+      height: 330px;
+      
+    }
+    @include mq($xlarge) {
+      height: 430px;
+     
+    }
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      @include mq($small) {
+        border-radius: 22px;
+      }
+      @include mq($medium) {
+        border-radius: 17px;
+      }
+      @include mq($large) {
+        border-radius: 14px;
+
+      }
+      @include mq($xlarge) {
+        border-radius: 17px;
+      }
+    }
+  }
+
+  &__entry {
+    position: relative;
+    padding-top: 12px;
+    text-align: center;
+    @include mq($small) {
+      padding-top: 17px;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      padding-top: 13px;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__item-num {
+    padding: 17px 22px 19px;
+    display: inline-flex;
+    background-color: $color-green;
+    color: $color-white;
+    border-radius: 10px;
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      padding: 18px 22px 19px;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__item-title {
+    margin-top: 16px;
+    color: $color-text;
+    font-size: 16px;
+    @include mq($small) {
+      margin-top: 24px;
+      font-size: 24px;
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__button {
+    padding-right: 30px;
+    padding-left: 30px;
+    pointer-events: all;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-top: $mb-1;
+      padding-right: 44px;
+      padding-left: 44px;
+    }
+    @include mq($xlarge) {
+      padding-right: 46px;
+      padding-left: 46px;
+     
+    }
+  
+
+  }
+
+}

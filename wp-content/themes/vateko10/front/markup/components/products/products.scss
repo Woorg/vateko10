@@ -1,0 +1,512 @@
+.products {
+
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: $sp-m;
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: $sp-s;
+      
+    }
+    
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+    }
+
+  }
+
+  &__title {
+    margin-bottom: $mb-4;
+    text-align: center;
+  
+    @include mq($small) {
+      margin-bottom: $mb-3;
+       
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: $mb-2;
+    
+    }
+    @include mq($xlarge) {
+      margin-bottom: $mb-1;
+     
+    }
+    
+
+  }
+
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
+    
+    @include mq($medium) {
+      gap: 0 1.42%;
+    }
+
+  }
+
+  &__product {
+    position: relative;
+    margin-bottom: 24px;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    width: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='262' height='250' viewBox='0 0 262 250' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.08' d='M13.9068 0.373795L31.1718 9.32338C60.6918 25.1132 93.4901 33.5362 126.894 33.9103C162.099 33.6378 196.56 43.7923 226.105 63.1483C241.829 73.0164 254.863 86.7605 264.014 103.135C273.169 119.505 278.155 137.985 278.519 156.888C279.042 175.092 275.97 193.245 269.488 210.258C263.005 227.27 253.243 242.798 240.784 255.914C241.203 259.307 241.621 262.704 241.891 266.074C244.011 293.798 242.927 321.698 238.664 349.204L208.33 344.63C210.299 321.885 210.686 299.042 209.484 276.263C186.692 284.711 162.198 287.081 138.333 283.144C116.033 279.769 94.6539 271.849 75.452 259.862C-32.3652 192.039 8.08672 26.6292 9.1396 19.6462L13.9068 0.373795ZM91.5863 233.101C128.578 256.288 176.344 260.477 206.089 243.224C203.916 227.208 199.989 211.499 194.382 196.399C189.899 185.468 184.235 175.085 177.484 165.453C170.578 155.705 162.468 146.909 153.355 139.286C134.531 123.475 112.794 111.677 89.4055 104.575L91.7446 89.062C119.407 92.2344 145.89 102.104 168.997 117.845C192.553 134.399 211.208 157.232 222.948 183.889C227.262 194.046 230.868 204.503 233.741 215.187C243.544 197.855 248.554 178.149 248.23 158.19C248.149 144.241 244.593 130.568 237.899 118.452C231.204 106.341 221.59 96.1882 209.961 88.9557C193.132 77.5545 174.017 70.1199 153.988 67.1888C144.584 65.7709 135.19 65.3065 125.366 64.6206C94.3618 64.05 63.7754 57.5555 35.1822 45.4678C29.7902 88.4449 22.2866 189.651 91.5863 233.101Z' fill='white'/%3E%3C/svg%3E%0A");
+    background-position: calc(100% + 60px) 100%;
+    background-repeat: no-repeat;
+    background-size: 155px 166px;
+    border-radius: 20px;
+    
+    @include mq($small) {
+      padding-top: 48px;
+      padding-right: 70px;
+      padding-bottom: 48px;
+      padding-left: 70px;
+      border-radius: 30px;
+      background-size: auto;
+    }
+    @include mq($medium) {
+      padding-bottom: 48px;
+      padding-left: 64px;
+    }
+    @include mq($large) {
+      max-width: 48.6%;
+    }
+    @include mq($xlarge) {
+      padding-bottom: 62px;
+    } 
+
+    &:nth-child(odd) {
+      background-color: $color-green;
+    }
+
+    &:nth-child(even) {
+      background-color: $color-orange;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 32px;
+      max-width: 100%;
+      background-color: #343434;
+      background-image: url("data:image/svg+xml,%3Csvg width='860' height='295' viewBox='0 0 860 295' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.08'%3E%3Cg clip-path='url(%23clip0_310_1176)'%3E%3Cpath d='M107.646 0V412' stroke='white' stroke-width='5'/%3E%3Cpath d='M240.61 0V412' stroke='white' stroke-width='5'/%3E%3Cpath d='M373.574 0V412' stroke='white' stroke-width='5'/%3E%3Cpath d='M0 92.864H904.849' stroke='white' stroke-width='5'/%3E%3Cpath d='M0 205.614H904.849' stroke='white' stroke-width='5'/%3E%3Cpath d='M506.538 0V412' stroke='white' stroke-width='5'/%3E%3Cpath d='M639.502 0V412' stroke='white' stroke-width='5'/%3E%3Cpath d='M772.466 0V412' stroke='white' stroke-width='5'/%3E%3Cpath d='M108.987 85.0166L116.123 92.1458C116.691 92.7141 116.691 93.6342 116.123 94.2025L108.987 101.332C108.418 101.899 107.497 101.899 106.928 101.332L99.7914 94.2025C99.2232 93.6342 99.2232 92.7141 99.7914 92.1458L106.928 85.0166C107.497 84.4489 108.418 84.4489 108.987 85.0166Z' fill='white' stroke='white'/%3E%3Cpath d='M241.95 85.0166L249.086 92.1458C249.654 92.7141 249.654 93.6342 249.086 94.2025L241.95 101.332C241.381 101.899 240.46 101.899 239.891 101.332L232.754 94.2025C232.186 93.6342 232.186 92.7141 232.754 92.1458L239.891 85.0166C240.46 84.4489 241.381 84.4489 241.95 85.0166Z' fill='white' stroke='white'/%3E%3Cpath d='M374.913 85.0166L382.05 92.1458C382.618 92.7141 382.618 93.6342 382.05 94.2025L374.913 101.332C374.345 101.899 373.424 101.899 372.855 101.332L365.718 94.2025C365.15 93.6342 365.15 92.7141 365.718 92.1458L372.855 85.0166C373.424 84.4489 374.345 84.4489 374.913 85.0166Z' fill='white' stroke='white'/%3E%3Cpath d='M507.879 85.0166L515.017 92.1458C515.582 92.7141 515.582 93.6342 515.017 94.2025L507.879 101.332C507.308 101.899 506.388 101.899 505.818 101.332L498.679 94.2025C498.115 93.6342 498.115 92.7141 498.679 92.1458L505.818 85.0166C506.388 84.4489 507.308 84.4489 507.879 85.0166Z' fill='white' stroke='white'/%3E%3Cpath d='M640.843 85.0166L647.981 92.1458C648.546 92.7141 648.546 93.6342 647.981 94.2025L640.843 101.332C640.272 101.899 639.352 101.899 638.782 101.332L631.643 94.2025C631.079 93.6342 631.079 92.7141 631.643 92.1458L638.782 85.0166C639.352 84.4489 640.272 84.4489 640.843 85.0166Z' fill='white' stroke='white'/%3E%3Cpath d='M773.807 85.0166L780.945 92.1458C781.51 92.7141 781.51 93.6342 780.945 94.2025L773.807 101.332C773.236 101.899 772.316 101.899 771.745 101.332L764.607 94.2025C764.042 93.6342 764.042 92.7141 764.607 92.1458L771.745 85.0166C772.316 84.4489 773.236 84.4489 773.807 85.0166Z' fill='white' stroke='white'/%3E%3Cpath d='M108.987 198.152L116.123 205.282C116.691 205.85 116.691 206.77 116.123 207.338L108.987 214.467C108.418 215.035 107.497 215.035 106.928 214.467L99.7914 207.338C99.2232 206.77 99.2232 205.85 99.7914 205.282L106.928 198.152C107.497 197.585 108.418 197.585 108.987 198.152Z' fill='white' stroke='white'/%3E%3Cpath d='M241.95 198.152L249.086 205.282C249.654 205.85 249.654 206.77 249.086 207.338L241.95 214.467C241.381 215.035 240.46 215.035 239.891 214.467L232.754 207.338C232.186 206.77 232.186 205.85 232.754 205.282L239.891 198.152C240.46 197.585 241.381 197.585 241.95 198.152Z' fill='white' stroke='white'/%3E%3Cpath d='M374.913 198.152L382.05 205.282C382.618 205.85 382.618 206.77 382.05 207.338L374.913 214.467C374.345 215.035 373.424 215.035 372.855 214.467L365.718 207.338C365.15 206.77 365.15 205.85 365.718 205.282L372.855 198.152C373.424 197.585 374.345 197.585 374.913 198.152Z' fill='white' stroke='white'/%3E%3Cpath d='M507.879 198.152L515.017 205.282C515.582 205.85 515.582 206.77 515.017 207.338L507.879 214.467C507.308 215.035 506.388 215.035 505.818 214.467L498.679 207.338C498.115 206.77 498.115 205.85 498.679 205.282L505.818 198.152C506.388 197.585 507.308 197.585 507.879 198.152Z' fill='white' stroke='white'/%3E%3Cpath d='M640.843 198.152L647.981 205.282C648.546 205.85 648.546 206.77 647.981 207.338L640.843 214.467C640.272 215.035 639.352 215.035 638.782 214.467L631.643 207.338C631.079 206.77 631.079 205.85 631.643 205.282L638.782 198.152C639.352 197.585 640.272 197.585 640.843 198.152Z' fill='white' stroke='white'/%3E%3Cpath d='M773.807 198.152L780.945 205.282C781.51 205.85 781.51 206.77 780.945 207.338L773.807 214.467C773.236 215.035 772.316 215.035 771.745 214.467L764.607 207.338C764.042 206.77 764.042 205.85 764.607 205.282L771.745 198.152C772.316 197.585 773.236 197.585 773.807 198.152Z' fill='white' stroke='white'/%3E%3C/g%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_310_1176'%3E%3Crect width='904.849' height='412' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+      background-position: calc(100% + 377px) calc(100% + 2px);
+      background-size: 588px 265px;
+      
+      @include mq($medium) {
+        padding-bottom: 48px;
+      }
+
+      @include mq($large) {
+        background-size: auto;
+      }
+        
+      .products__product-entry {
+        max-width: 558px;
+        
+        @include mq($small) {
+         
+        }
+        @include mq($medium) {
+         
+        }
+        @include mq($large) {
+          max-width: 808px;
+         
+        }
+        @include mq($xlarge) {
+         
+        }
+      
+      }
+
+      .products__features-item {
+        margin-right: 60px;
+        
+        @include mq($small) {
+         
+        }
+        @include mq($medium) {
+        
+        }
+        @include mq($large) {
+          margin-right: 108px;
+        }
+        @include mq($xlarge) {
+         
+        }
+        
+      }
+
+      .products__button {
+        // margin-top: 12px;
+        pointer-events: all;
+        @include mq($small) {
+         
+        }
+        @include mq($medium) {
+        
+        }
+        @include mq($large) {
+          margin-top: 55px;
+        
+        }
+        @include mq($xlarge) {
+          margin-top: 40px;
+         
+        }
+      }
+    }
+  }
+
+  &__product-entry {
+    max-width: 515px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: $color-white;
+    @include mq($small) {
+      // min-height: 388px;
+    }
+    @include mq($medium) {
+      // min-height: 490px;
+     
+    }
+    @include mq($large) {
+      max-width: 635px;
+      min-height: 390px;
+      // min-height: 370px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__product-title {
+    margin-bottom: 0;
+    max-width: 390px;
+    color: $color-white;
+    text-transform: capitalize;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: 6px;
+      max-width: 100%;
+    }
+    @include mq($xlarge) {
+      text-transform: none;
+    }
+
+    span {
+      display: none;
+      color: $color-white;
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+        display: inline;
+      }
+    }
+  }
+
+  &__text {
+    color: rgba(255, 255, 255, 0.8);
+    
+    p {
+      font-size: 14px;
+      color: currentColor;
+      @include mq($small) {
+        font-size: 18px;
+      }
+      @include mq($medium) {
+       
+      
+      }
+      @include mq($large) {
+       
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    
+    }
+  }
+
+  &__price {
+    position: absolute;
+    top: 23px;
+    right: 0;
+    padding-top: 12px;
+    padding-right: 16px;
+    padding-bottom: 11px;
+    padding-left: 16px;
+    // height: 40px;
+    background: $color-white;
+    color: $color-black;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    border-radius: 10px 0px 0px 10px;
+    @include mq($small) {
+      top: 36px;
+      padding-top: 23px;
+      padding-right: 34px;
+      padding-bottom: 21px;
+      padding-left: 32px;
+      font-size: 24px;
+      height: auto;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      top: 30px;
+      padding-top: 17px;
+      padding-right: 34px;
+      padding-bottom: 13px;
+      padding-left: 32px;
+    
+    }
+    @include mq($xlarge) {
+      @include padding-top(20px);
+      padding-right: 29px;
+      @include padding-bottom(18px);
+      font-size: 32px;
+    }
+
+  }
+
+  &__features {
+    margin-top: 24px;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;    
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      margin-top: 28px;
+      flex-wrap: nowrap;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__features-item {
+    position: relative;
+    margin-bottom: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0 16px;
+    
+    @include mq($small) {
+      margin-right: 84px; 
+      margin-bottom: 0;
+      width: auto;
+      gap: 0 12px;
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+      margin-right: 34px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+    &:last-child {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__features-entry {
+
+  }
+
+  &__features-icon {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    max-width: 39px;
+    font-size: 0;
+    @include mq($small) {
+      max-width: 100%;
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+     
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__features-title {
+    font-weight: 600;
+    font-size: 16px;
+    @include mq($small) {
+      @include font-size(20px);
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__features-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    @include mq($small) {
+      font-size: 18px;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+     
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+    sup {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 12px;
+    }
+  }
+
+  &__button {
+    margin-top: 32px;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0 8px;
+    font-weight: 600;
+    font-size: 16px;
+    pointer-events: all;
+    @include mq($small) {
+      margin-top: 52px;
+      margin-left: 24px;
+      gap: 0 24px;
+      @include font-size(20px);
+      pointer-events: all;
+      
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      margin-top: 32px;
+    }
+    @include mq($xlarge) {
+      margin-top: 53px;
+    }
+    span {
+      margin-left: 0;
+      padding-right: 5px;
+      padding-left: 5px;
+      display: none;
+      @include mq($small) { 
+        display: inline;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    
+    }
+    svg {
+      width: 19px;
+      @include mq($small) {
+        width: 27px;
+        height: 24px;
+      }
+      @include mq($medium) {
+       
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    
+    }
+    
+    &:hover {
+      svg {
+        animation: arrow .7s 3 ease-in-out;
+        @include tr(.3s ease);
+      }
+    }
+  }
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+
+  80% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}

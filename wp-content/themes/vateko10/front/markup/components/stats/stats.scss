@@ -1,0 +1,214 @@
+.stats {
+
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: 25px;
+    
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: 25px;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+      
+    }
+
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__title {
+    margin-bottom: $mb-4;
+    @include mq($small) {
+      margin-bottom: $mb-3;
+    }
+    @include mq($large) {
+      margin-bottom: $mb-1;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include mq($small) {
+      gap: 0 2%;
+    }
+    
+    @include mq($large) {
+      gap: 0 1.42%;
+      
+    }
+
+  }
+
+  &__item {
+    border: 4px solid $color-green;
+    margin-bottom: 24px;
+    padding-top: 28px;
+    padding-right: 20px;
+    padding-bottom: 28px;
+    padding-left: 20px;
+    width: 100%;
+    border-radius: 30px;
+    
+    @include mq($small) {
+      max-width: 48%;
+     
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+      margin-bottom: 0;
+      padding-top: 48px;
+      padding-right: 48px;
+      padding-bottom: 48px;
+      padding-left: 48px;
+      max-width: 31.9%;
+    
+    }
+    @include mq($xlarge) {
+    }
+
+    &:nth-child(1) {
+      order: 0;
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      
+      }
+      @include mq($large) {
+        order: 0;
+      }
+      @include mq($xlarge) {
+       
+      }
+    } 
+
+    &:nth-child(2) {
+      margin-bottom: 0;
+      order: 2;
+      max-width: 100%;
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      }
+      @include mq($large) {
+        margin-bottom: 24px;
+        order: 1;
+        max-width: 31.9%;
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+
+    &:nth-child(3) {
+      order: 1;
+      // max-width: 48%;
+      
+      @include mq($small) {
+        max-width: 48%;
+      }
+      @include mq($medium) {
+       
+      }
+      @include mq($large) {
+        order: 3;
+        max-width: 31.9%;
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+
+    &:last-child {
+      // max-width: 100%;
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      
+      }
+      @include mq($large) {
+        max-width: 31.9%;
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+
+    }
+
+  }
+
+  &__item-title {
+    margin-bottom: 24px;
+    color: $color-green;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1;
+    white-space: nowrap;
+    text-transform: uppercase;
+    @include mq($small) {
+      font-size: 64px;
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+      // margin-right: -30px;
+      font-size: 96px;
+     
+    }
+
+  }
+
+  &__item-text {
+    margin-right: -20px;
+    color: $color-text;
+    font-size: 16px;
+    @include mq($small) {
+      margin-right: -30px;
+      font-size: 18px;
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+      margin-right: -40px;
+      font-size: 24px;
+     
+    }
+    
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,608 @@
+.form {
+  position: relative;
+
+  &_vertical {
+
+    .form__label {
+      margin-bottom: 16px;
+      @include mq($small) {
+        margin-bottom: 26px;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+
+    .form__field {
+      max-width: 100%;
+    }
+
+    .form__submit-w {
+      margin-top: 24px;
+      margin-left: 0;
+      max-width: 100%;
+      @include mq($small) {
+        margin-top: 40px;
+       
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    
+    }
+
+    .form__submit {
+      max-width: 430px;
+      width: 100%;
+    }
+
+    .form__privacy {
+      margin-top: 8px;
+      @include mq($small) {
+        margin-top: 0;
+        @include margin-left(30px);
+       
+      }
+      @include mq($medium) {
+       
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+
+    .form__privacy-link {
+      color: rgba(40, 84, 197, .4);
+    }
+  }
+
+  &__row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include mq($small) {
+    }
+
+    @include mq($medium) {
+
+    }
+
+    @include mq($large) {
+      flex-wrap: nowrap;
+
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+
+      @include mq($medium) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__fields-group {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      max-width: 850px;
+      flex-wrap: nowrap;
+      gap: 0 24px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+  &__field {
+    position: relative;
+    margin-bottom: 15px;
+    max-width: 100%;
+    min-width: 290px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 1;
+    flex-grow: 1;
+
+    @include mq($small) {
+      min-width: 300px;
+
+    }
+
+    @include mq($medium) {
+      
+    }
+
+    @include mq($large) {
+      margin-bottom: 0;
+      max-width: 402px;
+      
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    // .just-validate-error-label {
+    //   position: absolute;
+    //   top: 100%;
+    //   left: 0;
+
+    //   @include mq($medium) {
+    //     font-size: 13px;
+
+    //   }
+    // }
+
+   .choices {
+      width: 100%;
+      
+    }
+
+    .choices__inner {
+      border: 2px solid #9E9E9E;
+      padding-top: 13px;
+      padding-bottom: 18px;
+      padding-left: 14px;
+      padding-right: 14px;
+      height: 60px;
+      background: $color-white;
+      font-size: 14px;
+      text-align: left;
+      color: $color-black;
+      // caret-color: $color-black;
+      border-radius: 15px;
+      @include mq($small) {
+        padding-top: 21px;
+        padding-bottom: 21px;
+        padding-left: 30px;
+        padding-right: 30px;
+        height: 79px;
+        font-size: 18px;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+      
+    }
+
+    .choices[data-type*=select-one] {
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: calc(50% + 5px);
+        right: 15px;
+        height: 19px;
+        width: 18px;
+        background-image: url("data:image/svg+xml,%3Csvg width='18' height='19' viewBox='0 0 18 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5002 5.90039L9.0002 10.4004L13.5002 5.90039L15.3002 6.80039L9.0002 13.1004L2.7002 6.80039L4.5002 5.90039Z' fill='%239E9E9E'/%3E%3C/svg%3E%0A");
+        pointer-events: none;
+        border: none;
+        transform: translateY(-50%) rotate(0deg);
+        @include mq($small) {
+          right: 30px;
+        }
+        @include mq($medium) {
+        
+        }
+        @include mq($large) {
+        
+        }
+        @include mq($xlarge) {
+         
+        }
+      
+      }
+
+      &.is-open {
+        &:after {
+          transform: translateY(-50%) rotate(180deg);
+        }
+
+        .choices__list {
+          .choices__item {
+            font-size: 14px;
+            @include mq($small) {
+              font-size: 18px;
+            }
+            @include mq($medium) {
+
+
+            }
+            @include mq($large) {
+
+            }
+            @include mq($xlarge) {
+
+            }
+          }
+
+          .choices__item--selectable {
+            padding-left: 30px;
+            padding-right: 30px;
+            &.is-highlighted {
+              color: $color-black;
+              font-size: 14px;
+              @include mq($small) {
+                font-size: 18px;
+              }
+              @include mq($medium) {
+
+              }
+              @include mq($large) {
+
+              }
+              @include mq($xlarge) {
+
+              }
+            }
+          }
+
+          &.choices__list--single {
+            .choices__item {
+              padding-left: 0;
+            }
+          }
+        }
+
+        .choices__list--dropdown {
+          border: none;
+          border-radius: 0 0 20px 20px;
+          box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.07);
+          &.is_active {
+          }
+        }
+      }
+    }
+
+    .choices__list--single {
+      .choices__item {
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+    }
+  }
+
+  .wpcf7-form-control-wrap {
+    flex-grow: 1;
+  }
+
+  &__label {
+    display: block;
+  }
+
+  &__label-text {
+    margin-bottom: 8px;
+    display: block;
+    font-size: 16px;
+    @include mq($small) {
+      margin-bottom: 16px;
+      font-size: 24px;
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+     
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__input,
+  &__number {
+    @include resetbutton();
+    border: 2px solid #9E9E9E;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 14px;
+    padding-right: 14px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    background: $color-white;
+    font-size: 14px;
+    text-align: left;
+    color: $color-black;
+    caret-color: $color-black;
+    border-radius: 15px;
+    pointer-events: all;
+    @include placeholder() {
+      color: rgba(18, 18, 18, .4);
+    }
+
+    &:placeholder-shown {
+      border: 2px solid #9E9E9E;
+    }
+
+    @include mq($small) {
+      padding-top: 26px;
+      padding-bottom: 26px;
+      padding-left: 30px;
+      padding-right: 30px;
+      height: 79px;
+      font-size: 18px;
+    }
+
+    @include mq($medium) {
+
+
+    }
+
+    &:focus,
+    &:focus-within {
+
+    }
+  }
+
+  &__message {
+    @include resetbutton();
+    border: 2px solid #9E9E9E;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 14px;
+    padding-right: 14px;
+    width: 100%;
+    height: 130px;
+    font-size: 14px;
+    border-radius: 15px;
+    pointer-events: all;
+    resize: all;
+    
+    @include mq($small) {
+      padding-top: 26px;
+      padding-bottom: 26px;
+      padding-left: 30px;
+      padding-right: 30px;
+      height: 204px;
+      font-size: 18px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+     
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  .wpcf7-not-valid-tip {
+    display: none;
+  }
+
+  &__select {
+    @include resetbutton();
+    position: relative;
+    border: 2px solid #9E9E9E;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 14px;
+    padding-right: 14px;
+    width: 100%;
+    border-radius: 15px;
+    @include mq($small) {
+      padding-top: 26px;
+      padding-bottom: 26px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+     
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__input,
+  &__number,
+  &__message {
+
+    &:not(:placeholder-shown):valid {
+      border: 2px solid #9E9E9E;
+    }
+
+    &:not(:placeholder-shown):invalid {
+      border: 2px solid $color-red;
+    }
+
+    &:focus-within {
+      &:valid {
+        border: 2px solid #9E9E9E;
+      }
+
+      &:invalid {
+        border: 2px solid $color-red;
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.001 15L21.5548 21.5538M8.44727 21.5538L15.001 15L8.44727 21.5538ZM21.5548 8.44629L14.9998 15L21.5548 8.44629ZM14.9998 15L8.44727 8.44629L14.9998 15Z' stroke='%23EB5757' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        background-position: calc(100% - 30px) 50%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  // input:not(:placeholder-shown):not(:focus):valid {
+  //   border: 2px solid var(--green);
+  // }
+  // input:not(:placeholder-shown):not(:focus):invalid {
+  //   border: 2px solid var(--red);
+  // }
+
+
+  &__message {
+    // &.just-validate-error-field {
+    //   background-position: calc(100% - 30px) 30px;
+    // }
+
+  }
+  &__submit-w {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    @include mq($small) {
+      margin-top: 24px;
+      @include padding-top(24px);
+      @include padding-right(24px);
+      @include padding-bottom(24px);
+      @include padding-left(24px);
+      border-radius: 10px;
+      background: $color-gray;
+      flex-wrap: nowrap;
+    }
+    @include mq($medium) {
+      margin-top: 0;
+    }
+    @include mq($large) {
+      margin-left: 30px;
+      padding-top: 16px;
+      padding-right: 16px;
+      padding-bottom: 16px;
+      padding-left: 16px;
+      max-width: 660px;
+    }
+    @include mq($xlarge) {
+      @include margin-left(40px);
+      @include padding-top(24px);
+      @include padding-right(24px);
+      @include padding-bottom(24px);
+      @include padding-left(24px);
+    }
+  }
+
+  &__submit {
+    padding-right: 34px;
+    padding-left: 34px;
+
+    @include mq($small) {
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      height: 80px;
+      font-size: 20px;
+    }
+    @include mq($xlarge) {
+    }
+    &:hover {
+    }
+  }
+
+  &__privacy {
+    margin-top: 8px;
+    color: $color-black;
+    @include font-size(14px);
+    line-height: 1.4;
+    text-align: center;
+    @include mq($small) {
+      margin-top: 0;
+      @include margin-left(20px);
+      text-align: left;
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__privacy-link {
+    color: $color-text;
+  }
+
+  &__send-message {
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.5;
+
+    @include mq($medium) {
+      font-size: 14px;
+
+    }
+  }
+
+  .wpcf7-response-output {
+    background: $color-green;
+    color: $color-white;
+    font-size: 18px;
+    border-radius: 15px;
+    @include mq($small) {
+      font-size: 20px;
+    }
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+
+    }
+    @include mq($xlarge) {
+
+    }
+
+  }
+  .wpcf7 form.failed .wpcf7-response-output,
+  .wpcf7 form.aborted .wpcf7-response-output {
+    background: $color-red;
+  }
+  .wpcf7-spinner {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+}

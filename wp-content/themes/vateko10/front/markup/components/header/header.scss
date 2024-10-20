@@ -1,0 +1,145 @@
+.header {
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background: $color-white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  
+  @include mq($small) {
+   
+  }
+
+  @include mq($medium) {
+  
+  }
+
+  @include mq($large) {
+    height: 118px;
+  }
+  
+  @include mq($xlarge) {
+   
+  }
+  
+  &__container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // flex-wrap: wrap;
+
+    @include mq($small) {
+      justify-content: space-between;
+    }
+
+    @include mq($medium) {
+      padding-top: 26px;
+      padding-bottom: 25px;
+
+    }
+  }
+
+  &__logo {
+    z-index: 1;
+    position: relative;
+    // left: -34px;
+    left: 0;
+    margin-right: auto;
+    max-width: 118px;
+    width: 100%;
+    display: block;
+    flex-shrink: 1;
+
+    @include mq($small) {
+
+    }
+
+    @include mq($medium) {
+      margin-right: 33px;
+    }
+
+
+  }
+
+  &__nav {
+    z-index: 1;
+    position: relative;
+
+    @include mq($small) {
+
+    }
+
+    @include mq($medium) {
+
+    }
+
+    @include mq($large) {
+      left: -40px;
+    }
+
+    @include mq($xlarge) {
+      left: -60px;
+    }
+  }
+
+
+  &__button {
+    padding-right: 45px;
+    padding-left: 46px;
+    display: none;
+    @include mq($medium) {
+
+    }
+
+    @include mq($large) {
+      padding-right: 30px;
+      padding-left: 30px;
+      height: 58px;
+      display: inline-flex;
+      pointer-events: all;
+    }
+
+    @include mq($xlarge) {
+      padding-right: 45px;
+      padding-left: 46px;
+      height: 67px;
+    }
+      
+  }
+
+}
+
+.header__nav-appearance {
+  animation: fadeInRight .3s ease-in-out;
+}
+
+.header__nav-disappear {
+  animation: fadeOutRight .3s ease-in-out;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+@keyframes fadeOutRight {
+  0% {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0)
+  }
+}

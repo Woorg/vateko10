@@ -1,0 +1,198 @@
+.question {
+
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: $sp-m;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: $sp-s;
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+      flex-wrap: nowrap;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__entry {
+    width: 100%;
+    // display: none;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      display: block;
+      max-width: 51%;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__title {
+    margin-bottom: $mb-4;
+    text-transform: none;
+    @include mq($small) {
+      margin-bottom: $mb-3;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: 86px;
+      max-width: 544px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__contacts {
+    display: none;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      display: block;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__contact {
+    position: relative;
+    margin-bottom: $mb-1;
+    padding-left: 40px;
+    font-size: 24px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+  }
+
+  &__contact-title {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__contact-link {
+    color: $color-text;
+    text-decoration: none;
+
+  }
+
+  .question__form {
+    width: 100%;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      max-width: 49%;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+    .form__label {
+
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      
+      }
+      @include mq($large) {
+        margin-bottom: 37px;
+      
+      }
+      @include mq($xlarge) {
+        margin-bottom: 44px;
+       
+      }
+    
+    }
+
+    .form__submit-w {
+      margin-top: 24px;
+      @include mq($small) {
+        margin-top: 40px;
+      }
+      @include mq($large) {
+        padding-top: 24px;
+        padding-right: 24px;
+        padding-bottom: 24px;
+        padding-left: 24px;
+      }
+
+      @include mq($xlarge) {
+        @include padding-top(24px);
+        @include padding-right(24px);
+        @include padding-bottom(24px);
+        @include padding-left(24px);
+      }
+    }
+
+    .form__submit {
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      }
+      @include mq($large) {
+        max-width: 290px;
+      
+      }
+      @include mq($xlarge) {
+        max-width: 430px;
+      }
+    }
+
+    .form__privacy {
+      margin-top: 8px;
+      @include mq($small) {
+        margin-top: 0;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+       
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+  }
+
+}

@@ -1,0 +1,240 @@
+// Common styles of the project
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.page {
+  position: relative;
+  // background-color: #fff; background: red;
+  color: $color-text;
+  font-display: swap;
+  // font-family: $manrope;
+  font-family: $inter;
+  font-weight: 400;
+  @include font-size(24px);
+  // @include font-size(18px);
+  line-height: 1.5;
+
+  &__wrapper {
+    position: relative;
+    padding-top: 88px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    @include mq($large) {
+      padding-top: 118px;
+    }
+  }
+}
+
+.page_nav_open {
+  overflow-y: hidden;
+
+  .header__logo {
+    z-index: 2;
+  }
+  .nav_primary {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-bottom: 30px;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: $color-white;
+    @include mq($xsmall) {
+    }
+    @include mq($small) {
+      // padding-right: 30px;
+      // padding-left: 30px;
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+    }
+    @include mq($xlarge) {
+    }
+  }
+
+  .nav__trigger {
+    z-index: 3;
+    position: absolute;
+    top: 32px;
+    right: 15px;
+    @include mq($xsmall) {
+    }
+    @include mq($small) {
+      top: 25px;
+      right: 30px;
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+    }
+    @include mq($xlarge) {
+    }
+  }
+  .nav__button {
+    z-index: 3;
+    position: relative;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    width: 100%;
+    height: 78px;
+    border-radius: 0;
+    pointer-events: all;
+    @include mq($small) {
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+    }
+    @include mq($xlarge) {
+    }
+  }
+
+  .nav__list {
+    padding-top: 78px;
+    display: block;
+    @include mq($xsmall) {
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+    }
+    @include mq($xlarge) {
+    }
+  }
+
+  .nav__item {
+    width: 100%;
+    border-top: 1px solid #e4e4e4;
+  }
+
+  .nav__link {
+    padding-left: 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: block;
+    text-align: center;
+    @include mq($small) {
+    }
+    @include mq($medium) {
+    }
+    @include mq($large) {
+    }
+    @include mq($xlarge) {
+    }
+  }
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  min-width: 320px;
+  max-width: 100%;
+
+  @include mq($small) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  @include mq($medium) {
+  }
+
+  @include mq($large) {
+    // padding-right: 80px;
+    // padding-left: 80px;
+    // max-width: 1440px;
+    max-width: 1340px;
+  }
+
+  @include mq($xlarge) {
+    // @include padding-right(120px);
+    // @include padding-left(120px);
+    max-width: 1740px;
+    // max-width: 1920px;
+  }
+}
+
+.main {
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: $mb-4;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  @include mq($small) {
+    padding-bottom: 40px;
+  }
+  @include mq($medium) {
+  }
+  @include mq($large) {
+    padding-bottom: $mb-1;
+  }
+  @include mq($xlarge) {
+  }
+}
+
+img.lazy,
+img.lazyloaded {
+  max-width: 100%;
+  height: auto;
+
+  &.lazy {
+    opacity: 0;
+  }
+
+  &:not(.initial) {
+    @include tr(opacity 0.3s);
+  }
+
+  &.initial,
+  &.loaded,
+  &.error {
+    opacity: 1;
+  }
+}
+
+img.lazy:not([src]):not([srcset]) {
+  visibility: hidden;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  @include tr(0.3s ease);
+
+  &:hover {
+    color: currentColor;
+    text-decoration: none;
+  }
+}
+
+// .mfp-bg {
+//     background-color: rgba(26, 26, 26, 1);
+//     opacity: 1;
+// }
+
+// button.mfp-close,
+// button.mfp-arrow {
+//     top: 10px;
+//     right: 10px;
+//     font-size: 70px;
+// }

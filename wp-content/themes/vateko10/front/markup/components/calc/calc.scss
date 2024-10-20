@@ -1,0 +1,141 @@
+.calc {
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: $sp-m;
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: $sp-s;
+    }
+  
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+    }
+  }
+
+  &__title {
+    margin-bottom: $mb-4;
+    @include mq($small) {
+      margin-bottom: $mb-3;
+      padding-right: 20px;
+      padding-left: 20px;
+      text-align: center;
+      
+    }
+    @include mq($large) {
+      margin-bottom: $mb-1;
+      padding-right: 0;
+      padding-left: 0;
+    }
+    
+  }
+
+  &__form {
+    margin-right: auto;
+    margin-left: auto;
+    background: $color-white;
+    @include mq($small) {
+      border: 6px solid $color-green;
+      padding-top: 40px;
+      padding-right: 86px;
+      padding-bottom: 40px;
+      padding-left: 86px;
+      border-radius: 30px;
+      box-shadow: 0px 50px 60px rgba(0, 0, 0, 0.1);
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      padding-top: 80px;
+      padding-right: 104px;
+      padding-bottom: 70px;
+      padding-left: 100px;
+      max-width: 1062px;
+    
+    }
+    @include mq($xlarge) {
+      padding-right: 130px;
+      padding-left: 135px;
+      max-width: 1104px;
+     
+    }
+
+  }
+
+  &__form-title {
+    margin-bottom: 24px;
+    @include mq($small) {
+      margin-bottom: 50px;
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: $mb-2;
+    
+    }
+    @include mq($xlarge) {
+      margin-bottom: $mb-1;
+    }
+
+  }
+
+  &__form-total {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    @include mq($small) {
+      margin-top: $mb-3;
+      margin-bottom: 82px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-top: 40px;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+  &__total-quant {
+    margin-bottom: 8px;
+    @include mq($small) {
+      margin-bottom: 28px;
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+     
+    }
+    @include mq($xlarge) {
+     
+    }
+    
+  }
+
+  &__total-quant,
+  &__total-price {
+    color: $color-black;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    @include mq($small) {
+      font-size: 24px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      font-size: 32px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+}

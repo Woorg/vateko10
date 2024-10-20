@@ -1,0 +1,214 @@
+.advantages {
+  &__container {
+    padding-top: $sp-m;
+    padding-bottom: $sp-m;
+    @include mq($small) {
+      padding-top: $sp-s;
+      padding-bottom: $sp-s;
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      padding-top: $sp-d;
+      padding-bottom: $sp-d;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__title {
+    margin-bottom: $mb-4;
+    max-width: 522px;
+    @include mq($small) {
+      margin-bottom: 52px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      max-width: 100%;
+      margin-bottom: $mb-1;
+      max-width: 500px;
+    
+    }
+    @include mq($xlarge) {
+      max-width: 100%;
+    }
+
+  }
+
+  &__row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &__image {
+    height: 788px;
+    display: none;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      display: none;
+    }
+
+    @include mq($xlarge) {
+      display: block;      
+      // height: 881px;
+
+    }
+    
+    img {
+      position: relative;
+    
+      @include mq($small) {
+       
+      }
+      @include mq($medium) {
+       
+      }
+      @include mq($xlarge) {
+        transform: translate(206px, -108px);
+       
+      }
+    }
+  }
+
+  &__image_1440 {
+    margin-right: -80px;
+    padding-left: 20px;
+    height: 734px;
+    display: none;
+    @include mq($large) {
+      display: block;
+    }
+
+    @include mq($xlarge) {
+      display: none;      
+    }
+      
+    img {
+      transform: translate(0px, -79px);
+
+    }
+  }
+
+  &__list {
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+     max-width: 50%;
+     width: 100%;
+    }
+    @include mq($xlarge) {
+
+    }
+
+  }
+
+  &__item {
+    margin-bottom: 24px;
+    @include mq($small) {
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0 40px;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+      margin-bottom: 40px;
+      gap: 0 64px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__icon {
+    margin-bottom: 16px;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    @include mq($small) {
+      margin-bottom: 0;
+      width: 120px;
+      height: 120px;
+     
+    }
+    @include mq($medium) {
+     
+    
+    }
+    @include mq($large) {
+      width: auto;
+      height: auto;
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+    
+  }
+
+  &__item-entry {
+
+  }
+
+  &__item-title {
+    margin-bottom: 16px;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      margin-bottom: 24px;
+     
+    }
+    @include mq($xlarge) {
+     
+    }
+  
+  }
+
+  &__item-text {
+    color: $color-text;
+    @include font-size(16px);
+    @include mq($small) {
+      @include font-size(18px);
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+      @include font-size(24px);
+     
+    }
+    
+
+  }
+
+
+}

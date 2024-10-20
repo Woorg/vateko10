@@ -1,0 +1,231 @@
+.footer {
+  background: rgba(18, 18, 18, 0.06);
+  &__container {
+    position: relative;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    @include mq($small) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    @include mq($medium) {
+
+    }
+    @include mq($large) {
+      padding-top: $mb-1;
+      padding-bottom: $mb-1;
+    }
+  }
+
+  &__col {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    @include mq($small) {
+    }
+    @include mq($medium) {
+      max-width: 50%;
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+      
+    &:last-child {
+      @include mq($small) {
+        margin-top: 30px;
+       
+      }
+      @include mq($medium) {
+        margin-top: 0;
+        padding-left: 10px;
+      
+      }
+      @include mq($large) {
+        margin-top: 0;
+        padding-left: 10px;
+        max-width: 50%;
+        align-items: flex-end;
+        flex-wrap: nowrap;
+      
+      }
+      @include mq($xlarge) {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__logo {
+    margin-bottom: $mb-4;
+    max-width: 118px;
+    width: 100%;
+    display: block;
+    @include mq($small) {
+      margin-bottom: 14px;
+    }
+
+    @include mq($medium) {
+      
+    }
+
+    @include mq($large) {
+      margin-bottom: 54px;
+    }
+
+    @include mq($xlarge) {
+      margin-bottom: $mb-1;
+    }
+  }
+
+  &__copyright {
+    color: $color-black;
+    font-weight: 400;
+    @include font-size(16px);
+    
+    @include mq($small) {
+      @include font-size(18px);
+      line-height: 2.2;
+    }
+
+    span {
+      display: block;
+      @include mq($small) {
+        display: inline;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+
+    small {
+      display: none;
+      @include mq($small) {
+        display: inline;
+      }
+      @include mq($medium) {
+      
+      }
+      @include mq($large) {
+      
+      }
+      @include mq($xlarge) {
+       
+      }
+    }
+  }
+
+  &__nav,
+  &__contacts {
+    max-width: 460px;
+    width: 100%;
+    @include mq($small) {
+     
+    }
+    @include mq($medium) {
+     
+    }
+    @include mq($large) {
+      padding-right: 100px;
+      max-width: 630px;
+    }
+    @include mq($xlarge) {
+      padding-right: 0;
+      max-width: 480px;
+    }
+  }
+
+  &__nav {
+    @include mq($small) {
+      margin-bottom: $mb-4;
+    }
+    @include mq($medium) {
+    
+    }
+    @include mq($large) {
+    
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__contacts {
+    margin-top: $mb-4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @include mq($small) {
+      margin-top: 44px;
+    }
+    @include mq($medium) {
+      margin-top: 44px;
+      flex-wrap: nowrap;
+    }
+    @include mq($large) {
+      margin-top: 97px;
+    }
+    @include mq($xlarge) {
+     
+    }
+  }
+
+  &__phone,
+  &__email {
+    width: 100%;
+    color: $color-black;
+    font-weight: 600;
+    font-size: 18px;
+    @include mq($small) {
+      @include font-size(20px);
+    }
+  }
+
+  &__phone {
+    margin-bottom: 16px;
+    @include margin-right(24px);
+    @include mq($small) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__top {
+    z-index: 2;
+    position: fixed;
+    bottom: 43px;
+    right: 15px;
+    width: 52px;
+    height: 52px;
+    @include mq($small) {
+      // right: 30px;
+      // bottom: 211px;
+    }
+    @include mq($medium) {
+      // bottom: 190px;
+    }
+    @include mq($large) {
+      // right: 80px;
+    }
+    @include mq($xlarge) {
+      // right: 30px;
+      // bottom: 214px;
+    }
+  }
+}
