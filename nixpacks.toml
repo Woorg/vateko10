@@ -1,8 +1,2 @@
 [phases.setup]
-commands = [
-  "chown -R www-data:www-data /app/wp-content",
-  "chmod -R 775 /app/wp-content",
-  "mkdir -p /app/wp-content/uploads/wp-migrate-db",
-  "chown -R www-data:www-data /app/wp-content/uploads/wp-migrate-db",
-  "chmod -R 775 /app/wp-content/uploads/wp-migrate-db",
-]
+commands = ["chmod -R 775 /app/wp-content"]
