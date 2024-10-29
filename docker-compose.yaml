@@ -5,7 +5,14 @@ services:
       - wordpress-files:/var/www/html
       # - ./:/var/www/html
     environment:
-      - SERVICE_FQDN_WORDPRESS
+      # - SERVICE_FQDN_WORDPRESS
+      - DB_HOST:$DB_HOST
+      - DB_NAME:$DB_NAME
+      - DB_PASSWORD:$DB_PASSWORD
+      - DB_USER:$DB_USER
+      - ENVIRONMENT:$ENVIRONMENT
+      - WP_CACHE_KEY_SALT:$WP_CACHE_KEY_SALT
+
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://127.0.0.1']
       interval: 2s
