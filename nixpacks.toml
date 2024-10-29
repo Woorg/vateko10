@@ -1,2 +1,5 @@
 [phases.setup]
-commands = ["chmod -R 775 /app/wp-content"]
+commands = [
+  "chown -R nobody.nobody /app/wp-content",
+  "chmod -R 775 /app/wp-content",
+]
