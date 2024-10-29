@@ -1,3 +1,4 @@
+
 [phases.setup]
 commands = [
   "chown -R www-data.www-data /app/wp-content",
