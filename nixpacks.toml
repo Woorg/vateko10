@@ -1,7 +1,9 @@
 
 [phases.setup]
 commands = [
-  "chown -R www-data.www-data /app/wp-content /var/www/html",
+  "RUN whoami",
+  "RUN id -gn",
+  "chown -R root.root /app/wp-content",
   "chmod -R 775 /app/wp-content",
   # "chmod -R 0777 /app/wp-content/ai1wm-backups",
 ]
