@@ -3,7 +3,7 @@
 commands = [
   # "whoami",
   # "id -gn",
-  "chown -R $USER:$USER /app/wp-content",
-  "chmod -R 775 /app/wp-content",
+  "chown -R $USER:$USER /app",
+  "chmod -R 775 /app",
   # "chmod -R 0777 /app/wp-content/ai1wm-backups",
 ]
