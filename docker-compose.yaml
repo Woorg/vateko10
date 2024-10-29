@@ -2,8 +2,8 @@ services:
   wordpress:
     image: wordpress:latest
     volumes:
-      # - wordpress-files:/var/www/html
-      - ./:/var/www/html
+      - wordpress-files:/var/www/html
+      # - ./:/var/www/html
     environment:
       - SERVICE_FQDN_WORDPRESS
     healthcheck:
