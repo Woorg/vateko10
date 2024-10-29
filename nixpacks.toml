@@ -1,7 +1,7 @@
 [phases.setup]
 commands = [
-  "chmod -R ugo+rw /app/wp-content/",
-  "chown -R root:root/app/wp-content/",
+  # "chmod -R ugo+rw /app/wp-content/",
+  "chown -v www-data:www-data /app/wp-content/",
   # "chmod -R 0777 /app/wp-content/themes",
   # "chmod -R 0777 /app/wp-content/uploads",
   # "chmod -R 0777 /app/wp-content/plugins",
