@@ -1,6 +1,6 @@
 
 [phases.start]
-commands = ["chown -R www-data:www-data /app"]
+commands = ["chown 1000:1000 -R /app"]
 
 
 "php-fpm.conf" = '''
