@@ -1,5 +1,5 @@
 
-[phases.build]
+[phases.setup]
 commands = ["chown -R www-data /app", "chmod -R 777 /app"]
 
 
