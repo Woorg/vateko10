@@ -13,6 +13,7 @@ services:
     volumes:
       - nginx/logs:/var/log/nginx
       - wordpress-files:/var/www/html:rw
+
   wordpress:
     build:
       context: ./wordpress
