@@ -1,83 +1,12 @@
 services:
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    container_name: ${APP_NAME}-nginx
-    restart: always
-    depends_on:
-      - wordpress
-    expose:
-      - 80
-      - 443
-    volumes:
-      - nginx/logs:/var/log/nginx
-      - wordpress-files:/var/www/html:rw
   wordpress:
-    build:
-      context: ./wordpress
-      dockerfile: Dockerfile
-    restart: always
-    depends_on:
-      - mariadb
-      - redis
-    expose:
-      - 9000
-    environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_NAME: ${WP_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD}
-      WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
-      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
-      WORDPRESS_CONFIG_EXTRA: |
-        define('WP_CACHE', true);
-        define( 'EIO_WEBP_SHARP_YUV', true ); 
-        define( 'WP_REDIS_HOST', 'redis' );
-        define( 'WP_REDIS_PORT', 6379 );
-        define('WP_CACHE_KEY_SALT', 'redis-test.prostos.com');
-        define( 'COMPRESS_CSS', true );
-        define( 'COMPRESS_SCRIPTS', true );
-        define( 'CONCATENATE_SCRIPTS', true );
-        define( 'ENFORCE_GZIP', true );
-        define( 'AUTOSAVE_INTERVAL', 120 );
-        define( 'WP_POST_REVISIONS', 10);
-        define( 'MEDIA_TRASH', true );
-        define( 'EMPTY_TRASH_DAYS', 30 );
-        define( 'IMAGE_EDIT_OVERWRITE', true );
-        define( 'DISALLOW_FILE_EDIT', true );
+    image: wordpress:latest
     volumes:
       - wordpress-files:/var/www/html:rw
-  mariadb:
-    image: mariadb:latest
-    container_name: ${APP_NAME}-mariadb
-    restart: always
-    expose:
-      - 3306
     environment:
-      MYSQL_DATABASE: ${WP_DB_NAME}
-      MYSQL_USER: ${WP_DB_USER}
-      MYSQL_PASSWORD: ${WP_DB_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD}
-    volumes:
-      - mariadb-data:/var/lib/mysql
-  adminer:
-    image: adminer:latest
-    container_name: ${APP_NAME}-adminer
-    restart: always
-    depends_on:
-      - mariadb
-    expose:
-      - 8080
-  redis:
-    build:
-      context: ./redis
-      dockerfile: Dockerfile
-    container_name: ${APP_NAME}-redis
-    restart: always
-    expose:
-      - 6379
-    privileged: true
-    volumes:
-      - redis:/var/lib/redis
-      - redis:/data
+      - SERVICE_FQDN_WORDPRESS
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://127.0.0.1']
+      interval: 2s
+      timeout: 10s
+      retries: 10
