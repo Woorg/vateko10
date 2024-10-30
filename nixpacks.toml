@@ -1,5 +1,5 @@
-[phases.setup]
-commands = ["composer install"]
+# [phases.setup]
+# commands = ["composer install"]
 
 # Применение прав доступа для веб-сервера
 [phases.permissions]
