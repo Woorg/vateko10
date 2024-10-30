@@ -20,39 +20,52 @@ services:
       dockerfile: Dockerfile
     restart: always
     depends_on:
-      - mariadb
+      # - mariadb
+      - redis
     expose:
       - 9000
     environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_NAME: ${WP_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD}
-      WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
+      # WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_HOST: ${DB_HOST} 
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: ${DB_PREFIX}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_CACHE', true);
         define( 'EIO_WEBP_SHARP_YUV', true ); 
+        define( 'WP_REDIS_HOST', 'redis' );
+        define( 'WP_REDIS_PASSWORD', 'secret_redis' );
+        define( 'WP_REDIS_PORT', 6379 );
+        define('WP_CACHE_KEY_SALT', 'redis-test.vateko');
+        define( 'COMPRESS_CSS', true );
+        define( 'COMPRESS_SCRIPTS', true );
+        define( 'CONCATENATE_SCRIPTS', true );
         define( 'ENFORCE_GZIP', true );
         define( 'AUTOSAVE_INTERVAL', 120 );
         define( 'WP_POST_REVISIONS', 10);
         define( 'MEDIA_TRASH', true );
         define( 'EMPTY_TRASH_DAYS', 30 );
+        define( 'IMAGE_EDIT_OVERWRITE', true );
+        define( 'DISALLOW_FILE_EDIT', true );
     volumes:
       - wordpress-files:/var/www/html:rw
-  mariadb:
-    image: mariadb:latest
-    container_name: ${APP_NAME}-mariadb
-    restart: always
-    expose:
-      - 3306
-    environment:
-      MYSQL_DATABASE: ${WP_DB_NAME}
-      MYSQL_USER: ${WP_DB_USER}
-      MYSQL_PASSWORD: ${WP_DB_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD}
-    volumes:
-      - mariadb-data:/var/lib/mysql
+
+  # mariadb:
+  #   image: mariadb:latest
+  #   container_name: ${APP_NAME}-mariadb
+  #   restart: always
+  #   expose:
+  #     - 3306
+  #   environment:
+  #     MYSQL_DATABASE: ${DB_NAME}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #     MYSQL_RANDOM_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+  #   volumes:
+  #     - mariadb-data:/var/lib/mysql
+
   adminer:
     image: adminer:latest
     container_name: ${APP_NAME}-adminer
@@ -61,3 +74,15 @@ services:
       - mariadb
     expose:
       - 8080
+  redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+    container_name: ${APP_NAME}-redis
+    restart: always
+    expose:
+      - 6379
+    privileged: true
+    volumes:
+      - redis:/var/lib/redis
+      - redis:/data
