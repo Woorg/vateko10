@@ -65,14 +65,14 @@ services:
   #   volumes:
   #     - mariadb-data:/var/lib/mysql
 
-  adminer:
-    image: adminer:latest
-    container_name: ${APP_NAME}-adminer
-    restart: always
-    depends_on:
-      - mariadb
-    expose:
-      - 8080
+  # adminer:
+  #   image: adminer:latest
+  #   container_name: ${APP_NAME}-adminer
+  #   restart: always
+  #   depends_on:
+  #     - mariadb
+  #   expose:
+  #     - 8080
 
   redis:
     build:
