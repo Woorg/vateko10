@@ -13,10 +13,10 @@
 	],
 	"require": {
 		"vlucas/phpdotenv": "^5.4",
-		"php": "^8.3",
-		"ext-redis": "*",
+		"php": "8.3",
 		"ext-ctype": "*",
 		"ext-iconv": "*",
+		"ext-redis": "*",
 		"ext-simplexml": "*",
 		"ext-sodium": "*",
 		"ext-tokenizer": "*",
