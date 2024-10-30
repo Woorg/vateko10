@@ -10,6 +10,13 @@ cmds = [
     "...",
 ]
 
+[phases.permissions]
+commands = [
+    "chown -R www-data:www-data /app/wp-content",
+    "chmod -R 755 /app/wp-content",
+]
+
+
 [start]
 cmd = '/assets/start.sh'
 
