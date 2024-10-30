@@ -13,21 +13,23 @@ services:
     volumes:
       - nginx/logs:/var/log/nginx
       - wordpress-files:/var/www/html:rw
+
   wordpress:
     build:
       context: ./wordpress
       dockerfile: Dockerfile
     restart: always
     depends_on:
-      - mariadb
+      # - mariadb
       - redis
     expose:
       - 9000
     environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_NAME: ${WP_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD}
+      # WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_HOST: ${DB_HOST}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
       WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
       WORDPRESS_CONFIG_EXTRA: |
@@ -48,19 +50,21 @@ services:
         define( 'DISALLOW_FILE_EDIT', true );
     volumes:
       - wordpress-files:/var/www/html:rw
-  mariadb:
-    image: mariadb:latest
-    container_name: ${APP_NAME}-mariadb
-    restart: always
-    expose:
-      - 3306
-    environment:
-      MYSQL_DATABASE: ${WP_DB_NAME}
-      MYSQL_USER: ${WP_DB_USER}
-      MYSQL_PASSWORD: ${WP_DB_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD}
-    volumes:
-      - mariadb-data:/var/lib/mysql
+
+  # mariadb:
+  #   image: mariadb:latest
+  #   container_name: ${APP_NAME}-mariadb
+  #   restart: always
+  #   expose:
+  #     - 3306
+  #   environment:
+  #     MYSQL_DATABASE: ${DB_NAME}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #     MYSQL_RANDOM_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+  #   volumes:
+  #     - mariadb-data:/var/lib/mysql
+
   adminer:
     image: adminer:latest
     container_name: ${APP_NAME}-adminer
@@ -69,6 +73,7 @@ services:
       - mariadb
     expose:
       - 8080
+
   redis:
     build:
       context: ./redis
