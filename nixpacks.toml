@@ -6,9 +6,12 @@ commands = ["composer install"]
 commands = ["chown -R www-data:www-data /app", "chmod -R 755 /app"]
 
 [phases.build]
-commands = ["echo 'Build complete'"]
-PHP_VERSION = "8.3"
-
+commands = [
+    "composer install --ignore-platform-req=ext-redis",
+    # Check if Redis is installed, and if not, install it
+    "php -m | grep redis || sudo apt-get update && sudo apt-get install -y php-redis",
+]
+# PHP_VERSION = "8.3"
 
 [directories]
 # Указываем необходимые директории
