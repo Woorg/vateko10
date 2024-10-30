@@ -1,5 +1,5 @@
 
-[phases.setup]
+[phases.start]
 commands = ["chown -R www-data:www-data /app"]
 
 
