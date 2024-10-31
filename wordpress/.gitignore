@@ -5,7 +5,7 @@ wp-content/debug.log
 wp-content/cache
 
 /wp-content/themes/vateko10/node_modules
-/wp-content/themes/vateko10/vendor
+# /wp-content/themes/vateko10/vendor
 /wp-content/themes/vateko10/public
 
 /wp-content/themes/vateko10/public
@@ -24,7 +24,9 @@ wp-content/cache
 /wp-content/themes/vateko10/front/.idea
 /wp-content/themes/vateko10/front/package-lock.json
 
-/vendor/
+# /vendor/
 /wp-content/ai1wm-backups
 
-.env
+/.env
+
+/Zone.Identifier
