@@ -2,7 +2,7 @@
 FROM wordpress:php8.3-fpm
 
 # Установка Composer и необходимых библиотек
-RUN apt-get update && apt-get install -y lsb-release curl gpg systemctl unzip && && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN apt-get update && apt-get install -y lsb-release curl gpg systemctl unzip && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
 # Установка PHP-расширений
