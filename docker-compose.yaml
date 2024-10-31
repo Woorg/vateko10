@@ -74,6 +74,12 @@ services:
         read_only: false
         is_directory: true
 
+      - type: bind
+        source: ./wordpress/wp-content/
+        target: /var/www/html/wp-content/
+        read_only: false
+        is_directory: true
+
   # mariadb:
   #   image: mariadb:latest
   #   container_name: ${APP_NAME}-mariadb
