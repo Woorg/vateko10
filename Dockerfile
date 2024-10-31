@@ -8,7 +8,7 @@ RUN apt-get update && \
   mv composer.phar /usr/local/bin/composer
 
 # Установка расширения Redis
-RUN apt-get install -y php-ctype php-iconv php-redis php-simplexml php-sodium php-tokenizer php-xml php-xmlwriter php-zip php-mbstring php-json php-curl php-mysqli
+RUN apt-get update && apt-get install -y php8.3-ctype php8.3-iconv php8.3-redis php8.3-simplexml php8.3-sodium php8.3-tokenizer php8.3-xml php8.3-xmlwriter php8.3-zip php8.3-mbstring php8.3-json php8.3-curl php8.3-mysqli
 
 
 # Скопируйте все файлы из репозитория в /var/www/html
