@@ -1,14 +1,10 @@
 # Укажите базовый образ WordPress
 FROM wordpress:php8.3-fpm
 
-# Установка Composer
+# Установка Composer и необходимых библиотек
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  curl unzip git vim zip bash tzdata libicu-dev \
-  libfreetype6-dev libc-client-dev gettext \
-  libpng-dev libwebp-dev libxslt1-dev libpq-dev \
-  libvips-dev libssh2-1-dev libgmp-dev libzip-dev \
-  libxml2-dev freetds-dev libyaml-dev libonig-dev \
+  curl unzip git vim zip bash tzdata libicu-dev libzip-dev libxml2-dev libsodium-dev \
   && curl -sS https://getcomposer.org/installer | php && \
   mv composer.phar /usr/local/bin/composer && \
   apt-get clean && \
@@ -17,27 +13,18 @@ RUN apt-get update && \
 # Установка PHP-расширений
 RUN set -eux; \
   docker-php-ext-install \
-  mysqli \
-  pdo_mysql \
-  pdo_pgsql \
-  pgsql \
-  bcmath \
-  mbstring \
+  ctype \
+  iconv \
+  simplexml \
+  sodium \
+  tokenizer \
   xml \
-  gd \
-  exif \
+  xmlwriter \
   zip \
-  soap \
-  intl \
-  xsl \
-  pcntl \
-  sockets \
-  sysvmsg \
-  sysvsem \
-  sysvshm \
-  opcache \
-  imap \
-  gmp \
+  mbstring \
+  json \
+  curl \
+  mysqli \
   && pecl install -o -f redis \
   && docker-php-ext-enable redis \
   && rm -rf /tmp/pear \
