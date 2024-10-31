@@ -4,7 +4,7 @@ FROM wordpress:php8.3-fpm
 # Установка Composer и необходимых библиотек
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  curl unzip git vim zip bash tzdata libicu-dev libzip-dev libxml2-dev libsodium-dev \
+  curl unzip git vim zip bash tzdata libicu-dev libzip-dev libxml2-dev libsodium-dev libonig-dev \
   && curl -sS https://getcomposer.org/installer | php && \
   mv composer.phar /usr/local/bin/composer && \
   apt-get clean && \
