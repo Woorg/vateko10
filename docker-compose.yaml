@@ -79,6 +79,8 @@ services:
         target: /var/www/html/wp-content/
         read_only: false
         is_directory: true
+    command: >
+      bash -c "chmod -R 755 /var/www/html && chmod -R 755 /var/www/html/wp-content && php-fpm"
 
   # mariadb:
   #   image: mariadb:latest
