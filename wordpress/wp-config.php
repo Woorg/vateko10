@@ -95,7 +95,7 @@ define('WP_DEBUG', $_ENV['WP_DEBUG']);
 define('WP_DEBUG_LOG', true);
 define('WP_AUTO_UPDATE_CORE', true);
 define('WP_CACHE_KEY_SALT', $_ENV['WP_CACHE_KEY_SALT']);
-// define('FS_METHOD', 'direct');
+define('FS_METHOD', 'direct');
 //define('DISALLOW_FILE_EDIT', true );
 //define('AUTOMATIC_UPDATER_DISABLED', false);
 //define( 'WP_HTTP_BLOCK_EXTERNAL', true );
