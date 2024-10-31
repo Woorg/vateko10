@@ -1,6 +1,6 @@
 <?php
 // define('WP_CACHE', false); // Added by WP Rocket
-// define('FS_METHOD', 'direct');
+define('FS_METHOD', 'direct');
 
 /**
  * The base configuration for WordPress
