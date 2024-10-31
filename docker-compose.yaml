@@ -59,13 +59,14 @@ services:
           define( 'IMAGE_EDIT_OVERWRITE', true );
           define( 'DISALLOW_FILE_EDIT', true );
     volumes:
-      - wordpress-files:/var/www/html:rw
+      - wordpress-files:/var/www/html
       # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
       # - ./wordpress/vendor:/var/www/html/vendor # Папка для composer
       # - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads  # Папка для загрузок
       # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins  # Папка для плагинов
       # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes  # Папка для тем
-      - wordpress:/var/www/html:rw # Ваш файл конфигурации
+      - wordpress:/var/www/html # Ваш файл конфигурации
+
       - type: bind
         source: ./wordpress
         target: /var/www/html
