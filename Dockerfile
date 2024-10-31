@@ -2,33 +2,28 @@
 FROM wordpress:php8.3-fpm
 
 # Установка Composer и необходимых библиотек
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
-  curl unzip git vim zip bash tzdata libicu-dev libzip-dev libxml2-dev libsodium-dev libonig-dev \
-  && curl -sS https://getcomposer.org/installer | php && \
-  mv composer.phar /usr/local/bin/composer && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y lsb-release curl gpg systemctl && curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg && chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/redis.list 
+RUN apt-get install -y redis redis-tools && pecl install redis && docker-php-ext-enable redis
 
 # Установка PHP-расширений
-RUN set -eux; \
-  docker-php-source extract; \
-  docker-php-ext-install \
-  ctype \
-  iconv \
-  simplexml \
-  sodium \
-  xml \
-  xmlwriter \
-  zip \
-  mbstring \
-  json \
-  curl \
-  mysqli \
-  && pecl install -o -f --no-cache redis \
-  && docker-php-ext-enable redis \
-  && rm -rf /tmp/pear \
-  && docker-php-source delete
+# RUN set -eux; \
+#   docker-php-source extract; \
+#   docker-php-ext-install \
+#   ctype \
+#   iconv \
+#   simplexml \
+#   sodium \
+#   xml \
+#   xmlwriter \
+#   zip \
+#   mbstring \
+#   json \
+#   curl \
+#   mysqli \
+#   && pecl install -o -f --no-cache redis \
+#   && docker-php-ext-enable redis \
+#   && rm -rf /tmp/pear \
+#   && docker-php-source delete
 
 # Скопируйте все файлы из репозитория в /var/www/html
 COPY . /var/www/html
