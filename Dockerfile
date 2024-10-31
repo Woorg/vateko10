@@ -1,6 +1,13 @@
 # Укажите базовый образ WordPress
 FROM wordpress:latest
 
+# Установка Composer
+RUN apt-get update && \
+  apt-get install -y curl unzip && \
+  curl -sS https://getcomposer.org/installer | php && \
+  mv composer.phar /usr/local/bin/composer
+
+
 # Скопируйте все файлы из репозитория в /var/www/html
 COPY . /var/www/html
 
