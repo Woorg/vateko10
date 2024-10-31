@@ -24,7 +24,7 @@ RUN set -eux; \
 RUN set -eux; \
   apt-get update; \
   apt-get install -y --no-install-recommends \
-  libpng-dev libwebp-dev libjpeg-turbo8-dev freetype-dev \
+  libpng-dev libwebp-dev  freetype-dev \
   libc-client-dev liboniguruma-dev libxslt1-dev \
   libpq-dev libvips-dev libssh2-1-dev \
   libgmp-dev libzip-dev libxml2-dev \
