@@ -26,4 +26,5 @@ wp-content/cache
 
 /vendor/
 /wp-content/ai1wm-backups
+
 .env
