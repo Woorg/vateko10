@@ -13,8 +13,8 @@ RUN set -eux; \
   apt-get install -y --no-install-recommends \
   git vim zip unzip bash curl tzdata libicu-dev \
   libc-client-dev libgmp-dev gettext libssh2-1-dev libyaml-dev \
-  libintl-dev libxslt1-dev libpng-dev libwebp-dev \
-  libjpeg-turbo8-dev libfreetype6-dev \
+  libxslt1-dev libpng-dev libwebp-dev \
+  libfreetype6-dev \
   libpq-dev libvips-dev \
   libzip-dev freetds-dev \
   && apt-get clean \
