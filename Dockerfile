@@ -17,7 +17,6 @@ RUN set -eux; \
   iconv \
   simplexml \
   sodium \
-  tokenizer \
   xml \
   xmlwriter \
   zip \
