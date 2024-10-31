@@ -65,12 +65,12 @@ services:
       # - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads  # Папка для загрузок
       # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins  # Папка для плагинов
       # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes  # Папка для тем
-      - wordpress:/var/www/html # Ваш файл конфигурации
+      # - wordpress:/var/www/html # Ваш файл конфигурации
 
-      - type: bind
-        source: ./wordpress
-        target: /var/www/html
-        is_directory: true
+      # - type: bind
+      #   source: ./wordpress
+      #   target: /var/www/html
+      #   is_directory: true
 
   # mariadb:
   #   image: mariadb:latest
@@ -111,9 +111,8 @@ services:
     volumes:
       - redis:/var/lib/redis
       - redis:/data
-
-volumes:
-  nginx_logs:
-  wordpress-files:
-  # mariadb-data:
-  redis:
+# volumes:
+#   nginx_logs:
+#   wordpress-files:
+#   # mariadb-data:
+#   redis:
