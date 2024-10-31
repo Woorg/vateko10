@@ -44,21 +44,22 @@ services:
       - WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
       - WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
       - WORDPRESS_CONFIG_EXTRA: |
-          define('WP_CACHE', true);
+          define('WP_CACHE', false);
           define( 'EIO_WEBP_SHARP_YUV', true ); 
           define( 'WP_REDIS_HOST', 'redis' );
           define( 'WP_REDIS_PORT', 6379 );
+          define( 'WP_REDIS_PASSWORD', 'secret_redis' );
           define('WP_CACHE_KEY_SALT', 'vateko');
-          define( 'COMPRESS_CSS', true );
-          define( 'COMPRESS_SCRIPTS', true );
-          define( 'CONCATENATE_SCRIPTS', true );
+          define( 'COMPRESS_CSS', false);
+          define( 'COMPRESS_SCRIPTS', false);
+          define( 'CONCATENATE_SCRIPTS', false);
           define( 'ENFORCE_GZIP', true );
           define( 'AUTOSAVE_INTERVAL', 120 );
           define( 'WP_POST_REVISIONS', 10);
           define( 'MEDIA_TRASH', true );
           define( 'EMPTY_TRASH_DAYS', 30 );
           define( 'IMAGE_EDIT_OVERWRITE', true );
-          define( 'DISALLOW_FILE_EDIT', true );
+          define( 'DISALLOW_FILE_EDIT', false);
     volumes:
       - wordpress-files:/var/www/html:rw
       # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
