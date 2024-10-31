@@ -12,6 +12,7 @@ RUN apt-get update && \
 
 # Установка PHP-расширений
 RUN set -eux; \
+  docker-php-source extract; \
   docker-php-ext-install \
   ctype \
   iconv \
