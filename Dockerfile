@@ -52,30 +52,30 @@ RUN set -eux; \
   imap \
   gmp \
   \
-  # Install xdebug
-  && pecl install -o -f xdebug \
-  && docker-php-ext-enable xdebug \
-  \
+  # # Install xdebug
+  # && pecl install -o -f xdebug \
+  # && docker-php-ext-enable xdebug \
+  # \
   # Install YAML
-  && pecl install -o -f yaml \
-  && docker-php-ext-enable yaml \
-  \
+  # && pecl install -o -f yaml \
+  # && docker-php-ext-enable yaml \
+  # \
   # Install Redis
   && pecl install -o -f redis \
   && docker-php-ext-enable redis \
   \
   # Install MongoDB
-  && pecl install -o -f mongodb \
-  && docker-php-ext-enable mongodb \
-  \
+  # && pecl install -o -f mongodb \
+  # && docker-php-ext-enable mongodb \
+  # \
   # Install APCu
-  && pecl install -o -f apcu \
-  && docker-php-ext-enable apcu \
-  \
+  # && pecl install -o -f apcu \
+  # && docker-php-ext-enable apcu \
+  # \
   # Install SSH2
-  && pecl install -o -f ssh2 \
-  && docker-php-ext-enable ssh2 \
-  \
+  # && pecl install -o -f ssh2 \
+  # && docker-php-ext-enable ssh2 \
+  # \
   # Clean up
   && rm -rf /tmp/pear \
   && docker-php-source delete
