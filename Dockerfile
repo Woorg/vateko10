@@ -3,33 +3,20 @@ FROM wordpress:php8.3-fpm
 
 # Установка Composer
 RUN apt-get update && \
-  apt-get install -y curl unzip && \
-  curl -sS https://getcomposer.org/installer | php && \
-  mv composer.phar /usr/local/bin/composer
-
-# Install non-dev dependencies
-RUN set -eux; \
-  apt-get update; \
   apt-get install -y --no-install-recommends \
-  git vim zip unzip bash curl tzdata libicu-dev \
-  libc-client-dev libgmp-dev gettext libssh2-1-dev libyaml-dev \
-  libxslt1-dev libpng-dev libwebp-dev \
-  libfreetype6-dev \
-  libpq-dev libvips-dev \
-  libzip-dev freetds-dev \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  curl unzip git vim zip bash tzdata libicu-dev \
+  libfreetype6-dev libc-client-dev gettext \
+  libpng-dev libwebp-dev libxslt1-dev libpq-dev \
+  libvips-dev libssh2-1-dev libgmp-dev libzip-dev \
+  libxml2-dev freetds-dev libyaml-dev libonig-dev \
+  && curl -sS https://getcomposer.org/installer | php && \
+  mv composer.phar /usr/local/bin/composer && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
+# Установка PHP-расширений
 RUN set -eux; \
-  apt-get update; \
-  apt-get install -y --no-install-recommends \
-  libpng-dev libwebp-dev  \
-  libc-client-dev libxslt1-dev \
-  libpq-dev libvips-dev libssh2-1-dev \
-  libgmp-dev libzip-dev libxml2-dev \
-  freetds-dev libyaml-dev \
-  && docker-php-ext-install \
+  docker-php-ext-install \
   mysqli \
   pdo_mysql \
   pdo_pgsql \
@@ -51,37 +38,10 @@ RUN set -eux; \
   opcache \
   imap \
   gmp \
-  \
-  # # Install xdebug
-  # && pecl install -o -f xdebug \
-  # && docker-php-ext-enable xdebug \
-  # \
-  # Install YAML
-  # && pecl install -o -f yaml \
-  # && docker-php-ext-enable yaml \
-  # \
-  # Install Redis
   && pecl install -o -f redis \
   && docker-php-ext-enable redis \
-  \
-  # Install MongoDB
-  # && pecl install -o -f mongodb \
-  # && docker-php-ext-enable mongodb \
-  # \
-  # Install APCu
-  # && pecl install -o -f apcu \
-  # && docker-php-ext-enable apcu \
-  # \
-  # Install SSH2
-  # && pecl install -o -f ssh2 \
-  # && docker-php-ext-enable ssh2 \
-  # \
-  # Clean up
   && rm -rf /tmp/pear \
   && docker-php-source delete
-
-# Clean up apt cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Скопируйте все файлы из репозитория в /var/www/html
 COPY . /var/www/html
