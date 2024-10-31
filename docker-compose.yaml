@@ -35,7 +35,7 @@ services:
     #   - '9000:80'
 
     environment:
-      - SERVICE_FQDN_WORDPRESS
+      # - SERVICE_FQDN_WORDPRESS
       - DB_HOST: ${DB_HOST}
       - DB_USER: ${DB_USER}
       - DB_PASSWORD: ${DB_PASSWORD}
@@ -71,6 +71,7 @@ services:
       - type: bind
         source: ./wordpress
         target: /var/www/html
+        read_only: false
         is_directory: true
 
   # mariadb:
