@@ -1,37 +1,114 @@
-version: '3.8'
-
 services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: ${APP_NAME}-nginx
+    restart: always
+    depends_on:
+      - wordpress
+    expose:
+      - '80'
+      - '443'
+      - '8080'
+
+    ports:
+      - '80:80'
+
+    volumes:
+      - nginx_logs:/var/log/nginx
+      - wordpress-files:/var/www/html:rw
   wordpress:
     build:
-      context: .
+      context: ./wordpress
       dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      # - mariadb
+      - redis
+
+    expose:
+      - '9000'
+
+    # ports:
+    #   - '9000:80'
+
     environment:
       DB_HOST: mariadb
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+
+      WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
+      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_CACHE', true);
+        define( 'EIO_WEBP_SHARP_YUV', true ); 
+        define( 'WP_REDIS_HOST', 'redis' );
+        define( 'WP_REDIS_PORT', 6379 );
+        define('WP_CACHE_KEY_SALT', 'vateko');
+        define( 'COMPRESS_CSS', true );
+        define( 'COMPRESS_SCRIPTS', true );
+        define( 'CONCATENATE_SCRIPTS', true );
+        define( 'ENFORCE_GZIP', true );
+        define( 'AUTOSAVE_INTERVAL', 120 );
+        define( 'WP_POST_REVISIONS', 10);
+        define( 'MEDIA_TRASH', true );
+        define( 'EMPTY_TRASH_DAYS', 30 );
+        define( 'IMAGE_EDIT_OVERWRITE', true );
+        define( 'DISALLOW_FILE_EDIT', true );
     volumes:
       - wordpress-files:/var/www/html:rw
-    depends_on:
-      - mariadb
-    ports:
-      - '9000:80'
-    healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://127.0.0.1']
-      interval: 2s
-      timeout: 10s
-      retries: 10
+      # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
+      # - ./wordpress/vendor:/var/www/html/vendor # Папка для composer
+      # - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads  # Папка для загрузок
+      # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins  # Папка для плагинов
+      # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes  # Папка для тем
+      - ./wordpress:/var/www/html:rw # Ваш файл конфигурации
 
-  mariadb:
-    image: mariadb:latest
-    environment:
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: root_password_here
+
+  # mariadb:
+  #   image: mariadb:latest
+  #   container_name: ${APP_NAME}-mariadb
+  #   restart: always
+  #   expose:
+  #     - '3306'
+
+  #   environment:
+  #     MYSQL_DATABASE: ${DB_NAME}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #     MYSQL_ROOT_PASSWORD: root_password_here
+  #   volumes:
+  #     - mariadb-data:/var/lib/mysql
+
+  # adminer:
+  #   image: adminer:latest
+  #   container_name: ${APP_NAME}-adminer
+  #   restart: always
+  #   depends_on:
+  #     - mariadb
+  #   expose:
+  #     - '8080'
+
+  #   ports:
+  #     - '8080:8080'
+
+  redis:
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+    container_name: ${APP_NAME}-redis
+    restart: always
+    expose:
+      - '6379'
+    privileged: true
     volumes:
-      - mariadb-data:/var/lib/mysql
+      - redis:/var/lib/redis
+      - redis:/data
 
 volumes:
+  nginx_logs:
   wordpress-files:
-  mariadb-data:
+  # mariadb-data:
+  redis:
