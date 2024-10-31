@@ -42,13 +42,12 @@ services:
       - DB_NAME: ${DB_NAME}
 
       - WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
-      - WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
+      - WORDPRESS_DEBUG: ${WP_DEBUG:-true}
       - WORDPRESS_CONFIG_EXTRA: |
           define('WP_CACHE', false);
           define( 'EIO_WEBP_SHARP_YUV', true ); 
           define( 'WP_REDIS_HOST', 'redis' );
           define( 'WP_REDIS_PORT', 6379 );
-          define( 'WP_REDIS_PASSWORD', 'secret_redis' );
           define('WP_CACHE_KEY_SALT', 'vateko');
           define( 'COMPRESS_CSS', false);
           define( 'COMPRESS_SCRIPTS', false);
