@@ -65,7 +65,7 @@ services:
       # - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads  # Папка для загрузок
       # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins  # Папка для плагинов
       # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes  # Папка для тем
-      # - wordpress:/var/www/html # Ваш файл конфигурации
+      - wordpress:/var/www/html:rw # Ваш файл конфигурации
 
       # - type: bind
       #   source: ./wordpress
