@@ -32,7 +32,7 @@ RUN chown -R www-data:www-data /var/www/html \
   && chmod -R 755 /var/www/html
 
 # Установка зависимостей через Composer, если есть composer.json
-RUN if [ -f "/var/www/html/composer.json" ]; then composer install --ignore-platform-req=ext-redis; fi
+RUN if [ -f "/var/www/html/composer.json" ]; then composer install ; fi
 
 # Установите WP CLI для управления WordPress через командную строку
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
