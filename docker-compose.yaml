@@ -75,12 +75,10 @@ services:
         is_directory: true
 
       - type: bind
-        source: ./wordpress/wp-content/cache
-        target: /var/www/html/wp-content/cache
+        source: ./wordpress/wp-content/cache/acorn/framework/cache
+        target: /var/www/html/wp-content/cache/acorn/framework/cache
         read_only: false
         is_directory: true
-    command: >
-      bash -c "chmod -R 755 /var/www/html && chmod -R 755 /var/www/html/wp-content && php-fpm"
 
   # mariadb:
   #   image: mariadb:latest
