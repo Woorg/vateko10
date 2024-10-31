@@ -105,9 +105,8 @@ services:
     volumes:
       - redis:/var/lib/redis
       - redis:/data
-
-volumes:
-  nginx_logs:
-  wordpress-files:
-  # mariadb-data:
-  redis:
+# volumes:
+#   nginx_logs:
+#   wordpress-files:
+#   # mariadb-data:
+#   redis:
