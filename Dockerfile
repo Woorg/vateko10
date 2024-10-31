@@ -25,8 +25,7 @@ RUN set -eux; \
   json \
   curl \
   mysqli \
-  && make \
-  && pecl install -o -f redis \
+  && pecl install -o -f --no-cache redis \
   && docker-php-ext-enable redis \
   && rm -rf /tmp/pear \
   && docker-php-source delete
