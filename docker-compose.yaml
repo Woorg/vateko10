@@ -50,9 +50,9 @@ services:
           define( 'WP_REDIS_HOST', 'redis' );
           define( 'WP_REDIS_PORT', 6379 );
           define('WP_CACHE_KEY_SALT', 'vateko-cool');
-          define( 'COMPRESS_CSS', true);
-          define( 'COMPRESS_SCRIPTS', true);
-          define( 'CONCATENATE_SCRIPTS', true);
+          define( 'COMPRESS_CSS', false);
+          define( 'COMPRESS_SCRIPTS', false);
+          define( 'CONCATENATE_SCRIPTS', false);
           define( 'ENFORCE_GZIP', true );
           define( 'AUTOSAVE_INTERVAL', 120 );
           define( 'WP_POST_REVISIONS', 10);
