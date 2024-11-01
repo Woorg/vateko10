@@ -18,7 +18,8 @@ services:
     volumes:
       - nginx_logs:/var/log/nginx
       # - wordpress-files:/var/www/html
-      - ./:/var/www/html:rw
+      - ./wordpress:/var/www/html:rw
+
   wordpress:
     build:
       context: ./wordpress
@@ -61,7 +62,7 @@ services:
           define( 'DISALLOW_FILE_EDIT', false);
     volumes:
       # - wordpress-files:/var/www/html
-      - ./:/var/www/html:rw
+      - ./wordpress:/var/www/html:rw
       # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
       # - ./wordpress/vendor:/var/www/html/vendor # Папка для composer
       # - ./wordpress/wp-content:/var/www/html/wp-content # Папка для загрузок
