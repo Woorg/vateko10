@@ -37,6 +37,7 @@ services:
 
     environment:
       # - SERVICE_FQDN_WORDPRESS
+      - ENVIRONMENT: ${ENVIRONMENT}
       - DB_HOST: ${DB_HOST}
       - DB_USER: ${DB_USER}
       - DB_PASSWORD: ${DB_PASSWORD}
