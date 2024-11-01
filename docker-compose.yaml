@@ -47,9 +47,6 @@ services:
       - WORDPRESS_CONFIG_EXTRA: |
           define('WP_CACHE', true);
           define( 'EIO_WEBP_SHARP_YUV', true);
-          define( 'WP_REDIS_HOST', 'redis' );
-          define( 'WP_REDIS_PORT', 6379 );
-          define('WP_CACHE_KEY_SALT', 'vateko-cool');
           define( 'COMPRESS_CSS', false);
           define( 'COMPRESS_SCRIPTS', false);
           define( 'CONCATENATE_SCRIPTS', false);
