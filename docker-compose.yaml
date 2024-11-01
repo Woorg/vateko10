@@ -72,6 +72,12 @@ services:
       #   target: /var/www/html/
       #   read_only: false
       #   is_directory: true
+    command:
+      [
+        'sh',
+        '-c',
+        'chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html && php-fpm',
+      ]
 
   # mariadb:
   #   image: mariadb:latest
