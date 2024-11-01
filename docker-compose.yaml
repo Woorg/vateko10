@@ -35,12 +35,10 @@ services:
     #   - '9000:80'
 
     environment:
-      # - SERVICE_FQDN_WORDPRESS
       - DB_HOST: ${DB_HOST}
       - DB_USER: ${DB_USER}
       - DB_PASSWORD: ${DB_PASSWORD}
       - DB_NAME: ${DB_NAME}
-
       - WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
       - WORDPRESS_DEBUG: ${WP_DEBUG:-false}
       - WORDPRESS_CONFIG_EXTRA: |
@@ -69,17 +67,11 @@ services:
       # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes  # Папка для тем
       # - ./wordpress:/var/www/html:rw # Ваш файл конфигурации
 
-      - type: bind
-        source: ./wordpress
-        target: /var/www/html
-        read_only: false
-        is_directory: true
-
-      - type: bind
-        source: ./wordpress/wp-content/cache/acorn/framework/cache
-        target: /var/www/html/wp-content/cache/acorn/framework/cache
-        read_only: false
-        is_directory: true
+      # - type: bind
+      #   source: ./wordpress
+      #   target: /var/www/html
+      #   read_only: false
+      #   is_directory: true
 
   # mariadb:
   #   image: mariadb:latest
@@ -120,8 +112,8 @@ services:
     volumes:
       - redis:/var/lib/redis
       - redis:/data
-  # volumes:
-  #   nginx_logs:
-  wordpress-files:
+# volumes:
+#   nginx_logs:
+# wordpress-files:
 #   # mariadb-data:
 #   redis:
