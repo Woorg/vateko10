@@ -16,7 +16,7 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 # 
 # RUN ls -la .
 
-COPY --chown=www-data:www-data . /var/www/html
+# COPY --chown=www-data:www-data . /var/www/html
 
 
 # Выводим содержимое /var/www/html в лог
