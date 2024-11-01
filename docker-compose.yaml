@@ -21,7 +21,6 @@ services:
       - ./wordpress:/var/www/html:rw
 
   wordpress:
-    user: 'www-data'
     build:
       context: ./wordpress
       dockerfile: Dockerfile
@@ -73,6 +72,7 @@ services:
       #   target: /var/www/html/
       #   read_only: false
       #   is_directory: true
+    # user: 'www-data'
     # command:
     #   [
     #     'sh',
