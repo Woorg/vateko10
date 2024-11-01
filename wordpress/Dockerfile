@@ -38,7 +38,3 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.conf --save 60 1 --loglevel warning --maxmemory 128mb --maxmemory-policy allkeys-lru && ps aux | grep redis-server
 
 
-USER root
-RUN usermod -u 33 www-data && groupmod -g 33 www-data
-RUN chown -R www-data:www-data /var/www/html
-USER www-data
