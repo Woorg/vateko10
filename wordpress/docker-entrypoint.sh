@@ -13,7 +13,7 @@ set -e
 
 # Копируем файлы в /var/www/html, если они еще не скопированы
 if [ ! -d "/var/www/html/wp-content" ]; then
-    cp -r ./wordpress/* /var/www/html
+    cp -r ./* /var/www/html
 fi
 
 # Настройка прав на директорию
