@@ -35,12 +35,14 @@ services:
     #   - '9000:80'
 
     environment:
+      # - SERVICE_FQDN_WORDPRESS
       - DB_HOST: ${DB_HOST}
       - DB_USER: ${DB_USER}
       - DB_PASSWORD: ${DB_PASSWORD}
       - DB_NAME: ${DB_NAME}
+
       - WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
-      - WORDPRESS_DEBUG: ${WP_DEBUG:-false}
+      - WORDPRESS_DEBUG: ${WP_DEBUG:-true}
       - WORDPRESS_CONFIG_EXTRA: |
           define('WP_CACHE', true);
           define( 'EIO_WEBP_SHARP_YUV', true);
@@ -57,21 +59,20 @@ services:
           define( 'EMPTY_TRASH_DAYS', 30 );
           define( 'IMAGE_EDIT_OVERWRITE', true );
           define( 'DISALLOW_FILE_EDIT', false);
-          define('FS_METHOD', 'direct');
     volumes:
-      - wordpress-files:/var/www/html:rw
+      - wordpress-files:/var/www/html
       # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
       # - ./wordpress/vendor:/var/www/html/vendor # Папка для composer
       # - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads  # Папка для загрузок
       # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins  # Папка для плагинов
       # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes  # Папка для тем
-      # - ./wordpress:/var/www/html:rw # Ваш файл конфигурации
+      - ./wordpress:/var/www/html:rw # Ваш файл конфигурации
 
-      # - type: bind
-      #   source: ./wordpress
-      #   target: /var/www/html
-      #   read_only: false
-      #   is_directory: true
+      - type: bind
+        source: ./wordpress/
+        target: /var/www/html/
+        read_only: false
+        is_directory: true
 
   # mariadb:
   #   image: mariadb:latest
@@ -114,6 +115,6 @@ services:
       - redis:/data
 # volumes:
 #   nginx_logs:
-# wordpress-files:
+#   wordpress-files:
 #   # mariadb-data:
 #   redis:
