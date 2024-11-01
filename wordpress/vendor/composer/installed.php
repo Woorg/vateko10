@@ -3,7 +3,7 @@
         'name' => 'sergey/zdorovaya-natciya',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f404d179303f1076a601906438a83fcdb99b8151',
+        'reference' => '0e74de014d1e4d471b2a29f89b087ff633a575fe',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'sergey/zdorovaya-natciya' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f404d179303f1076a601906438a83fcdb99b8151',
+            'reference' => '0e74de014d1e4d471b2a29f89b087ff633a575fe',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
