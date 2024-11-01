@@ -53,15 +53,17 @@ COPY php.ini /usr/local/etc/php/conf.d/php.ini
 
 # Копируем файлы WordPress в контейнер
 COPY . /var/www/html
+WORKDIR /var/www/html
 
 # Устанавливаем права на папку
-# RUN chown -R www-data:www-data /var/www/html \
-#   && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html 
+RUN chmod -R 755 /var/www/html
 
-RUN chmod a+rwx -R /var/www/html
+USER www-data
+
+# RUN chmod a+rwx -R /var/www/html
 
 # Устанавливаем рабочую директорию
-WORKDIR /var/www/html
 
 # Запускаем PHP-FPM
 CMD ["php-fpm"]
