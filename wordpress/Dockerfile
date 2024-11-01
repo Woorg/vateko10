@@ -55,8 +55,8 @@ COPY php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
 
 # Устанавливаем права на папку
-RUN chown -R www-data:www-data /var/www/html \
-  && chmod -R 755 /var/www/html
+# RUN chown -R www-data:www-data /var/www/html \
+#   && chmod -R 755 /var/www/html
 
 RUN chmod a+rwx -R /var/www/html
 
