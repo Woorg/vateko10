@@ -10,10 +10,6 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
 # COPY . /var/www/html
 
-USER root
-RUN usermod -u 33 www-data && groupmod -g 33 www-data
-RUN chown -R www-data:www-data /var/www/html
-USER www-data
 
 # Копирование wp-config.php
 # COPY wp-config.php /var/www/html/wp-config-blya.php
@@ -21,8 +17,8 @@ USER www-data
 
 # Установите права доступа
 
-RUN chown -R www-data:www-data /var/www/html \
-  && chmod -R 755 /var/www/html
+# RUN chown -R www-data:www-data /var/www/html \
+#   && chmod -R 755 /var/www/html
 
 
 
@@ -40,3 +36,9 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 
 RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.conf --save 60 1 --loglevel warning --maxmemory 128mb --maxmemory-policy allkeys-lru && ps aux | grep redis-server
+
+
+USER root
+RUN usermod -u 33 www-data && groupmod -g 33 www-data
+RUN chown -R www-data:www-data /var/www/html
+USER www-data
