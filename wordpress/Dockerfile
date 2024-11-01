@@ -33,3 +33,11 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.conf --save 60 1 --loglevel warning --maxmemory 128mb --maxmemory-policy allkeys-lru && ps aux | grep redis-server
 
 
+# Добавьте файл entrypoint.sh в контейнер
+COPY entrypoint.sh /entrypoint.sh
+
+# Установите entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Команда запуска php-fpm
+CMD ["php-fpm"]
