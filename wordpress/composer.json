@@ -25,6 +25,7 @@
 		"ext-mbstring": "*",
 		"ext-json": "*",
 		"ext-curl": "*",
-		"ext-mysqli": "*"
+		"ext-mysqli": "*",
+		"ext-redis": "*"
 	}
 }
