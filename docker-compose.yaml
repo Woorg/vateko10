@@ -69,11 +69,12 @@ services:
       # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins # Папка для плагинов
       # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes # Папка для тем
 
-      # - type: bind
-      #   source: ./wordpress/
-      #   target: /var/www/html/
-      #   read_only: false
-      #   is_directory: true
+      - type: bind
+        source: ./wordpress/
+        target: /var/www/html/
+        read_only: false
+        is_directory: true
+
     # user: 'www-data:www-data'
     # command:
     #   [
