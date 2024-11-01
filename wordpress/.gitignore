@@ -6,9 +6,7 @@ wp-content/cache
 
 /wp-content/themes/vateko10/node_modules
 # /wp-content/themes/vateko10/vendor
-/wp-content/themes/vateko10/public
-
-/wp-content/themes/vateko10/public
+# /wp-content/themes/vateko10/public
 /wp-content/themes/vateko10/.env
 /wp-content/themes/vateko10/.budfiles
 /wp-content/themes/vateko10/npm-debug.log
