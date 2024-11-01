@@ -8,26 +8,6 @@ RUN apt-get install -y redis redis-tools && pecl install redis && docker-php-ext
 
 COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
-# Копируем файлы WordPress
-# COPY --chown=www-data:www-data . /var/www/html
-
-
-# RUN ls -la ../ 
-# 
-# RUN ls -la .
-
-# Копируем файлы WordPress и устанавливаем права
-# COPY --chown=www-data:www-data . /var/www/html
-# RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
-
-# COPY --chown=www-data:www-data . /var/www/html
-
-
-# Выводим содержимое /var/www/html в лог
-RUN ls -la /var/www/html
-
-# Установка прав доступа на файлы WordPress
-# RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 # Установка зависимостей через Composer, если есть composer.json
 RUN if [ -f "/var/www/html/composer.json" ]; then composer install ; fi
