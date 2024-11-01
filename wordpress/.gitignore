@@ -13,7 +13,7 @@ wp-content/cache
 /wp-content/themes/vateko10/yarn-error.log
 /wp-content/themes/vateko10/front/node_modules
 /wp-content/themes/vateko10/front/.git
-/wp-content/themes/vateko10/front/dev
+# /wp-content/themes/vateko10/front/dev
 # /wp-content/themes/vateko10/front/prod
 
 /wp-content/themes/vateko10/.vscode
