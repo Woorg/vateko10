@@ -8,11 +8,11 @@ COPY ./php.ini /usr/local/etc/php/conf.d/php.ini
 
 # COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
-# COPY . /var/www/html
+# Копируем файлы WordPress
+COPY . /var/www/html
 
-# Копируем и устанавливаем права на файлы WordPress
-# COPY . /var/www/html
-# RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+# Установка прав доступа на файлы WordPress
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 
 # Установка зависимостей через Composer, если есть composer.json

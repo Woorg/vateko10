@@ -21,6 +21,7 @@ services:
       - ./wordpress:/var/www/html:rw
 
   wordpress:
+    user: 'www-data'
     build:
       context: ./wordpress
       dockerfile: Dockerfile
