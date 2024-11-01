@@ -11,16 +11,11 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 # COPY . /var/www/html
 
 
-# Копирование wp-config.php
-# COPY wp-config.php /var/www/html/wp-config-blya.php
-# COPY some.txt /var/www/html/some-some.txt
-
-# Установите права доступа
-
-# RUN chown -R www-data:www-data /var/www/html \
-#   && chmod -R 755 /var/www/html
 
 
+# Копируем и устанавливаем права на файлы WordPress
+COPY . /var/www/html
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 
 
