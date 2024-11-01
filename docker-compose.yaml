@@ -72,7 +72,7 @@ services:
       #   target: /var/www/html/
       #   read_only: false
       #   is_directory: true
-    user: '${UID}:${GID}'
+    user: 'www-data:www-data'
     # command:
     #   [
     #     'sh',
