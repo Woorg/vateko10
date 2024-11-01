@@ -37,7 +37,7 @@ RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.con
 COPY entrypoint.sh /entrypoint.sh
 
 # Установите entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Команда запуска php-fpm
 CMD ["php-fpm"]
