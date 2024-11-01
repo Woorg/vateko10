@@ -51,22 +51,12 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 # Копируем php.ini в контейнер
 COPY php.ini /usr/local/etc/php/conf.d/php.ini
 
-# 7 Add UID '1000' to www-data
-RUN usermod -u 1000 www-data
-
-# 8 Copy existing application directory permissions
-COPY --chown=www-data:www-data . /var/www/html
-
-# 9 Change current user to www
-USER www-data
-
-
 # Копируем файлы WordPress в контейнер
-# COPY . /var/www/html
+COPY . /var/www/html
 
-# # Устанавливаем права на папку
-# RUN chown -R www-data:www-data /var/www/html \
-#   && chmod -R 755 /var/www/html
+# Устанавливаем права на папку
+RUN chown -R www-data:www-data /var/www/html \
+  && chmod -R 755 /var/www/html
 
 # Устанавливаем рабочую директорию
 WORKDIR /var/www/html
