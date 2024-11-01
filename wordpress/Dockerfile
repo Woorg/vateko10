@@ -12,7 +12,7 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
 USER root
 RUN usermod -u 33 www-data && groupmod -g 33 www-data
-RUN chown -R www-data:www-data /var/www/wordpress
+RUN chown -R www-data:www-data /var/www/html
 USER www-data
 
 # Копирование wp-config.php
