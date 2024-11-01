@@ -10,14 +10,9 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 
 # COPY . /var/www/html
 
-
-
-
 # Копируем и устанавливаем права на файлы WordPress
 # COPY . /var/www/html
 # RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
-
-
 
 # Установка зависимостей через Composer, если есть composer.json
 RUN if [ -f "/var/www/html/composer.json" ]; then composer install ; fi
