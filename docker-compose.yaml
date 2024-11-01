@@ -22,7 +22,7 @@ services:
 
   wordpress:
     build:
-      context: ./wordpress
+      context: ./
       dockerfile: Dockerfile
     restart: always
     depends_on:
