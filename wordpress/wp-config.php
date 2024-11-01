@@ -96,6 +96,12 @@ define('WP_DEBUG_LOG', true);
 define('WP_AUTO_UPDATE_CORE', true);
 define('WP_CACHE_KEY_SALT', $_ENV['WP_CACHE_KEY_SALT']);
 define('FS_METHOD', 'direct');
+// define('WP_REDIS_CONFIG', [
+// 	'token' => 'secret_redis',
+// 	'url' => 'tcp://127.0.0.1:6379',
+// 	'timeout' => 2.5,
+
+// ]);
 //define('DISALLOW_FILE_EDIT', true );
 //define('AUTOMATIC_UPDATER_DISABLED', false);
 //define( 'WP_HTTP_BLOCK_EXTERNAL', true );
