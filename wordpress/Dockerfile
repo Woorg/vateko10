@@ -29,7 +29,7 @@ RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.con
 
 
 # Добавьте файл entrypoint.sh в контейнер
-COPY entrypoint.sh /entrypoint.sh
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # Установите entrypoint
 ENTRYPOINT ["/docker-entrypoint.sh"]
