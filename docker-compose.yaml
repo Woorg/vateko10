@@ -17,6 +17,7 @@ services:
 
     volumes:
       - nginx_logs:/var/log/nginx
+      - wordpress-files:/var/www/html
       - ./wordpress:/var/www/html
       # - ./wordpress:/var/www/html:rw # Ваш файл конфигурации
   wordpress:
@@ -60,6 +61,7 @@ services:
           define( 'IMAGE_EDIT_OVERWRITE', true );
           define( 'DISALLOW_FILE_EDIT', false);
     volumes:
+      - wordpress-files:/var/www/html
       - ./wordpress:/var/www/html
       # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
       # - ./wordpress/vendor:/var/www/html/vendor # Папка для composer
