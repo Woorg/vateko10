@@ -17,9 +17,8 @@ services:
 
     volumes:
       - nginx_logs:/var/log/nginx
-      - wordpress-files:/var/www/html
-      - ./wordpress:/var/www/html
-      # - ./wordpress:/var/www/html:rw # Ваш файл конфигурации
+      # - wordpress-files:/var/www/html
+      - ./wordpress:/var/www/html:rw
   wordpress:
     build:
       context: ./wordpress
@@ -61,15 +60,14 @@ services:
           define( 'IMAGE_EDIT_OVERWRITE', true );
           define( 'DISALLOW_FILE_EDIT', false);
     volumes:
-      - wordpress-files:/var/www/html
-      - ./wordpress:/var/www/html
+      # - wordpress-files:/var/www/html
+      - ./wordpress:/var/www/html:rw
       # - ./wordpress/wp-config.php:/var/www/html/wp-config.php  # Ваш файл конфигурации
       # - ./wordpress/vendor:/var/www/html/vendor # Папка для composer
-      - ./wordpress/wp-content:/var/www/html/wp-content # Папка для загрузок
-      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads # Папка для загрузок
-      - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins # Папка для плагинов
-      - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes # Папка для тем
-      - ./wordpress/wp-content/ai1wp-backups:/var/www/html/wp-content/ai1wm-backups # Папка для тем
+      # - ./wordpress/wp-content:/var/www/html/wp-content # Папка для загрузок
+      # - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads # Папка для загрузок
+      # - ./wordpress/wp-content/plugins:/var/www/html/wp-content/plugins # Папка для плагинов
+      # - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes # Папка для тем
 
       # - type: bind
       #   source: ./wordpress/
