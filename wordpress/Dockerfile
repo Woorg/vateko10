@@ -11,6 +11,8 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 # Копируем файлы WordPress
 # COPY --chown=www-data:www-data . /var/www/html
 
+COPY --chown=www-data:www-data . /var/www/html
+
 # Установка прав доступа на файлы WordPress
 # RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
@@ -29,12 +31,10 @@ RUN systemctl enable redis-server && redis-server /usr/local/etc/redis/redis.con
 
 
 # Добавьте файл entrypoint.sh в контейнер
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+# COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 # Установите entrypoint
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
-
+# ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Команда запуска php-fpm
 CMD ["php-fpm"]
