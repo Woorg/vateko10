@@ -11,7 +11,7 @@ COPY ./redis.conf /usr/local/etc/redis/redis.conf
 # Копируем файлы WordPress
 # COPY --chown=www-data:www-data . /var/www/html
 
-COPY --chown=www-data:www-data . /var/www/html
+COPY --chown=www-data:www-data ../wordpress/* /var/www/html
 
 # Установка прав доступа на файлы WordPress
 # RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
