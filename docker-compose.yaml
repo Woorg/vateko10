@@ -25,9 +25,8 @@ services:
       context: ./wordpress
       dockerfile: Dockerfile
     restart: always
-    depends_on:
-      # - mariadb
-      - redis
+    # depends_on:
+    #   - redis
 
     expose:
       - '9000'
@@ -37,27 +36,27 @@ services:
 
     environment:
       # - SERVICE_FQDN_WORDPRESS
-      - ENVIRONMENT: ${ENVIRONMENT}
-      - DB_HOST: ${DB_HOST}
-      - DB_USER: ${DB_USER}
-      - DB_PASSWORD: ${DB_PASSWORD}
-      - DB_NAME: ${DB_NAME}
+      ENVIRONMENT: ${ENVIRONMENT}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
 
-      - WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
-      - WORDPRESS_DEBUG: ${WP_DEBUG:-true}
-      - WORDPRESS_CONFIG_EXTRA: |
-          define('WP_CACHE', true);
-          define( 'EIO_WEBP_SHARP_YUV', true);
-          define( 'COMPRESS_CSS', false);
-          define( 'COMPRESS_SCRIPTS', false);
-          define( 'CONCATENATE_SCRIPTS', false);
-          define( 'ENFORCE_GZIP', true );
-          define( 'AUTOSAVE_INTERVAL', 120 );
-          define( 'WP_POST_REVISIONS', 10);
-          define( 'MEDIA_TRASH', true );
-          define( 'EMPTY_TRASH_DAYS', 30 );
-          define( 'IMAGE_EDIT_OVERWRITE', true );
-          define( 'DISALLOW_FILE_EDIT', false);
+      WORDPRESS_TABLE_PREFIX: ${WP_DB_PREFIX}
+      WORDPRESS_DEBUG: ${WP_DEBUG:-true}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_CACHE', true);
+        define( 'EIO_WEBP_SHARP_YUV', true);
+        define( 'COMPRESS_CSS', false);
+        define( 'COMPRESS_SCRIPTS', false);
+        define( 'CONCATENATE_SCRIPTS', false);
+        define( 'ENFORCE_GZIP', true );
+        define( 'AUTOSAVE_INTERVAL', 120 );
+        define( 'WP_POST_REVISIONS', 10);
+        define( 'MEDIA_TRASH', true );
+        define( 'EMPTY_TRASH_DAYS', 30 );
+        define( 'IMAGE_EDIT_OVERWRITE', true );
+        define( 'DISALLOW_FILE_EDIT', false);
     # privileged: true
     volumes:
       # - wordpress-files:/var/www/html
@@ -110,18 +109,18 @@ services:
   #   ports:
   #     - '8080:8080'
 
-  redis:
-    build:
-      context: ./redis
-      dockerfile: Dockerfile
-    container_name: ${APP_NAME}-redis
-    restart: always
-    expose:
-      - '6379'
-    privileged: true
-    volumes:
-      - redis:/var/lib/redis
-      - redis:/data
+  # redis:
+  #   build:
+  #     context: ./redis
+  #     dockerfile: Dockerfile
+  #   container_name: ${APP_NAME}-redis
+  #   restart: always
+  #   expose:
+  #     - '6379'
+  #   privileged: true
+  #   volumes:
+  #     - redis:/var/lib/redis
+  #     - redis:/data
 # volumes:
 #   nginx_logs:
 #   wordpress-files:

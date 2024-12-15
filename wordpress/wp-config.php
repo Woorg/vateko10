@@ -25,7 +25,6 @@ require_once dirname(__FILE__) . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__));
 $dotenv->load();
 
-// define('WP_MEMORY_LIMIT', '512M'); 
 
 // define( 'WP_REDIS_HOST', $_ENV['WP_REDIS_HOST'] );
 // define( 'WP_REDIS_PASSWORD', $_ENV['WP_REDIS_PASSWORD'] );
@@ -96,14 +95,16 @@ define('WP_DEBUG_LOG', true);
 define('WP_AUTO_UPDATE_CORE', true);
 define('WP_CACHE_KEY_SALT', $_ENV['WP_CACHE_KEY_SALT']);
 define('FS_METHOD', 'direct');
+define('WP_MEMORY_LIMIT', '512M'); 
+define('WP_DEFAULT_THEME', 'twentytwentyfive'); 
 // define('WP_REDIS_CONFIG', [
-// 	'token' => 'secret_redis',
-// 	'url' => 'tcp://127.0.0.1:6379',
-// 	'timeout' => 2.5,
-
-// ]);
-//define('DISALLOW_FILE_EDIT', true );
-//define('AUTOMATIC_UPDATER_DISABLED', false);
+	// 	'token' => 'secret_redis',
+	// 	'url' => 'tcp://127.0.0.1:6379',
+	// 	'timeout' => 2.5,
+	
+	// ]);
+	//define('DISALLOW_FILE_EDIT', true );
+	//define('AUTOMATIC_UPDATER_DISABLED', false);
 //define( 'WP_HTTP_BLOCK_EXTERNAL', true );
 //define( 'WP_ACCESSIBLE_HOSTS', '*.wordpress.org,*.github.com' );
 // define('FORCE_SSL_ADMIN', true );
